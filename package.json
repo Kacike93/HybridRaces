@@ -1,0 +1,12 @@
+{
+  "name": "hybridracemap",
+  "private": true,
+  "type": "module",
+  "description": "Calendario y mapa de carreras híbridas y de obstáculos en España",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "update": "node scripts/update-races.mjs",
+    "preview": "node scripts/build.mjs && npx --yes serve dist"
+  },
+  "engines": { "node": ">=18" }
+}

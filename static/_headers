@@ -1,0 +1,14 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/styles.css
+  Cache-Control: public, max-age=31536000, immutable
+/app.js
+  Cache-Control: public, max-age=31536000, immutable
+/*.png
+  Cache-Control: public, max-age=604800
+/carreras/*/evento.ics
+  Content-Type: text/calendar; charset=utf-8

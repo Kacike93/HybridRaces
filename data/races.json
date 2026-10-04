@@ -11,7 +11,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://youevent.es/sport/Tabla_FichaEventoDeportivo.asp?id_competicion=8894",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 40.659,
+   "lng": -3.767
   },
   {
    "id": "ocr-desafio-boot-camp-vigo",
@@ -23,7 +25,9 @@
    "region": "Galicia",
    "url": "https://ccnorte.com/evento/detalle/page/1/id/3226/desafio-boot-camp-vigo-2026",
    "formats": "7 km",
-   "note": ""
+   "note": "",
+   "lat": 42.24,
+   "lng": -8.72
   },
   {
    "id": "ocr-ocr-crossfast-race",
@@ -35,7 +39,9 @@
    "region": "Canarias",
    "url": "https://inscripciones.chronotrackcanarias.com/inscripcion/ocr-crossfast-race-santa-cruz-de-tenerife-2026/",
    "formats": "4 km · 9 km",
-   "note": ""
+   "note": "",
+   "lat": 28.468,
+   "lng": -16.254
   },
   {
    "id": "hyb-hrx-arganda",
@@ -47,7 +53,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://time2run.es/hrx-arganda/",
    "formats": "Formato tipo HYROX",
-   "note": ""
+   "note": "",
+   "lat": 40.3,
+   "lng": -3.438
   },
   {
    "id": "hyb-hunter-hybrid-race",
@@ -59,7 +67,9 @@
    "region": "Cataluña",
    "url": "https://www.hunter-race.com/mataro-barcelona",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 41.54,
+   "lng": 2.444
   },
   {
    "id": "hyatlon-madrid-2026",
@@ -71,7 +81,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://hyatlon.org/event/madrid",
    "formats": "H6 · 6 km + 6 estaciones",
-   "note": "CDM Gallur · Circuito Mundial FETRI"
+   "note": "CDM Gallur · Circuito Mundial FETRI",
+   "lat": 40.417,
+   "lng": -3.704
   },
   {
    "id": "hyb-hybrid-day-malaga",
@@ -83,7 +95,9 @@
    "region": "Andalucía",
    "url": "https://www.sinctime.com/evento/424",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 36.622,
+   "lng": -4.5
   },
   {
    "id": "ocr-ocr-mencey-nocturna-la-laguna",
@@ -95,7 +109,9 @@
    "region": "Canarias",
    "url": "https://inscripciones.chronotrackcanarias.com/inscripcion/ocr-mencey-nocturna-la-laguna-2026/",
    "formats": "6 km nocturna",
-   "note": ""
+   "note": "",
+   "lat": 28.487,
+   "lng": -16.315
   },
   {
    "id": "ocr-desafio-pinar-extremo",
@@ -107,7 +123,9 @@
    "region": "Andalucía",
    "url": "https://gesconchip.es/prueba/informacion/iii-desafio-pinar-extremo",
    "formats": "7 km",
-   "note": ""
+   "note": "",
+   "lat": 36.21,
+   "lng": -5.384
   },
   {
    "id": "ocr-invictus-santona",
@@ -119,7 +137,9 @@
    "region": "Cantabria",
    "url": "https://web.rockthesport.com/es/event/invictus-santona-2026",
    "formats": "4 km · 11 km",
-   "note": ""
+   "note": "",
+   "lat": 43.443,
+   "lng": -3.457
   },
   {
    "id": "ocr-la-ultima-fortaleza-lanjaron",
@@ -131,7 +151,9 @@
    "region": "Andalucía",
    "url": "https://www.global-tempo.com/carreras.php?id=3291",
    "formats": "9 km",
-   "note": ""
+   "note": "",
+   "lat": 36.92,
+   "lng": -3.48
   },
   {
    "id": "hyrox-valencia-2026",
@@ -143,7 +165,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://hyrox.es/eventos/hyrox-valencia-26-27/",
    "formats": "Individual · Doubles · Relay · Youngstars",
-   "note": ""
+   "note": "",
+   "lat": 39.47,
+   "lng": -0.376
   },
   {
    "id": "ocr-desafio-sierra-de-cadiz",
@@ -155,7 +179,9 @@
    "region": "Andalucía",
    "url": "https://www.runnink.com/evento/desafio-sierra-de-cadiz/123",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 36.75,
+   "lng": -5.806
   },
   {
    "id": "ocr-santacara-gladius-race",
@@ -167,7 +193,9 @@
    "region": "Navarra",
    "url": "https://web.rockthesport.com/es/event/santacara-gladius-race-2026",
    "formats": "5 km",
-   "note": ""
+   "note": "",
+   "lat": 42.367,
+   "lng": -1.548
   },
   {
    "id": "spartan-santa-susanna-2026",
@@ -179,7 +207,9 @@
    "region": "Cataluña",
    "url": "https://es.spartan.com/es/races/santa-susanna-barcelona",
    "formats": "Sprint · Super · Beast · Kids",
-   "note": ""
+   "note": "",
+   "lat": 41.636,
+   "lng": 2.711
   },
   {
    "id": "ocr-villafranca-wolf-race",
@@ -191,7 +221,9 @@
    "region": "Navarra",
    "url": "https://www.deporticket.com/web-evento/13352-wolf-race-villafranca",
    "formats": "5 km",
-   "note": ""
+   "note": "",
+   "lat": 42.279,
+   "lng": -1.746
   },
   {
    "id": "bestial-el-hierro-2026",
@@ -203,7 +235,9 @@
    "region": "Canarias",
    "url": "https://ocrbestial.com/bestial-race-el-hierro/",
    "formats": "Elite · Starter · Hell · 3K Fun",
-   "note": "El Secreto de El Pinar V"
+   "note": "El Secreto de El Pinar V",
+   "lat": 27.709,
+   "lng": -17.979
   },
   {
    "id": "deka-guadalajara-2026",
@@ -215,7 +249,9 @@
    "region": "Castilla-La Mancha",
    "url": "https://es.spartan.com/es/races/deka-guadalajara",
    "formats": "DEKA FIT · MILE · Teams",
-   "note": ""
+   "note": "",
+   "lat": 40.633,
+   "lng": -3.167
   },
   {
    "id": "hyatlon-la-nucia-2026",
@@ -227,7 +263,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://hyatlon.org/",
    "formats": "H6 · 6 km + 6 estaciones",
-   "note": "Circuito Mundial FETRI"
+   "note": "Circuito Mundial FETRI",
+   "lat": 38.614,
+   "lng": -0.123
   },
   {
    "id": "ocr-pilar-xtreme",
@@ -239,7 +277,9 @@
    "region": "Extremadura",
    "url": "https://www.chipserena.es/web-evento/13878-viii-pilar-xtreme",
    "formats": "5 km",
-   "note": ""
+   "note": "",
+   "lat": 38.561,
+   "lng": -6.338
   },
   {
    "id": "ocr-survivor-madrid-quijorna",
@@ -251,7 +291,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://survivor-race.com/carreras/survivor-madrid-quijorna/",
    "formats": "6 km · 10 km",
-   "note": ""
+   "note": "",
+   "lat": 40.428,
+   "lng": -4.057
   },
   {
    "id": "hyb-badajoz-race-calamonte",
@@ -263,7 +305,9 @@
    "region": "Extremadura",
    "url": "https://www.dip-badajoz.es/badajozrace/eventos/12872",
    "formats": "8 km + 8 estaciones",
-   "note": "Circuito Badajoz Race · Diputación de Badajoz"
+   "note": "Circuito Badajoz Race · Diputación de Badajoz",
+   "lat": 38.888,
+   "lng": -6.385
   },
   {
    "id": "ocr-desafio-malaga",
@@ -275,7 +319,9 @@
    "region": "Andalucía",
    "url": "https://www.desafiodeguerreros.com.es/carreras/p/desafio-malaga",
    "formats": "6 km · 10 km",
-   "note": "Circuito Desafío de Guerreros"
+   "note": "Circuito Desafío de Guerreros",
+   "lat": 36.717,
+   "lng": -4.276
   },
   {
    "id": "deka-alicante-2026",
@@ -287,7 +333,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://es.spartan.com/es/races/deka-alicante",
    "formats": "DEKA FIT · MILE · Teams",
-   "note": ""
+   "note": "",
+   "lat": 38.345,
+   "lng": -0.481
   },
   {
    "id": "ocr-wolf-race-perdiguera",
@@ -299,7 +347,9 @@
    "region": "Aragón",
    "url": "https://www.deporticket.com/web-evento/13688-wolf-race-perdiguera",
    "formats": "5 km",
-   "note": ""
+   "note": "",
+   "lat": 41.757,
+   "lng": -0.63
   },
   {
    "id": "ocr-eolos-race-agoncillo",
@@ -311,7 +361,9 @@
    "region": "La Rioja",
    "url": "https://www.deporticket.com/web-evento/13277-eolos-race-agoncillo",
    "formats": "5 km · 7 km",
-   "note": ""
+   "note": "",
+   "lat": 42.446,
+   "lng": -2.291
   },
   {
    "id": "ocr-extreme-ocr-telde",
@@ -323,7 +375,9 @@
    "region": "Canarias",
    "url": "https://tripasioneventos.com/event/extreme/",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 27.995,
+   "lng": -15.417
   },
   {
    "id": "hyb-la-hibrida-andujar-2026",
@@ -335,7 +389,9 @@
    "region": "Andalucía",
    "url": "https://time2run.es/competicion-hibrida-andujar-2026/",
    "formats": "10 × 400 m + 10 estaciones · Individual · Parejas · Batalla de Boxes",
-   "note": "Estadio José Luis Mezquita"
+   "note": "Estadio José Luis Mezquita",
+   "lat": 38.039,
+   "lng": -4.051
   },
   {
    "id": "ocr-millennial-race",
@@ -347,7 +403,9 @@
    "region": "Cataluña",
    "url": "https://millennialrace.laketab.com",
    "formats": "5 km · 8 km",
-   "note": ""
+   "note": "",
+   "lat": 41.248,
+   "lng": 0.734
   },
   {
    "id": "ocr-sant-carles-xtrem",
@@ -359,7 +417,9 @@
    "region": "Islas Baleares",
    "url": "https://sportmaniacs.com/es/races/xii-cursa-sant-carles-xtrem",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 38.985,
+   "lng": 1.534
   },
   {
    "id": "hyb-desafio-hybrid-san-pedro-2026",
@@ -371,7 +431,9 @@
    "region": "Región de Murcia",
    "url": "https://www.lineadesalida.net/carreras/desafio-hybrid-race-san-pedro-del-pinatar",
    "formats": "Élite · Intermedio · Popular · Teams · 8 estaciones",
-   "note": "Polideportivo de San Pedro del Pinatar"
+   "note": "Polideportivo de San Pedro del Pinatar",
+   "lat": 37.835,
+   "lng": -0.791
   },
   {
    "id": "ocr-superat",
@@ -383,7 +445,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://web.rockthesport.com/es/event/superat-2026",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 38.698,
+   "lng": -0.474
   },
   {
    "id": "hyrox-barcelona-2026",
@@ -395,7 +459,9 @@
    "region": "Cataluña",
    "url": "https://hyrox.es/eventos/hyrox-barcelona-26-27/",
    "formats": "Individual · Doubles · Relay",
-   "note": ""
+   "note": "",
+   "lat": 41.387,
+   "lng": 2.17
   },
   {
    "id": "farinato-umbrete-2026",
@@ -407,7 +473,9 @@
    "region": "Andalucía",
    "url": "https://farinatorace.es/inscripciones-farinato-umbrete-2026/",
    "formats": "Popular 7 km · Equipos · Family · Jóvenes",
-   "note": ""
+   "note": "",
+   "lat": 37.369,
+   "lng": -6.157
   },
   {
    "id": "ocr-hunting-teguise-003",
@@ -419,7 +487,9 @@
    "region": "Canarias",
    "url": "https://tripasioneventos.com/event/hunting-teguise-003/",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 29.061,
+   "lng": -13.56
   },
   {
    "id": "hyatlon-gran-canaria-2026",
@@ -431,7 +501,9 @@
    "region": "Canarias",
    "url": "https://hyatlon.org/",
    "formats": "H6 · 6 km + 6 estaciones",
-   "note": "Circuito Mundial FETRI"
+   "note": "Circuito Mundial FETRI",
+   "lat": 28.124,
+   "lng": -15.43
   },
   {
    "id": "ocr-som-urban-race",
@@ -443,7 +515,9 @@
    "region": "Islas Baleares",
    "url": "https://sportmaniacs.com/es/races/som-urban-race-2026",
    "formats": "Urbana",
-   "note": ""
+   "note": "",
+   "lat": 39.57,
+   "lng": 2.65
   },
   {
    "id": "deka-tenerife-2026",
@@ -455,7 +529,9 @@
    "region": "Canarias",
    "url": "https://es.spartan.com/es/races/deka-tenerife",
    "formats": "DEKA FIT · MILE · STRONG · Teams",
-   "note": ""
+   "note": "",
+   "lat": 28.468,
+   "lng": -16.254
   },
   {
    "id": "ocr-desafio-vega-baja-redovan-by-medieval",
@@ -467,7 +543,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://crono4sports.com/evento/desafio-vega-baja-redovan-by-medieval",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 38.115,
+   "lng": -0.904
   },
   {
    "id": "ocr-isla-race-estadi-mallorca-son-moix",
@@ -479,7 +557,9 @@
    "region": "Islas Baleares",
    "url": "https://web.rockthesport.com/es/event/1785915050",
    "formats": "Estadio",
-   "note": ""
+   "note": "",
+   "lat": 39.57,
+   "lng": 2.65
   },
   {
    "id": "ocr-playa-cambriles-race",
@@ -491,7 +571,9 @@
    "region": "Andalucía",
    "url": "https://www.global-tempo.com/carreras.php?id=3202",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 36.725,
+   "lng": -3.358
   },
   {
    "id": "hyatlon-zaragoza-2026",
@@ -503,7 +585,9 @@
    "region": "Aragón",
    "url": "https://hyatlon.org/",
    "formats": "H8 · 8 km + estaciones",
-   "note": "Gran Final Circuito Mundial FETRI"
+   "note": "Gran Final Circuito Mundial FETRI",
+   "lat": 41.649,
+   "lng": -0.889
   },
   {
    "id": "spartan-tenerife-2026",
@@ -515,7 +599,9 @@
    "region": "Canarias",
    "url": "https://es.spartan.com/es/races/tenerife",
    "formats": "Sprint · Super · Beast · Kids",
-   "note": ""
+   "note": "",
+   "lat": 28.414,
+   "lng": -16.548
   },
   {
    "id": "bestial-gran-canaria-2026",
@@ -527,7 +613,9 @@
    "region": "Canarias",
    "url": "https://ocrbestial.com/bestial-race-gran-canaria/",
    "formats": "Elite · Starter · Hell · 3K Fun",
-   "note": ""
+   "note": "",
+   "lat": 28.12,
+   "lng": -15.523
   },
   {
    "id": "ocr-poseidon-sea",
@@ -539,7 +627,9 @@
    "region": "Andalucía",
    "url": "https://www.global-tempo.com/carreras.php?id=3100",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 36.697,
+   "lng": -3.497
   },
   {
    "id": "ocr-medieval-xtrem-race-peniscola",
@@ -551,7 +641,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://www.crono4sports.es/info_fusion.php?Evento=2415",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 40.359,
+   "lng": 0.407
   },
   {
    "id": "hyrox-bilbao-2027",
@@ -563,7 +655,9 @@
    "region": "País Vasco",
    "url": "https://hyrox.es/eventos/hyrox-bilbao-26-27/",
    "formats": "Individual · Doubles · Relay",
-   "note": ""
+   "note": "",
+   "lat": 43.263,
+   "lng": -2.935
   },
   {
    "id": "athx-valencia-2027",
@@ -575,7 +669,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://athxgames.com/events/01krwy548m3x7bt4j8bvvmr8j8",
    "formats": "Strength · Engine · Metcon",
-   "note": "Feria Valencia"
+   "note": "Feria Valencia",
+   "lat": 39.47,
+   "lng": -0.376
   },
   {
    "id": "deka-torremolinos-2027",
@@ -587,7 +683,9 @@
    "region": "Andalucía",
    "url": "https://es.spartan.com/es/races/deka-torremolinos",
    "formats": "DEKA FIT · Teams",
-   "note": ""
+   "note": "",
+   "lat": 36.622,
+   "lng": -4.5
   },
   {
    "id": "deka-toledo-2027",
@@ -599,7 +697,9 @@
    "region": "Castilla-La Mancha",
    "url": "https://es.spartan.com/es/races/deka-toledo-2027",
    "formats": "DEKA FIT · MILE · Teams",
-   "note": ""
+   "note": "",
+   "lat": 39.863,
+   "lng": -4.027
   },
   {
    "id": "bestial-tenerife-2027",
@@ -611,7 +711,9 @@
    "region": "Canarias",
    "url": "https://ocrbestial.com/bestial-race-tenerife/",
    "formats": "Elite · Starter · Hell · 3K Fun",
-   "note": "El Secreto del Teide"
+   "note": "El Secreto del Teide",
+   "lat": 28.29,
+   "lng": -16.63
   },
   {
    "id": "ocr-fungo-race",
@@ -623,7 +725,9 @@
    "region": "Andalucía",
    "url": "https://www.runnink.com/evento/fungo-race/130",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 36.527,
+   "lng": -6.288
   },
   {
    "id": "hyrox-madrid-2027",
@@ -635,7 +739,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://hyrox.es/eventos/hyrox-madrid-26-27/",
    "formats": "Individual · Doubles · Relay",
-   "note": ""
+   "note": "",
+   "lat": 40.417,
+   "lng": -3.704
   },
   {
    "id": "deka-barcelona-primavera-2027",
@@ -647,7 +753,9 @@
    "region": "Cataluña",
    "url": "https://es.spartan.com/es/races/deka-barcelona-primavera",
    "formats": "DEKA FIT · MILE · STRONG · Teams",
-   "note": ""
+   "note": "",
+   "lat": 41.387,
+   "lng": 2.17
   },
   {
    "id": "deka-valencia-2027",
@@ -659,7 +767,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://es.spartan.com/es/races/deka-valencia-2027",
    "formats": "DEKA FIT · MILE · Teams",
-   "note": ""
+   "note": "",
+   "lat": 39.47,
+   "lng": -0.376
   },
   {
    "id": "ocr-survivor-alicante",
@@ -671,7 +781,9 @@
    "region": "Comunidad Valenciana",
    "url": "https://survivor-race.com/carreras/survivor-alicante/",
    "formats": "",
-   "note": ""
+   "note": "",
+   "lat": 38.371,
+   "lng": -0.493
   },
   {
    "id": "hyrox-malaga-2027",
@@ -683,7 +795,9 @@
    "region": "Andalucía",
    "url": "https://hyrox.es/eventos/hyrox-malaga-26-27/",
    "formats": "Individual · Doubles · Relay",
-   "note": ""
+   "note": "",
+   "lat": 36.721,
+   "lng": -4.421
   },
   {
    "id": "deka-ibiza-2027",
@@ -695,7 +809,9 @@
    "region": "Islas Baleares",
    "url": "https://es.spartan.com/es/races/deka-ibiza-2027",
    "formats": "DEKA FIT · MILE · Teams",
-   "note": ""
+   "note": "",
+   "lat": 38.907,
+   "lng": 1.432
   },
   {
    "id": "athx-madrid-2027",
@@ -707,7 +823,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://athxgames.com/events/01krwy7hrp6bp8ndj7p1487n0n",
    "formats": "Strength · Engine · Metcon",
-   "note": "IFEMA Madrid"
+   "note": "IFEMA Madrid",
+   "lat": 40.417,
+   "lng": -3.704
   },
   {
    "id": "spartan-madrid-2027",
@@ -719,7 +837,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://es.spartan.com/es/races/madrid",
    "formats": "Sprint · Super · Beast · Kids",
-   "note": ""
+   "note": "",
+   "lat": 40.678,
+   "lng": -3.616
   },
   {
    "id": "deka-vigo-2027",
@@ -731,7 +851,9 @@
    "region": "Galicia",
    "url": "https://es.spartan.com/es/races/deka-vigo-2027",
    "formats": "DEKA FIT · MILE · Teams",
-   "note": ""
+   "note": "",
+   "lat": 42.24,
+   "lng": -8.72
   },
   {
    "id": "deka-madrid-2027",
@@ -743,7 +865,9 @@
    "region": "Comunidad de Madrid",
    "url": "https://es.spartan.com/es/races/deka-madrid-2027",
    "formats": "DEKA FIT · MILE · STRONG · Teams",
-   "note": ""
+   "note": "",
+   "lat": 40.417,
+   "lng": -3.704
   },
   {
    "id": "deka-barcelona-otono-2027",
@@ -755,7 +879,9 @@
    "region": "Cataluña",
    "url": "https://es.spartan.com/es/races/deka-barcelona-otono-2027",
    "formats": "DEKA FIT · MILE · Teams",
-   "note": ""
+   "note": "",
+   "lat": 41.387,
+   "lng": 2.17
   },
   {
    "id": "athx-bilbao-2027",
@@ -767,7 +893,9 @@
    "region": "País Vasco",
    "url": "https://athxgames.com/events/01krwygz93demx24426v8p3xr5",
    "formats": "Strength · Engine · Metcon",
-   "note": "Bilbao Exhibition Centre"
+   "note": "Bilbao Exhibition Centre",
+   "lat": 43.263,
+   "lng": -2.935
   }
  ]
 }
