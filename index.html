@@ -1,465 +1,807 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-base="./">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>HybridRaces · Calendario Hybrid &amp; OCR España</title>
-<meta name="description" content="Todas las carreras híbridas y de obstáculos de España en un calendario: HYROX, Spartan, DEKA, ATHX, Hyatlón y pruebas nacionales, con enlace oficial. Actualizado a diario.">
-<meta property="og:title" content="HybridRaces · Calendario Hybrid & OCR España">
-<meta property="og:description" content="HYROX, Spartan, DEKA, ATHX, Hyatlón y carreras de obstáculos en España, con enlace oficial. Actualizado a diario.">
+<title>HybridRaceMap · Carreras híbridas y de obstáculos en España</title>
+<meta name="description" content="Calendario y mapa de carreras híbridas y de obstáculos en España: HYROX, DEKA, Spartan, ATHX, Hyatlón y OCR nacionales. 64 pruebas con enlace oficial, actualizado a diario.">
+<link rel="canonical" href="https://hybridracemap.com/">
+<meta property="og:site_name" content="HybridRaceMap">
+<meta property="og:title" content="HybridRaceMap · Carreras híbridas y de obstáculos en España">
+<meta property="og:description" content="Calendario y mapa de carreras híbridas y de obstáculos en España: HYROX, DEKA, Spartan, ATHX, Hyatlón y OCR nacionales. 64 pruebas con enlace oficial, actualizado a diario.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://images.unsplash.com/photo-1743993414654-0be2b73a9620?auto=format&fit=crop&w=1200&h=630&q=70">
+<meta property="og:url" content="https://hybridracemap.com/">
+<meta property="og:image" content="https://hybridracemap.com/og.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d0f12">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ff5a1f'/%3E%3Cpath d='M9 24V8M23 24V8M9 16h14' stroke='%230d0f12' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<link rel="manifest" href="./site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
-<style>
-/* Layout: noche de competición — fotografía a sangre, tipografía condensada de dorsal,
-   filtros como tarjetas-foto, carrusel de grandes citas y calendario por meses. Tema oscuro deliberado. */
-:root{
-  color-scheme:dark;
-  --bg:#0d0f12; --bg-2:#14171c; --card:#191d23; --line:#2a2f37;
-  --fg:#f2f3f5; --muted:#9aa2ad; --accent:#ff5a1f; --accent-2:#ffd23f; --on-accent:#0d0f12;
-  --c-hyrox:#ffd23f; --c-spartan:#ff3b4f; --c-deka:#4d8dff; --c-athx:#b07cff;
-  --c-hyatlon:#22d3c5; --c-ocr:#d39a52; --c-hybrid:#ff6fb5;
-  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
-  --r:10px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-img{max-width:100%;display:block}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.wrap{max-width:1240px;margin:0 auto;padding-inline:20px}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-h2.sec{font-family:var(--f-display);font-weight:900;font-size:clamp(34px,5vw,56px);line-height:.95;text-transform:uppercase;margin:6px 0 0;letter-spacing:.01em}
-.sechead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
-
-/* ---------- NAV ---------- */
-.nav{position:absolute;top:0;left:0;right:0;z-index:3;padding-top:env(safe-area-inset-top,0px)}
-.nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
-.logo{font-family:var(--f-display);font-weight:900;font-size:26px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo b{background:var(--accent);color:var(--on-accent);padding:0 7px;border-radius:5px}
-.nav .upd{font-family:var(--f-mono);font-size:12px;color:#d6d9de;background:rgba(0,0,0,.35);padding:6px 10px;border-radius:999px;backdrop-filter:blur(6px)}
-.nav .upd i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3ddc84;margin-right:6px;box-shadow:0 0 0 3px rgba(61,220,132,.25)}
-
-/* ---------- HERO ---------- */
-.hero{position:relative;min-height:clamp(430px,60vh,560px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.strips{position:absolute;inset:0;display:grid;grid-template-columns:1.25fr 1fr 1fr;z-index:-2}
-.strips div{position:relative;overflow:hidden;background:var(--bg-2)}
-.strips div:nth-child(2){clip-path:polygon(9% 0,100% 0,91% 100%,0 100%);margin-inline:-6%}
-.strips span{position:absolute;inset:0;background:center/cover no-repeat;filter:grayscale(1) contrast(1.15) brightness(.85);opacity:0;transform:scale(1.04);transition:opacity 1.6s ease,transform 9s linear}
-.strips span.on{opacity:1;transform:scale(1.12)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  linear-gradient(180deg,rgba(13,15,18,.55) 0%,rgba(13,15,18,.15) 35%,rgba(13,15,18,.85) 78%,var(--bg) 100%),
-  linear-gradient(90deg,rgba(255,90,31,.55),rgba(255,90,31,0) 55%);mix-blend-mode:normal}
-.hero .wrap{width:100%;padding-block:96px 34px}
-.hero h1{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(48px,7.2vw,104px);line-height:.84;margin:10px 0 14px;letter-spacing:-.005em;text-wrap:balance;max-width:14ch}
-.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--fg)}
-.hero p.lede{max-width:58ch;color:#d9dce1;font-size:17px;margin:0 0 20px}
-.searchbar{display:flex;gap:8px;flex-wrap:wrap;background:rgba(20,23,28,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:8px;max-width:760px}
-.searchbar input,.searchbar select{font:500 16px var(--f-body);background:transparent;color:var(--fg);border:0;padding:12px 12px;min-width:0}
-.searchbar input{flex:1 1 220px}
-.searchbar select{flex:0 1 200px;border-left:1px solid var(--line)}
-.searchbar select option{background:var(--bg-2)}
-.searchbar input:focus,.searchbar select:focus{outline:none}
-.btn{font:800 15px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;background:var(--accent);color:var(--on-accent);border:0;border-radius:9px;padding:14px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,filter .15s}
-.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
-.btn.ghost{background:rgba(255,255,255,.08);color:var(--fg);border:1px solid rgba(255,255,255,.18)}
-.btn.sm{font-size:13px;padding:10px 13px;border-radius:7px}
-.herostats{display:flex;gap:28px;flex-wrap:wrap;margin-top:20px;align-items:center}
-.herostats div{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#b9bec6}
-.herostats > div > b{display:block;font-family:var(--f-display);font-size:40px;line-height:1;color:var(--fg);letter-spacing:0;font-variant-numeric:tabular-nums}
-.countdown{width:min(100%,440px);display:flex;align-items:center;gap:14px;background:var(--fg);color:var(--bg);border-radius:12px;padding:10px 16px 10px 12px;text-decoration:none;max-width:100%}
-.countdown .n{font-family:var(--f-display);font-weight:900;font-size:44px;line-height:1;background:var(--accent);color:var(--on-accent);border-radius:8px;padding:4px 10px;font-variant-numeric:tabular-nums}
-.countdown .t{flex:1;font-size:13px;line-height:1.25;min-width:0}
-.countdown .t b{display:block;font-family:var(--f-display);font-weight:800;font-size:22px;color:var(--bg);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* ---------- CATEGORY TILES ---------- */
-.cats{padding-block:40px 10px}
-.tiles{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
-.tile{position:relative;aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;border:0;padding:0;cursor:pointer;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 35%,#000),var(--card));color:#fff;text-align:left;isolation:isolate;transition:transform .2s, opacity .2s, filter .2s}
-.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85)),linear-gradient(0deg,color-mix(in srgb,var(--c) 45%,transparent),transparent 60%)}
-.tile .bgimg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.tile:hover .bgimg{transform:scale(1.06)}
-.tile .lab{position:absolute;left:12px;right:12px;bottom:12px}
-.tile .lab b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(17px,1.6vw,24px);line-height:.95;text-transform:uppercase}
-.tile .lab span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:#e5e7ea}
-.tile .bar{position:absolute;top:0;left:0;right:0;height:5px;background:var(--c)}
-.tile .chk{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:var(--c);display:grid;place-items:center;color:#0d0f12;font-weight:800;font-size:14px}
-.tile[aria-pressed="false"]{filter:grayscale(1);opacity:.42}
-.tile[aria-pressed="false"] .chk{background:transparent;border:2px solid #fff;color:transparent}
-.catbar{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
-.link{background:none;border:0;color:var(--muted);font:600 14px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:4px}
-
-/* ---------- FEATURED ---------- */
-.featured{padding-block:46px 10px}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(270px,320px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
-.fcard{scroll-snap-align:start;position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 40%,#000),var(--card) 70%);isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;text-decoration:none;color:#fff}
-.fcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s}
-.fcard:hover img{transform:scale(1.05)}
-.fcard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.05) 25%,rgba(0,0,0,.9) 88%)}
-.fcard .tagc{position:absolute;top:16px;left:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--c);color:#0d0f12;padding:5px 8px;border-radius:5px;font-weight:500}
-.fcard .days{position:absolute;top:14px;right:14px;font-family:var(--f-display);font-weight:800;font-size:15px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);padding:5px 9px;border-radius:6px;text-transform:uppercase}
-.fcard .fd{font-family:var(--f-display);font-weight:900;font-size:58px;line-height:.85;font-variant-numeric:tabular-nums}
-.fcard .fd small{font-size:22px;letter-spacing:.06em;margin-left:6px;color:var(--c)}
-.fcard h3{font-family:var(--f-display);font-weight:800;font-size:30px;line-height:.95;text-transform:uppercase;margin:8px 0 4px;text-wrap:balance}
-.fcard p{margin:0;color:#d4d7dc;font-size:14px}
-
-/* ---------- CONTROLS ---------- */
-.calsec{padding-block:46px 30px}
-.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(13,15,18,.9);backdrop-filter:blur(10px);border-block:1px solid var(--line);margin-bottom:26px}
-.controls .wrap{display:flex;gap:10px 14px;align-items:center;flex-wrap:wrap;padding-block:12px}
-.seg{display:inline-flex;background:var(--bg-2);border:1px solid var(--line);border-radius:9px;padding:3px}
-.seg button{font:800 14px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--muted);border:0;padding:9px 16px;border-radius:6px;cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
-.toggle{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
-.toggle input{accent-color:var(--accent);width:16px;height:16px}
-.count{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-left:auto}
-.mini{display:flex;gap:6px;flex-wrap:wrap}
-.mini span{font-family:var(--f-mono);font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
-.mini span i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:5px}
-
-/* ---------- LIST ---------- */
-.month{margin-bottom:44px}
-.mhead{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:8px}
-.mhead h3{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,6vw,72px);line-height:.85;text-transform:uppercase;margin:0;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
-.mhead h3 span{color:var(--fg);-webkit-text-stroke:0}
-.mhead small{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
-.card{background:var(--card);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line);transition:transform .2s,border-color .2s}
-.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 60%,var(--line))}
-.card.past{opacity:.45}
-.card.flash{animation:flash 1.6s}
-@keyframes flash{0%,45%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:none}}
-.ph{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 55%,#000),#111) ;overflow:hidden}
-.ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.card:hover .ph img{transform:scale(1.05)}
-.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.65))}
-.bib{position:absolute;left:12px;bottom:-1px;z-index:1;background:#f6f6f3;color:#111;border-radius:6px 6px 0 0;padding:8px 12px 6px;text-align:center;min-width:76px;box-shadow:0 -2px 12px rgba(0,0,0,.25)}
-.bib::before,.bib::after{content:"";position:absolute;top:6px;width:5px;height:5px;border-radius:50%;background:#bbb}
-.bib::before{left:6px}.bib::after{right:6px}
-.bib .m{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#555}
-.bib .d{font-family:var(--f-display);font-weight:900;font-size:36px;line-height:.9;font-variant-numeric:tabular-nums}
-.bib .d small{font-size:18px}
-.chip{position:absolute;top:10px;left:10px;z-index:1;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--c);color:#0d0f12;padding:4px 7px;border-radius:4px;font-weight:500}
-.soon{position:absolute;top:10px;right:10px;z-index:1;font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--on-accent);padding:4px 8px;border-radius:4px}
-.cb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
-.cb h4{font-family:var(--f-display);font-weight:800;font-size:25px;line-height:.98;text-transform:uppercase;margin:0;text-wrap:balance}
-.where{font-size:14px;color:var(--muted);display:flex;gap:6px;align-items:center}
-.where svg{width:14px;height:14px;flex:none}
-.fmt{font-size:13.5px;color:#d0d4da}
-.note{font-size:12.5px;color:var(--muted)}
-.act{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.when{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
-
-/* ---------- CALENDAR ---------- */
-.calnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-.calnav h3{font-family:var(--f-display);font-weight:900;font-size:clamp(36px,6vw,60px);text-transform:uppercase;margin:0;line-height:.9}
-.calnav button{font:800 22px var(--f-display);background:var(--bg-2);color:var(--fg);border:1px solid var(--line);border-radius:9px;width:46px;height:46px;cursor:pointer}
-.calwrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line)}
-.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));min-width:320px}
-.dow{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:8px;background:var(--bg-2);border-bottom:1px solid var(--line)}
-.cell{min-height:118px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:5px;background:var(--card);display:flex;flex-direction:column;gap:3px;min-width:0}
-.cell:nth-child(7n){border-right:0}
-.cell.out{background:var(--bg)}
-.cell.out .n{opacity:.3}
-.cell.we{background:color-mix(in srgb,var(--card) 92%,var(--accent))}
-.cell .n{font-family:var(--f-display);font-weight:800;font-size:18px;padding:0 4px;font-variant-numeric:tabular-nums}
-.cell.today .n{background:var(--accent);color:var(--on-accent);border-radius:5px;align-self:flex-start;padding:0 7px}
-.ev{font:600 11.5px/1.2 var(--f-body);background:var(--c);color:#0d0f12;border:0;border-radius:4px;padding:4px 6px;text-align:left;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
-.more{font-size:11px;color:var(--muted);padding-left:4px}
-.empty{padding:50px 0;color:var(--muted);text-align:center}
-.empty b{display:block;font-family:var(--f-display);font-size:32px;color:var(--fg);text-transform:uppercase}
-
-/* ---------- FOOTER ---------- */
-footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;margin-top:20px}
-footer .wrap{padding-block:30px 44px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px}
-footer .logo{font-size:30px;margin-bottom:8px}
-footer a{color:var(--fg)}
-.legal{font-size:12px}
-
-@media (max-width:980px){ .tiles{grid-template-columns:repeat(4,minmax(0,1fr))} }
-@media (max-width:700px){
-  .wrap{padding-inline:16px}
-  .strips{grid-template-columns:1fr}
-  .strips div:not(:first-child){display:none}
-  .hero .wrap{padding-block:88px 26px}
-  .hero p.lede{font-size:16px}
-  .searchbar select{border-left:0;border-top:1px solid var(--line);flex:1 1 100%}
-  .searchbar .btn{flex:1 1 100%;justify-content:center}
-  .tiles{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
-  .tile{scroll-snap-align:start}
-  .cards{grid-template-columns:1fr}
-  .cell{min-height:62px;padding:3px}
-  .ev{font-size:0;height:7px;padding:0}
-  .cell .n{font-size:14px}
-  .count{margin-left:0}
-  footer .wrap{grid-template-columns:1fr}
-}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,400;125,900&family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="./styles.css?v=20261004-9c6de5">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"HybridRaceMap","url":"https://hybridracemap.com/","inLanguage":"es-ES","description":"Descubre. Compite. Supera. Tu próximo reto empieza aquí."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://hybridracemap.com/carreras/ocr-benemeritan-race/","name":"Benemeritan Race"},{"@type":"ListItem","position":2,"url":"https://hybridracemap.com/carreras/ocr-desafio-boot-camp-vigo/","name":"Desafío Boot Camp Vigo"},{"@type":"ListItem","position":3,"url":"https://hybridracemap.com/carreras/ocr-ocr-crossfast-race/","name":"OCR Crossfast Race"},{"@type":"ListItem","position":4,"url":"https://hybridracemap.com/carreras/hyb-hrx-arganda/","name":"HRX Arganda"},{"@type":"ListItem","position":5,"url":"https://hybridracemap.com/carreras/hyb-hunter-hybrid-race/","name":"Hunter Endurance Hybrid Race"},{"@type":"ListItem","position":6,"url":"https://hybridracemap.com/carreras/hyatlon-madrid-2026/","name":"Hyatlón Madrid"},{"@type":"ListItem","position":7,"url":"https://hybridracemap.com/carreras/hyb-hybrid-day-malaga/","name":"Hybrid Day Málaga"},{"@type":"ListItem","position":8,"url":"https://hybridracemap.com/carreras/ocr-ocr-mencey-nocturna-la-laguna/","name":"OCR Mencey Nocturna"},{"@type":"ListItem","position":9,"url":"https://hybridracemap.com/carreras/ocr-desafio-pinar-extremo/","name":"Desafío Pinar Extremo"},{"@type":"ListItem","position":10,"url":"https://hybridracemap.com/carreras/ocr-invictus-santona/","name":"Invictus Santoña"},{"@type":"ListItem","position":11,"url":"https://hybridracemap.com/carreras/ocr-la-ultima-fortaleza-lanjaron/","name":"La Última Fortaleza"},{"@type":"ListItem","position":12,"url":"https://hybridracemap.com/carreras/hyrox-valencia-2026/","name":"HYROX Valencia"},{"@type":"ListItem","position":13,"url":"https://hybridracemap.com/carreras/ocr-desafio-sierra-de-cadiz/","name":"Desafío Sierra de Cádiz"},{"@type":"ListItem","position":14,"url":"https://hybridracemap.com/carreras/ocr-santacara-gladius-race/","name":"Santacara Gladius Race"},{"@type":"ListItem","position":15,"url":"https://hybridracemap.com/carreras/spartan-santa-susanna-2026/","name":"Spartan Santa Susanna-Barcelona"},{"@type":"ListItem","position":16,"url":"https://hybridracemap.com/carreras/ocr-villafranca-wolf-race/","name":"Villafranca Wolf Race"},{"@type":"ListItem","position":17,"url":"https://hybridracemap.com/carreras/bestial-el-hierro-2026/","name":"Bestial Race El Hierro"},{"@type":"ListItem","position":18,"url":"https://hybridracemap.com/carreras/deka-guadalajara-2026/","name":"DEKA Guadalajara"},{"@type":"ListItem","position":19,"url":"https://hybridracemap.com/carreras/hyatlon-la-nucia-2026/","name":"Hyatlón La Nucía"},{"@type":"ListItem","position":20,"url":"https://hybridracemap.com/carreras/ocr-pilar-xtreme/","name":"Pilar Xtreme"},{"@type":"ListItem","position":21,"url":"https://hybridracemap.com/carreras/ocr-survivor-madrid-quijorna/","name":"Survivor Madrid"},{"@type":"ListItem","position":22,"url":"https://hybridracemap.com/carreras/hyb-badajoz-race-calamonte/","name":"Badajoz Race Hybrid"},{"@type":"ListItem","position":23,"url":"https://hybridracemap.com/carreras/ocr-desafio-malaga/","name":"Desafío Rincón de la Victoria"},{"@type":"ListItem","position":24,"url":"https://hybridracemap.com/carreras/deka-alicante-2026/","name":"DEKA Alicante"},{"@type":"ListItem","position":25,"url":"https://hybridracemap.com/carreras/ocr-wolf-race-perdiguera/","name":"Wolf Race Perdiguera"},{"@type":"ListItem","position":26,"url":"https://hybridracemap.com/carreras/ocr-eolos-race-agoncillo/","name":"Eolos Race"},{"@type":"ListItem","position":27,"url":"https://hybridracemap.com/carreras/ocr-extreme-ocr-telde/","name":"Extreme OCR Telde"},{"@type":"ListItem","position":28,"url":"https://hybridracemap.com/carreras/hyb-la-hibrida-andujar-2026/","name":"La Híbrida Andújar"},{"@type":"ListItem","position":29,"url":"https://hybridracemap.com/carreras/ocr-millennial-race/","name":"Millennial Race"},{"@type":"ListItem","position":30,"url":"https://hybridracemap.com/carreras/ocr-sant-carles-xtrem/","name":"Sant Carles Xtrem"},{"@type":"ListItem","position":31,"url":"https://hybridracemap.com/carreras/hyb-desafio-hybrid-san-pedro-2026/","name":"Desafío Hybrid Race San Pedro del Pinatar"},{"@type":"ListItem","position":32,"url":"https://hybridracemap.com/carreras/ocr-superat/","name":"Supera't"},{"@type":"ListItem","position":33,"url":"https://hybridracemap.com/carreras/hyrox-barcelona-2026/","name":"HYROX Barcelona"},{"@type":"ListItem","position":34,"url":"https://hybridracemap.com/carreras/farinato-umbrete-2026/","name":"Farinato Race Umbrete"},{"@type":"ListItem","position":35,"url":"https://hybridracemap.com/carreras/ocr-hunting-teguise-003/","name":"Hunting Teguise"},{"@type":"ListItem","position":36,"url":"https://hybridracemap.com/carreras/hyatlon-gran-canaria-2026/","name":"Hyatlón Gran Canaria"},{"@type":"ListItem","position":37,"url":"https://hybridracemap.com/carreras/ocr-som-urban-race/","name":"SOM Urban Race"},{"@type":"ListItem","position":38,"url":"https://hybridracemap.com/carreras/deka-tenerife-2026/","name":"DEKA Tenerife"},{"@type":"ListItem","position":39,"url":"https://hybridracemap.com/carreras/ocr-desafio-vega-baja-redovan-by-medieval/","name":"Desafío Vega Baja"},{"@type":"ListItem","position":40,"url":"https://hybridracemap.com/carreras/ocr-isla-race-estadi-mallorca-son-moix/","name":"Isla Race Son Moix"},{"@type":"ListItem","position":41,"url":"https://hybridracemap.com/carreras/ocr-playa-cambriles-race/","name":"Playa Cambriles Race"},{"@type":"ListItem","position":42,"url":"https://hybridracemap.com/carreras/hyatlon-zaragoza-2026/","name":"Hyatlón Zaragoza · Gran Final"},{"@type":"ListItem","position":43,"url":"https://hybridracemap.com/carreras/spartan-tenerife-2026/","name":"Spartan Tenerife Weekend"},{"@type":"ListItem","position":44,"url":"https://hybridracemap.com/carreras/bestial-gran-canaria-2026/","name":"Bestial Race Gran Canaria"},{"@type":"ListItem","position":45,"url":"https://hybridracemap.com/carreras/ocr-poseidon-sea/","name":"Poseidon Sea"},{"@type":"ListItem","position":46,"url":"https://hybridracemap.com/carreras/ocr-medieval-xtrem-race-peniscola/","name":"Medieval Xtrem Race"},{"@type":"ListItem","position":47,"url":"https://hybridracemap.com/carreras/hyrox-bilbao-2027/","name":"HYROX Bilbao"},{"@type":"ListItem","position":48,"url":"https://hybridracemap.com/carreras/athx-valencia-2027/","name":"ATHX Valencia"},{"@type":"ListItem","position":49,"url":"https://hybridracemap.com/carreras/deka-torremolinos-2027/","name":"DEKA Torremolinos"},{"@type":"ListItem","position":50,"url":"https://hybridracemap.com/carreras/deka-toledo-2027/","name":"DEKA Toledo"}]}</script>
 </head>
-<body>
+<body class="home">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="top"><div class="wrap">
+<a class="logo" href="./index.html" aria-label="HybridRaceMap, inicio"><svg class="logo-mark" viewBox="0 0 64 80" aria-hidden="true"><path d="M32 5C17.6 5 7 16 7 30.2 7 47.5 32 74 32 74s25-26.5 25-43.8C57 16 46.4 5 32 5z" fill="none" stroke="#f2f3f5" stroke-width="6.5" stroke-linejoin="round"/><g transform="translate(32 30.5) skewX(-16)"><rect x="-12.5" y="-12.5" width="7" height="25" rx="1" fill="#f2f3f5"/><rect x="-12.5" y="-3.4" width="25" height="6.8" fill="#f2f3f5"/><rect x="5.5" y="-12.5" width="7" height="25" rx="1" fill="#ff5a1f"/></g></svg><span class="wm">HYBRID<span class="r">RACE</span><b>MAP</b></span></a>
+<nav class="mainnav" aria-label="Principal">
+<a href="./index.html#calendario">Calendario</a><a href="./index.html#mapa" data-goto="map">Mapa</a><a href="./hyrox-espana/index.html">HYROX</a><a href="./deka-espana/index.html">DEKA</a><a href="./spartan-race-espana/index.html">Spartan</a><a href="./carreras-de-obstaculos/index.html">OCR</a>
+</nav></div></header>
+<main id="main">
+<section class="hero"><div class="hero-bg" aria-hidden="true"><div class="grid-lines"></div><svg class="hero-pulse" viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M0 120h330l40-70 60 140 50-110 30 40h690"/></svg></div>
+<div class="wrap">
+<p class="eyebrow">Calendario Hybrid &amp; OCR · España</p>
+<h1>Carreras híbridas y de <em>obstáculos</em> en España</h1>
+<p class="lede">HYROX, DEKA, Spartan, ATHX, Hyatlón y todas las pruebas nacionales en un mapa y un calendario, con enlace a la web oficial de cada una. Descubre. Compite. Supera. Tu próximo reto empieza aquí.</p>
+<div class="hero-row">
+<div class="herostats"><div><b>64</b>pruebas</div><div><b>52</b>ciudades</div><div><b>15</b>comunidades</div></div>
+<a class="countdown" href="./carreras/ocr-benemeritan-race/index.html"><span class="n" data-days="2026-10-04">·</span><span class="t"><small>Próxima prueba</small><b>Benemeritan Race</b><span>Colmenar Viejo · domingo, 4 de octubre de 2026</span></span></a>
+</div>
+<div class="hero-cats"><a href="./hyrox-espana/index.html" style="--c:#ffd23f"><i></i>HYROX <small>5</small></a><a href="./deka-espana/index.html" style="--c:#4d8dff"><i></i>DEKA <small>11</small></a><a href="./spartan-race-espana/index.html" style="--c:#ff3b4f"><i></i>Spartan Race <small>3</small></a><a href="./athx-espana/index.html" style="--c:#b07cff"><i></i>ATHX <small>3</small></a><a href="./hyatlon/index.html" style="--c:#22d3c5"><i></i>Hyatlón <small>4</small></a><a href="./carreras-hibridas/index.html" style="--c:#ff6fb5"><i></i>Híbrida nacional <small>6</small></a><a href="./carreras-obstaculos-nacionales/index.html" style="--c:#d39a52"><i></i>OCR nacional <small>32</small></a></div>
+</div></section>
+<section class="explorer" id="calendario" data-explorer>
+<div class="wrap">
+<div class="sechead"><div><p class="eyebrow">Próximas pruebas</p><h2 class="sec">Calendario</h2></div>
+<div class="views" role="tablist" aria-label="Vista">
+<button role="tab" aria-selected="true" data-view="list">Lista</button><button role="tab" aria-selected="false" data-view="month">Mes</button><button role="tab" aria-selected="false" data-view="map" id="mapa">Mapa</button>
+</div></div>
+<div class="filters">
+<label class="f-search"><span class="sr">Buscar</span><input type="search" placeholder="Buscar prueba, ciudad…" data-f="q" autocomplete="off"></label>
+<label><span class="sr">Comunidad</span><select data-f="region"><option value="">Toda España</option><option>Andalucía</option><option>Aragón</option><option>Canarias</option><option>Cantabria</option><option>Castilla-La Mancha</option><option>Cataluña</option><option>Comunidad de Madrid</option><option>Comunidad Valenciana</option><option>Extremadura</option><option>Galicia</option><option>Islas Baleares</option><option>La Rioja</option><option>Navarra</option><option>País Vasco</option><option>Región de Murcia</option></select></label>
+<label><span class="sr">Mes</span><select data-f="month"><option value="">Cualquier fecha</option><option value="2026-10">Octubre 2026</option><option value="2026-11">Noviembre 2026</option><option value="2026-12">Diciembre 2026</option><option value="2027-02">Febrero 2027</option><option value="2027-03">Marzo 2027</option><option value="2027-04">Abril 2027</option><option value="2027-05">Mayo 2027</option><option value="2027-06">Junio 2027</option><option value="2027-07">Julio 2027</option><option value="2027-09">Septiembre 2027</option><option value="2027-11">Noviembre 2027</option></select></label>
+</div>
+<div class="chips" role="group" aria-label="Formato"><button type="button" class="chip" aria-pressed="false" data-cat="hyrox" style="--c:#ffd23f"><i></i>HYROX</button><button type="button" class="chip" aria-pressed="false" data-cat="deka" style="--c:#4d8dff"><i></i>DEKA</button><button type="button" class="chip" aria-pressed="false" data-cat="spartan" style="--c:#ff3b4f"><i></i>Spartan Race</button><button type="button" class="chip" aria-pressed="false" data-cat="athx" style="--c:#b07cff"><i></i>ATHX</button><button type="button" class="chip" aria-pressed="false" data-cat="hyatlon" style="--c:#22d3c5"><i></i>Hyatlón</button><button type="button" class="chip" aria-pressed="false" data-cat="hybrid" style="--c:#ff6fb5"><i></i>Híbrida nacional</button><button type="button" class="chip" aria-pressed="false" data-cat="ocr" style="--c:#d39a52"><i></i>OCR nacional</button></div>
+<p class="count" aria-live="polite"><span data-count>64</span> pruebas · <button type="button" class="linklike" data-reset hidden>Quitar filtros</button></p>
+<div class="view view-list" data-pane="list"><section class="month" data-month="2026-10">
+<h3 class="month-h"><a href="./calendario/octubre-2026/index.html">Octubre 2026</a> <small>25 pruebas</small></h3>
+<ul class="races"><li class="race" data-id="ocr-benemeritan-race" data-cat="ocr" data-region="Comunidad de Madrid" data-month="2026-10" data-end="2026-10-04" data-q="benemeritan race colmenar viejo comunidad de madrid ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">4</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-04" data-until="2026-10-04"></span></div>
+<h3><a href="./carreras/ocr-benemeritan-race/index.html">Benemeritan Race</a></h3>
+<p class="where">Colmenar Viejo · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
 
-<nav class="nav" aria-label="Principal">
-  <div class="wrap">
-    <a class="logo" href="#top"><b>H</b>HybridRaces</a>
-    <span class="upd" id="upd"><i></i>Actualizado a diario</span>
-  </div>
-</nav>
+<time class="sr" datetime="2026-10-04">domingo, 4 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://youevent.es/sport/Tabla_FichaEventoDeportivo.asp?id_competicion=8894" target="_blank" rel="noopener" aria-label="Inscripción oficial de Benemeritan Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-desafio-boot-camp-vigo" data-cat="ocr" data-region="Galicia" data-month="2026-10" data-end="2026-10-04" data-q="desafio boot camp vigo vigo galicia ocr nacional 7 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">4</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-04" data-until="2026-10-04"></span></div>
+<h3><a href="./carreras/ocr-desafio-boot-camp-vigo/index.html">Desafío Boot Camp Vigo</a></h3>
+<p class="where">Vigo · <a href="./comunidad/galicia/index.html">Galicia</a></p>
+<p class="formats">7 km</p>
+<time class="sr" datetime="2026-10-04">domingo, 4 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://ccnorte.com/evento/detalle/page/1/id/3226/desafio-boot-camp-vigo-2026" target="_blank" rel="noopener" aria-label="Web oficial de Desafío Boot Camp Vigo">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-ocr-crossfast-race" data-cat="ocr" data-region="Canarias" data-month="2026-10" data-end="2026-10-04" data-q="ocr crossfast race santa cruz de tenerife canarias ocr nacional 4 km 9 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">4</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-04" data-until="2026-10-04"></span></div>
+<h3><a href="./carreras/ocr-ocr-crossfast-race/index.html">OCR Crossfast Race</a></h3>
+<p class="where">Santa Cruz de Tenerife · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">4 km · 9 km</p>
+<time class="sr" datetime="2026-10-04">domingo, 4 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://inscripciones.chronotrackcanarias.com/inscripcion/ocr-crossfast-race-santa-cruz-de-tenerife-2026/" target="_blank" rel="noopener" aria-label="Inscripción oficial de OCR Crossfast Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyb-hrx-arganda" data-cat="hybrid" data-region="Comunidad de Madrid" data-month="2026-10" data-end="2026-10-10" data-q="hrx arganda arganda del rey comunidad de madrid hibrida nacional formato tipo hyrox" style="--c:#ff6fb5">
+<div class="race-date" aria-hidden="true"><b class="">10</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff6fb5">Híbrida</span><span class="when" data-countdown="2026-10-10" data-until="2026-10-10"></span></div>
+<h3><a href="./carreras/hyb-hrx-arganda/index.html">HRX Arganda</a></h3>
+<p class="where">Arganda del Rey · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
+<p class="formats">Formato tipo HYROX</p>
+<time class="sr" datetime="2026-10-10">sábado, 10 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://time2run.es/hrx-arganda/" target="_blank" rel="noopener" aria-label="Web oficial de HRX Arganda">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyb-hunter-hybrid-race" data-cat="hybrid" data-region="Cataluña" data-month="2026-10" data-end="2026-10-10" data-q="hunter endurance hybrid race mataro cataluna hibrida nacional" style="--c:#ff6fb5">
+<div class="race-date" aria-hidden="true"><b class="">10</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff6fb5">Híbrida</span><span class="when" data-countdown="2026-10-10" data-until="2026-10-10"></span></div>
+<h3><a href="./carreras/hyb-hunter-hybrid-race/index.html">Hunter Endurance Hybrid Race</a></h3>
+<p class="where">Mataró · <a href="./comunidad/cataluna/index.html">Cataluña</a></p>
 
-<header class="hero" id="top">
-  <div class="strips" aria-hidden="true">
-    <div data-img="1743993414654-0be2b73a9620"></div>
-    <div data-img="1506534067239-9e2fabb3a863"></div>
-    <div data-img="1522866348293-55be2c6caa1f"></div>
-  </div>
-  <div class="wrap">
-    <div class="eyebrow">Hybrid &amp; OCR · España · Temporada 26/27</div>
-    <h1>Tu próxima <em>línea</em> de salida</h1>
-    <p class="lede">HYROX, Spartan, DEKA, ATHX, Hyatlón y las carreras de obstáculos e híbridas de todo el país, con el enlace oficial de cada prueba.</p>
-    <form class="searchbar" id="sf" role="search">
-      <input type="search" id="q" placeholder="Carrera, ciudad o marca…" aria-label="Buscar carrera, ciudad o marca" autocomplete="off">
-      <select id="region" aria-label="Comunidad autónoma"><option value="">Toda España</option></select>
-      <button class="btn" type="submit">Buscar</button>
-    </form>
-    <div class="herostats" id="stats"></div>
-  </div>
-</header>
+<time class="sr" datetime="2026-10-10">sábado, 10 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.hunter-race.com/mataro-barcelona" target="_blank" rel="noopener" aria-label="Web oficial de Hunter Endurance Hybrid Race">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyatlon-madrid-2026" data-cat="hyatlon" data-region="Comunidad de Madrid" data-month="2026-10" data-end="2026-10-11" data-q="hyatlon madrid madrid comunidad de madrid hyatlon h6 6 km 6 estaciones" style="--c:#22d3c5">
+<div class="race-date" aria-hidden="true"><b class="multi">10–11</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#22d3c5">Hyatlón</span><span class="when" data-countdown="2026-10-10" data-until="2026-10-11"></span></div>
+<h3><a href="./carreras/hyatlon-madrid-2026/index.html">Hyatlón Madrid</a></h3>
+<p class="where">Madrid · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
+<p class="formats">H6 · 6 km + 6 estaciones</p>
+<time class="sr" datetime="2026-10-10">del 10 al 11 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://hyatlon.org/event/madrid" target="_blank" rel="noopener" aria-label="Web oficial de Hyatlón Madrid">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyb-hybrid-day-malaga" data-cat="hybrid" data-region="Andalucía" data-month="2026-10" data-end="2026-10-10" data-q="hybrid day malaga torremolinos andalucia hibrida nacional" style="--c:#ff6fb5">
+<div class="race-date" aria-hidden="true"><b class="">10</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff6fb5">Híbrida</span><span class="when" data-countdown="2026-10-10" data-until="2026-10-10"></span></div>
+<h3><a href="./carreras/hyb-hybrid-day-malaga/index.html">Hybrid Day Málaga</a></h3>
+<p class="where">Torremolinos · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
 
-<section class="cats wrap" aria-labelledby="cats-h">
-  <div class="sechead">
-    <div><div class="eyebrow">Elige tu disciplina</div><h2 class="sec" id="cats-h">Formatos</h2></div>
-  </div>
-  <div class="tiles" id="tiles" role="group" aria-label="Filtrar por formato"></div>
-  <div class="catbar"><button class="link" id="all">Ver todas</button><button class="link" id="onlyHybrid">Solo híbridas</button><button class="link" id="onlyOcr">Solo obstáculos</button></div>
+<time class="sr" datetime="2026-10-10">sábado, 10 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.sinctime.com/evento/424" target="_blank" rel="noopener" aria-label="Inscripción oficial de Hybrid Day Málaga">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-ocr-mencey-nocturna-la-laguna" data-cat="ocr" data-region="Canarias" data-month="2026-10" data-end="2026-10-10" data-q="ocr mencey nocturna la laguna canarias ocr nacional 6 km nocturna" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">10</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-10" data-until="2026-10-10"></span></div>
+<h3><a href="./carreras/ocr-ocr-mencey-nocturna-la-laguna/index.html">OCR Mencey Nocturna</a></h3>
+<p class="where">La Laguna · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">6 km nocturna</p>
+<time class="sr" datetime="2026-10-10">sábado, 10 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://inscripciones.chronotrackcanarias.com/inscripcion/ocr-mencey-nocturna-la-laguna-2026/" target="_blank" rel="noopener" aria-label="Inscripción oficial de OCR Mencey Nocturna">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-desafio-pinar-extremo" data-cat="ocr" data-region="Andalucía" data-month="2026-10" data-end="2026-10-11" data-q="desafio pinar extremo san roque andalucia ocr nacional 7 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">11</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-11" data-until="2026-10-11"></span></div>
+<h3><a href="./carreras/ocr-desafio-pinar-extremo/index.html">Desafío Pinar Extremo</a></h3>
+<p class="where">San Roque · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+<p class="formats">7 km</p>
+<time class="sr" datetime="2026-10-11">domingo, 11 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://gesconchip.es/prueba/informacion/iii-desafio-pinar-extremo" target="_blank" rel="noopener" aria-label="Inscripción oficial de Desafío Pinar Extremo">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-invictus-santona" data-cat="ocr" data-region="Cantabria" data-month="2026-10" data-end="2026-10-11" data-q="invictus santona santona cantabria ocr nacional 4 km 11 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">11</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-11" data-until="2026-10-11"></span></div>
+<h3><a href="./carreras/ocr-invictus-santona/index.html">Invictus Santoña</a></h3>
+<p class="where">Santoña · <a href="./comunidad/cantabria/index.html">Cantabria</a></p>
+<p class="formats">4 km · 11 km</p>
+<time class="sr" datetime="2026-10-11">domingo, 11 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://web.rockthesport.com/es/event/invictus-santona-2026" target="_blank" rel="noopener" aria-label="Inscripción oficial de Invictus Santoña">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-la-ultima-fortaleza-lanjaron" data-cat="ocr" data-region="Andalucía" data-month="2026-10" data-end="2026-10-11" data-q="la ultima fortaleza lanjaron andalucia ocr nacional 9 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">11</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-11" data-until="2026-10-11"></span></div>
+<h3><a href="./carreras/ocr-la-ultima-fortaleza-lanjaron/index.html">La Última Fortaleza</a></h3>
+<p class="where">Lanjarón · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+<p class="formats">9 km</p>
+<time class="sr" datetime="2026-10-11">domingo, 11 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.global-tempo.com/carreras.php?id=3291" target="_blank" rel="noopener" aria-label="Inscripción oficial de La Última Fortaleza">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyrox-valencia-2026" data-cat="hyrox" data-region="Comunidad Valenciana" data-month="2026-10" data-end="2026-10-18" data-q="hyrox valencia valencia comunidad valenciana hyrox individual doubles relay youngstars" style="--c:#ffd23f">
+<div class="race-date" aria-hidden="true"><b class="multi">15–18</b><span>oct</span><i>jue</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ffd23f">HYROX</span><span class="when" data-countdown="2026-10-15" data-until="2026-10-18"></span></div>
+<h3><a href="./carreras/hyrox-valencia-2026/index.html">HYROX Valencia</a></h3>
+<p class="where">Valencia · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+<p class="formats">Individual · Doubles · Relay · Youngstars</p>
+<time class="sr" datetime="2026-10-15">del 15 al 18 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://hyrox.es/eventos/hyrox-valencia-26-27/" target="_blank" rel="noopener" aria-label="Web oficial de HYROX Valencia">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-desafio-sierra-de-cadiz" data-cat="ocr" data-region="Andalucía" data-month="2026-10" data-end="2026-10-17" data-q="desafio sierra de cadiz arcos de la frontera andalucia ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">17</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-17" data-until="2026-10-17"></span></div>
+<h3><a href="./carreras/ocr-desafio-sierra-de-cadiz/index.html">Desafío Sierra de Cádiz</a></h3>
+<p class="where">Arcos de la Frontera · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+
+<time class="sr" datetime="2026-10-17">sábado, 17 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.runnink.com/evento/desafio-sierra-de-cadiz/123" target="_blank" rel="noopener" aria-label="Inscripción oficial de Desafío Sierra de Cádiz">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-santacara-gladius-race" data-cat="ocr" data-region="Navarra" data-month="2026-10" data-end="2026-10-17" data-q="santacara gladius race santacara navarra ocr nacional 5 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">17</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-17" data-until="2026-10-17"></span></div>
+<h3><a href="./carreras/ocr-santacara-gladius-race/index.html">Santacara Gladius Race</a></h3>
+<p class="where">Santacara · <a href="./comunidad/navarra/index.html">Navarra</a></p>
+<p class="formats">5 km</p>
+<time class="sr" datetime="2026-10-17">sábado, 17 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://web.rockthesport.com/es/event/santacara-gladius-race-2026" target="_blank" rel="noopener" aria-label="Inscripción oficial de Santacara Gladius Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="spartan-santa-susanna-2026" data-cat="spartan" data-region="Cataluña" data-month="2026-10" data-end="2026-10-18" data-q="spartan santa susanna barcelona santa susanna cataluna spartan race sprint super beast kids" style="--c:#ff3b4f">
+<div class="race-date" aria-hidden="true"><b class="multi">17–18</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff3b4f">Spartan</span><span class="when" data-countdown="2026-10-17" data-until="2026-10-18"></span></div>
+<h3><a href="./carreras/spartan-santa-susanna-2026/index.html">Spartan Santa Susanna-Barcelona</a></h3>
+<p class="where">Santa Susanna · <a href="./comunidad/cataluna/index.html">Cataluña</a></p>
+<p class="formats">Sprint · Super · Beast · Kids</p>
+<time class="sr" datetime="2026-10-17">del 17 al 18 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/santa-susanna-barcelona" target="_blank" rel="noopener" aria-label="Web oficial de Spartan Santa Susanna-Barcelona">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-villafranca-wolf-race" data-cat="ocr" data-region="Navarra" data-month="2026-10" data-end="2026-10-17" data-q="villafranca wolf race villafranca navarra ocr nacional 5 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">17</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-17" data-until="2026-10-17"></span></div>
+<h3><a href="./carreras/ocr-villafranca-wolf-race/index.html">Villafranca Wolf Race</a></h3>
+<p class="where">Villafranca · <a href="./comunidad/navarra/index.html">Navarra</a></p>
+<p class="formats">5 km</p>
+<time class="sr" datetime="2026-10-17">sábado, 17 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.deporticket.com/web-evento/13352-wolf-race-villafranca" target="_blank" rel="noopener" aria-label="Inscripción oficial de Villafranca Wolf Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="bestial-el-hierro-2026" data-cat="ocr" data-region="Canarias" data-month="2026-10" data-end="2026-10-24" data-q="bestial race el hierro el pinar canarias ocr nacional elite starter hell 3k fun" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">24</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-24" data-until="2026-10-24"></span></div>
+<h3><a href="./carreras/bestial-el-hierro-2026/index.html">Bestial Race El Hierro</a></h3>
+<p class="where">El Pinar · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">Elite · Starter · Hell · 3K Fun</p>
+<time class="sr" datetime="2026-10-24">sábado, 24 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://ocrbestial.com/bestial-race-el-hierro/" target="_blank" rel="noopener" aria-label="Web oficial de Bestial Race El Hierro">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="deka-guadalajara-2026" data-cat="deka" data-region="Castilla-La Mancha" data-month="2026-10" data-end="2026-10-25" data-q="deka guadalajara guadalajara castilla la mancha deka deka fit mile teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">24–25</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2026-10-24" data-until="2026-10-25"></span></div>
+<h3><a href="./carreras/deka-guadalajara-2026/index.html">DEKA Guadalajara</a></h3>
+<p class="where">Guadalajara · <a href="./comunidad/castilla-la-mancha/index.html">Castilla-La Mancha</a></p>
+<p class="formats">DEKA FIT · MILE · Teams</p>
+<time class="sr" datetime="2026-10-24">del 24 al 25 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-guadalajara" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Guadalajara">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyatlon-la-nucia-2026" data-cat="hyatlon" data-region="Comunidad Valenciana" data-month="2026-10" data-end="2026-10-25" data-q="hyatlon la nucia la nucia comunidad valenciana hyatlon h6 6 km 6 estaciones" style="--c:#22d3c5">
+<div class="race-date" aria-hidden="true"><b class="multi">24–25</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#22d3c5">Hyatlón</span><span class="when" data-countdown="2026-10-24" data-until="2026-10-25"></span></div>
+<h3><a href="./carreras/hyatlon-la-nucia-2026/index.html">Hyatlón La Nucía</a></h3>
+<p class="where">La Nucía · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+<p class="formats">H6 · 6 km + 6 estaciones</p>
+<time class="sr" datetime="2026-10-24">del 24 al 25 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://hyatlon.org/" target="_blank" rel="noopener" aria-label="Web oficial de Hyatlón La Nucía">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-pilar-xtreme" data-cat="ocr" data-region="Extremadura" data-month="2026-10" data-end="2026-10-24" data-q="pilar xtreme villafranca de los barros extremadura ocr nacional 5 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">24</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-24" data-until="2026-10-24"></span></div>
+<h3><a href="./carreras/ocr-pilar-xtreme/index.html">Pilar Xtreme</a></h3>
+<p class="where">Villafranca de los Barros · <a href="./comunidad/extremadura/index.html">Extremadura</a></p>
+<p class="formats">5 km</p>
+<time class="sr" datetime="2026-10-24">sábado, 24 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.chipserena.es/web-evento/13878-viii-pilar-xtreme" target="_blank" rel="noopener" aria-label="Inscripción oficial de Pilar Xtreme">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-survivor-madrid-quijorna" data-cat="ocr" data-region="Comunidad de Madrid" data-month="2026-10" data-end="2026-10-24" data-q="survivor madrid quijorna comunidad de madrid ocr nacional 6 km 10 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">24</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-24" data-until="2026-10-24"></span></div>
+<h3><a href="./carreras/ocr-survivor-madrid-quijorna/index.html">Survivor Madrid</a></h3>
+<p class="where">Quijorna · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
+<p class="formats">6 km · 10 km</p>
+<time class="sr" datetime="2026-10-24">sábado, 24 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://survivor-race.com/carreras/survivor-madrid-quijorna/" target="_blank" rel="noopener" aria-label="Web oficial de Survivor Madrid">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyb-badajoz-race-calamonte" data-cat="hybrid" data-region="Extremadura" data-month="2026-10" data-end="2026-10-25" data-q="badajoz race hybrid calamonte extremadura hibrida nacional 8 km 8 estaciones" style="--c:#ff6fb5">
+<div class="race-date" aria-hidden="true"><b class="">25</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff6fb5">Híbrida</span><span class="when" data-countdown="2026-10-25" data-until="2026-10-25"></span></div>
+<h3><a href="./carreras/hyb-badajoz-race-calamonte/index.html">Badajoz Race Hybrid</a></h3>
+<p class="where">Calamonte · <a href="./comunidad/extremadura/index.html">Extremadura</a></p>
+<p class="formats">8 km + 8 estaciones</p>
+<time class="sr" datetime="2026-10-25">domingo, 25 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.dip-badajoz.es/badajozrace/eventos/12872" target="_blank" rel="noopener" aria-label="Web oficial de Badajoz Race Hybrid">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-desafio-malaga" data-cat="ocr" data-region="Andalucía" data-month="2026-10" data-end="2026-10-25" data-q="desafio rincon de la victoria rincon de la victoria andalucia ocr nacional 6 km 10 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">25</b><span>oct</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-25" data-until="2026-10-25"></span></div>
+<h3><a href="./carreras/ocr-desafio-malaga/index.html">Desafío Rincón de la Victoria</a></h3>
+<p class="where">Rincón de la Victoria · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+<p class="formats">6 km · 10 km</p>
+<time class="sr" datetime="2026-10-25">domingo, 25 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.desafiodeguerreros.com.es/carreras/p/desafio-malaga" target="_blank" rel="noopener" aria-label="Web oficial de Desafío Rincón de la Victoria">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="deka-alicante-2026" data-cat="deka" data-region="Comunidad Valenciana" data-month="2026-10" data-end="2026-11-01" data-q="deka alicante alicante comunidad valenciana deka deka fit mile teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">31–1</b><span>oct–nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2026-10-31" data-until="2026-11-01"></span></div>
+<h3><a href="./carreras/deka-alicante-2026/index.html">DEKA Alicante</a></h3>
+<p class="where">Alicante · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+<p class="formats">DEKA FIT · MILE · Teams</p>
+<time class="sr" datetime="2026-10-31">del 31 de octubre al 1 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-alicante" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Alicante">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-wolf-race-perdiguera" data-cat="ocr" data-region="Aragón" data-month="2026-10" data-end="2026-10-31" data-q="wolf race perdiguera perdiguera aragon ocr nacional 5 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">31</b><span>oct</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-10-31" data-until="2026-10-31"></span></div>
+<h3><a href="./carreras/ocr-wolf-race-perdiguera/index.html">Wolf Race Perdiguera</a></h3>
+<p class="where">Perdiguera · <a href="./comunidad/aragon/index.html">Aragón</a></p>
+<p class="formats">5 km</p>
+<time class="sr" datetime="2026-10-31">sábado, 31 de octubre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.deporticket.com/web-evento/13688-wolf-race-perdiguera" target="_blank" rel="noopener" aria-label="Inscripción oficial de Wolf Race Perdiguera">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2026-11">
+<h3 class="month-h"><a href="./calendario/noviembre-2026/index.html">Noviembre 2026</a> <small>18 pruebas</small></h3>
+<ul class="races"><li class="race" data-id="ocr-eolos-race-agoncillo" data-cat="ocr" data-region="La Rioja" data-month="2026-11" data-end="2026-11-07" data-q="eolos race agoncillo la rioja ocr nacional 5 km 7 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">7</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-07" data-until="2026-11-07"></span></div>
+<h3><a href="./carreras/ocr-eolos-race-agoncillo/index.html">Eolos Race</a></h3>
+<p class="where">Agoncillo · <a href="./comunidad/la-rioja/index.html">La Rioja</a></p>
+<p class="formats">5 km · 7 km</p>
+<time class="sr" datetime="2026-11-07">sábado, 7 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.deporticket.com/web-evento/13277-eolos-race-agoncillo" target="_blank" rel="noopener" aria-label="Inscripción oficial de Eolos Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-extreme-ocr-telde" data-cat="ocr" data-region="Canarias" data-month="2026-11" data-end="2026-11-07" data-q="extreme ocr telde telde canarias ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">7</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-07" data-until="2026-11-07"></span></div>
+<h3><a href="./carreras/ocr-extreme-ocr-telde/index.html">Extreme OCR Telde</a></h3>
+<p class="where">Telde · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+
+<time class="sr" datetime="2026-11-07">sábado, 7 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://tripasioneventos.com/event/extreme/" target="_blank" rel="noopener" aria-label="Web oficial de Extreme OCR Telde">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyb-la-hibrida-andujar-2026" data-cat="hybrid" data-region="Andalucía" data-month="2026-11" data-end="2026-11-07" data-q="la hibrida andujar andujar andalucia hibrida nacional 10 400 m 10 estaciones individual parejas batalla de boxes" style="--c:#ff6fb5">
+<div class="race-date" aria-hidden="true"><b class="">7</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff6fb5">Híbrida</span><span class="when" data-countdown="2026-11-07" data-until="2026-11-07"></span></div>
+<h3><a href="./carreras/hyb-la-hibrida-andujar-2026/index.html">La Híbrida Andújar</a></h3>
+<p class="where">Andújar · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+<p class="formats">10 × 400 m + 10 estaciones · Individual · Parejas · Batalla de Boxes</p>
+<time class="sr" datetime="2026-11-07">sábado, 7 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://time2run.es/competicion-hibrida-andujar-2026/" target="_blank" rel="noopener" aria-label="Web oficial de La Híbrida Andújar">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-millennial-race" data-cat="ocr" data-region="Cataluña" data-month="2026-11" data-end="2026-11-07" data-q="millennial race cabaces cataluna ocr nacional 5 km 8 km" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">7</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-07" data-until="2026-11-07"></span></div>
+<h3><a href="./carreras/ocr-millennial-race/index.html">Millennial Race</a></h3>
+<p class="where">Cabacés · <a href="./comunidad/cataluna/index.html">Cataluña</a></p>
+<p class="formats">5 km · 8 km</p>
+<time class="sr" datetime="2026-11-07">sábado, 7 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://millennialrace.laketab.com" target="_blank" rel="noopener" aria-label="Web oficial de Millennial Race">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-sant-carles-xtrem" data-cat="ocr" data-region="Islas Baleares" data-month="2026-11" data-end="2026-11-07" data-q="sant carles xtrem santa eularia des riu islas baleares ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">7</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-07" data-until="2026-11-07"></span></div>
+<h3><a href="./carreras/ocr-sant-carles-xtrem/index.html">Sant Carles Xtrem</a></h3>
+<p class="where">Santa Eulària des Riu · <a href="./comunidad/islas-baleares/index.html">Islas Baleares</a></p>
+
+<time class="sr" datetime="2026-11-07">sábado, 7 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://sportmaniacs.com/es/races/xii-cursa-sant-carles-xtrem" target="_blank" rel="noopener" aria-label="Inscripción oficial de Sant Carles Xtrem">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyb-desafio-hybrid-san-pedro-2026" data-cat="hybrid" data-region="Región de Murcia" data-month="2026-11" data-end="2026-11-08" data-q="desafio hybrid race san pedro del pinatar san pedro del pinatar region de murcia hibrida nacional elite intermedio popular teams 8 estaciones" style="--c:#ff6fb5">
+<div class="race-date" aria-hidden="true"><b class="">8</b><span>nov</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff6fb5">Híbrida</span><span class="when" data-countdown="2026-11-08" data-until="2026-11-08"></span></div>
+<h3><a href="./carreras/hyb-desafio-hybrid-san-pedro-2026/index.html">Desafío Hybrid Race San Pedro del Pinatar</a></h3>
+<p class="where">San Pedro del Pinatar · <a href="./comunidad/region-de-murcia/index.html">Región de Murcia</a></p>
+<p class="formats">Élite · Intermedio · Popular · Teams · 8 estaciones</p>
+<time class="sr" datetime="2026-11-08">domingo, 8 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.lineadesalida.net/carreras/desafio-hybrid-race-san-pedro-del-pinatar" target="_blank" rel="noopener" aria-label="Inscripción oficial de Desafío Hybrid Race San Pedro del Pinatar">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-superat" data-cat="ocr" data-region="Comunidad Valenciana" data-month="2026-11" data-end="2026-11-08" data-q="supera t alcoy comunidad valenciana ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">8</b><span>nov</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-08" data-until="2026-11-08"></span></div>
+<h3><a href="./carreras/ocr-superat/index.html">Supera&#39;t</a></h3>
+<p class="where">Alcoy · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+
+<time class="sr" datetime="2026-11-08">domingo, 8 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://web.rockthesport.com/es/event/superat-2026" target="_blank" rel="noopener" aria-label="Inscripción oficial de Supera&#39;t">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyrox-barcelona-2026" data-cat="hyrox" data-region="Cataluña" data-month="2026-11" data-end="2026-11-15" data-q="hyrox barcelona barcelona cataluna hyrox individual doubles relay" style="--c:#ffd23f">
+<div class="race-date" aria-hidden="true"><b class="multi">11–15</b><span>nov</span><i>mié</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ffd23f">HYROX</span><span class="when" data-countdown="2026-11-11" data-until="2026-11-15"></span></div>
+<h3><a href="./carreras/hyrox-barcelona-2026/index.html">HYROX Barcelona</a></h3>
+<p class="where">Barcelona · <a href="./comunidad/cataluna/index.html">Cataluña</a></p>
+<p class="formats">Individual · Doubles · Relay</p>
+<time class="sr" datetime="2026-11-11">del 11 al 15 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://hyrox.es/eventos/hyrox-barcelona-26-27/" target="_blank" rel="noopener" aria-label="Web oficial de HYROX Barcelona">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="farinato-umbrete-2026" data-cat="ocr" data-region="Andalucía" data-month="2026-11" data-end="2026-11-15" data-q="farinato race umbrete umbrete andalucia ocr nacional popular 7 km equipos family jovenes" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="multi">14–15</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-14" data-until="2026-11-15"></span></div>
+<h3><a href="./carreras/farinato-umbrete-2026/index.html">Farinato Race Umbrete</a></h3>
+<p class="where">Umbrete · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+<p class="formats">Popular 7 km · Equipos · Family · Jóvenes</p>
+<time class="sr" datetime="2026-11-14">del 14 al 15 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://farinatorace.es/inscripciones-farinato-umbrete-2026/" target="_blank" rel="noopener" aria-label="Inscripción oficial de Farinato Race Umbrete">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-hunting-teguise-003" data-cat="ocr" data-region="Canarias" data-month="2026-11" data-end="2026-11-14" data-q="hunting teguise teguise canarias ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">14</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-14" data-until="2026-11-14"></span></div>
+<h3><a href="./carreras/ocr-hunting-teguise-003/index.html">Hunting Teguise</a></h3>
+<p class="where">Teguise · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+
+<time class="sr" datetime="2026-11-14">sábado, 14 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://tripasioneventos.com/event/hunting-teguise-003/" target="_blank" rel="noopener" aria-label="Web oficial de Hunting Teguise">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyatlon-gran-canaria-2026" data-cat="hyatlon" data-region="Canarias" data-month="2026-11" data-end="2026-11-14" data-q="hyatlon gran canaria las palmas de gran canaria canarias hyatlon h6 6 km 6 estaciones" style="--c:#22d3c5">
+<div class="race-date" aria-hidden="true"><b class="">14</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#22d3c5">Hyatlón</span><span class="when" data-countdown="2026-11-14" data-until="2026-11-14"></span></div>
+<h3><a href="./carreras/hyatlon-gran-canaria-2026/index.html">Hyatlón Gran Canaria</a></h3>
+<p class="where">Las Palmas de Gran Canaria · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">H6 · 6 km + 6 estaciones</p>
+<time class="sr" datetime="2026-11-14">sábado, 14 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://hyatlon.org/" target="_blank" rel="noopener" aria-label="Web oficial de Hyatlón Gran Canaria">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-som-urban-race" data-cat="ocr" data-region="Islas Baleares" data-month="2026-11" data-end="2026-11-15" data-q="som urban race palma islas baleares ocr nacional urbana" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">15</b><span>nov</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-15" data-until="2026-11-15"></span></div>
+<h3><a href="./carreras/ocr-som-urban-race/index.html">SOM Urban Race</a></h3>
+<p class="where">Palma · <a href="./comunidad/islas-baleares/index.html">Islas Baleares</a></p>
+<p class="formats">Urbana</p>
+<time class="sr" datetime="2026-11-15">domingo, 15 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://sportmaniacs.com/es/races/som-urban-race-2026" target="_blank" rel="noopener" aria-label="Inscripción oficial de SOM Urban Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="deka-tenerife-2026" data-cat="deka" data-region="Canarias" data-month="2026-11" data-end="2026-11-22" data-q="deka tenerife santa cruz de tenerife canarias deka deka fit mile strong teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">21–22</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2026-11-21" data-until="2026-11-22"></span></div>
+<h3><a href="./carreras/deka-tenerife-2026/index.html">DEKA Tenerife</a></h3>
+<p class="where">Santa Cruz de Tenerife · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">DEKA FIT · MILE · STRONG · Teams</p>
+<time class="sr" datetime="2026-11-21">del 21 al 22 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-tenerife" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Tenerife">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-desafio-vega-baja-redovan-by-medieval" data-cat="ocr" data-region="Comunidad Valenciana" data-month="2026-11" data-end="2026-11-22" data-q="desafio vega baja redovan comunidad valenciana ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">22</b><span>nov</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-22" data-until="2026-11-22"></span></div>
+<h3><a href="./carreras/ocr-desafio-vega-baja-redovan-by-medieval/index.html">Desafío Vega Baja</a></h3>
+<p class="where">Redován · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+
+<time class="sr" datetime="2026-11-22">domingo, 22 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://crono4sports.com/evento/desafio-vega-baja-redovan-by-medieval" target="_blank" rel="noopener" aria-label="Inscripción oficial de Desafío Vega Baja">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-isla-race-estadi-mallorca-son-moix" data-cat="ocr" data-region="Islas Baleares" data-month="2026-11" data-end="2026-11-22" data-q="isla race son moix palma islas baleares ocr nacional estadio" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">22</b><span>nov</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-22" data-until="2026-11-22"></span></div>
+<h3><a href="./carreras/ocr-isla-race-estadi-mallorca-son-moix/index.html">Isla Race Son Moix</a></h3>
+<p class="where">Palma · <a href="./comunidad/islas-baleares/index.html">Islas Baleares</a></p>
+<p class="formats">Estadio</p>
+<time class="sr" datetime="2026-11-22">domingo, 22 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://web.rockthesport.com/es/event/1785915050" target="_blank" rel="noopener" aria-label="Inscripción oficial de Isla Race Son Moix">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-playa-cambriles-race" data-cat="ocr" data-region="Andalucía" data-month="2026-11" data-end="2026-11-22" data-q="playa cambriles race castell de ferro andalucia ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">22</b><span>nov</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-11-22" data-until="2026-11-22"></span></div>
+<h3><a href="./carreras/ocr-playa-cambriles-race/index.html">Playa Cambriles Race</a></h3>
+<p class="where">Castell de Ferro · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+
+<time class="sr" datetime="2026-11-22">domingo, 22 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.global-tempo.com/carreras.php?id=3202" target="_blank" rel="noopener" aria-label="Inscripción oficial de Playa Cambriles Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyatlon-zaragoza-2026" data-cat="hyatlon" data-region="Aragón" data-month="2026-11" data-end="2026-11-28" data-q="hyatlon zaragoza gran final zaragoza aragon hyatlon h8 8 km estaciones" style="--c:#22d3c5">
+<div class="race-date" aria-hidden="true"><b class="">28</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#22d3c5">Hyatlón</span><span class="when" data-countdown="2026-11-28" data-until="2026-11-28"></span></div>
+<h3><a href="./carreras/hyatlon-zaragoza-2026/index.html">Hyatlón Zaragoza · Gran Final</a></h3>
+<p class="where">Zaragoza · <a href="./comunidad/aragon/index.html">Aragón</a></p>
+<p class="formats">H8 · 8 km + estaciones</p>
+<time class="sr" datetime="2026-11-28">sábado, 28 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://hyatlon.org/" target="_blank" rel="noopener" aria-label="Web oficial de Hyatlón Zaragoza · Gran Final">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="spartan-tenerife-2026" data-cat="spartan" data-region="Canarias" data-month="2026-11" data-end="2026-11-29" data-q="spartan tenerife weekend puerto de la cruz canarias spartan race sprint super beast kids" style="--c:#ff3b4f">
+<div class="race-date" aria-hidden="true"><b class="multi">28–29</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff3b4f">Spartan</span><span class="when" data-countdown="2026-11-28" data-until="2026-11-29"></span></div>
+<h3><a href="./carreras/spartan-tenerife-2026/index.html">Spartan Tenerife Weekend</a></h3>
+<p class="where">Puerto de la Cruz · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">Sprint · Super · Beast · Kids</p>
+<time class="sr" datetime="2026-11-28">del 28 al 29 de noviembre de 2026</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/tenerife" target="_blank" rel="noopener" aria-label="Web oficial de Spartan Tenerife Weekend">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2026-12">
+<h3 class="month-h"><a href="./calendario/diciembre-2026/index.html">Diciembre 2026</a> <small>3 pruebas</small></h3>
+<ul class="races"><li class="race" data-id="bestial-gran-canaria-2026" data-cat="ocr" data-region="Canarias" data-month="2026-12" data-end="2026-12-05" data-q="bestial race gran canaria arucas canarias ocr nacional elite starter hell 3k fun" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">5</b><span>dic</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-12-05" data-until="2026-12-05"></span></div>
+<h3><a href="./carreras/bestial-gran-canaria-2026/index.html">Bestial Race Gran Canaria</a></h3>
+<p class="where">Arucas · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">Elite · Starter · Hell · 3K Fun</p>
+<time class="sr" datetime="2026-12-05">sábado, 5 de diciembre de 2026</time>
+</div>
+<a class="race-cta" href="https://ocrbestial.com/bestial-race-gran-canaria/" target="_blank" rel="noopener" aria-label="Web oficial de Bestial Race Gran Canaria">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-poseidon-sea" data-cat="ocr" data-region="Andalucía" data-month="2026-12" data-end="2026-12-05" data-q="poseidon sea torrenueva andalucia ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">5</b><span>dic</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-12-05" data-until="2026-12-05"></span></div>
+<h3><a href="./carreras/ocr-poseidon-sea/index.html">Poseidon Sea</a></h3>
+<p class="where">Torrenueva · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+
+<time class="sr" datetime="2026-12-05">sábado, 5 de diciembre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.global-tempo.com/carreras.php?id=3100" target="_blank" rel="noopener" aria-label="Inscripción oficial de Poseidon Sea">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-medieval-xtrem-race-peniscola" data-cat="ocr" data-region="Comunidad Valenciana" data-month="2026-12" data-end="2026-12-13" data-q="medieval xtrem race peniscola comunidad valenciana ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">13</b><span>dic</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2026-12-13" data-until="2026-12-13"></span></div>
+<h3><a href="./carreras/ocr-medieval-xtrem-race-peniscola/index.html">Medieval Xtrem Race</a></h3>
+<p class="where">Peñíscola · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+
+<time class="sr" datetime="2026-12-13">domingo, 13 de diciembre de 2026</time>
+</div>
+<a class="race-cta" href="https://www.crono4sports.es/info_fusion.php?Evento=2415" target="_blank" rel="noopener" aria-label="Inscripción oficial de Medieval Xtrem Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-02">
+<h3 class="month-h"><a href="./calendario/febrero-2027/index.html">Febrero 2027</a> <small>3 pruebas</small></h3>
+<ul class="races"><li class="race" data-id="hyrox-bilbao-2027" data-cat="hyrox" data-region="País Vasco" data-month="2027-02" data-end="2027-02-07" data-q="hyrox bilbao bilbao pais vasco hyrox individual doubles relay" style="--c:#ffd23f">
+<div class="race-date" aria-hidden="true"><b class="multi">6–7</b><span>feb</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ffd23f">HYROX</span><span class="when" data-countdown="2027-02-06" data-until="2027-02-07"></span></div>
+<h3><a href="./carreras/hyrox-bilbao-2027/index.html">HYROX Bilbao</a></h3>
+<p class="where">Bilbao · <a href="./comunidad/pais-vasco/index.html">País Vasco</a></p>
+<p class="formats">Individual · Doubles · Relay</p>
+<time class="sr" datetime="2027-02-06">del 6 al 7 de febrero de 2027</time>
+</div>
+<a class="race-cta" href="https://hyrox.es/eventos/hyrox-bilbao-26-27/" target="_blank" rel="noopener" aria-label="Web oficial de HYROX Bilbao">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="athx-valencia-2027" data-cat="athx" data-region="Comunidad Valenciana" data-month="2027-02" data-end="2027-02-20" data-q="athx valencia valencia comunidad valenciana athx strength engine metcon" style="--c:#b07cff">
+<div class="race-date" aria-hidden="true"><b class="">20</b><span>feb</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#b07cff">ATHX</span><span class="when" data-countdown="2027-02-20" data-until="2027-02-20"></span></div>
+<h3><a href="./carreras/athx-valencia-2027/index.html">ATHX Valencia</a></h3>
+<p class="where">Valencia · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+<p class="formats">Strength · Engine · Metcon</p>
+<time class="sr" datetime="2027-02-20">sábado, 20 de febrero de 2027</time>
+</div>
+<a class="race-cta" href="https://athxgames.com/events/01krwy548m3x7bt4j8bvvmr8j8" target="_blank" rel="noopener" aria-label="Web oficial de ATHX Valencia">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="deka-torremolinos-2027" data-cat="deka" data-region="Andalucía" data-month="2027-02" data-end="2027-02-28" data-q="deka torremolinos torremolinos andalucia deka deka fit teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">27–28</b><span>feb</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-02-27" data-until="2027-02-28"></span></div>
+<h3><a href="./carreras/deka-torremolinos-2027/index.html">DEKA Torremolinos</a></h3>
+<p class="where">Torremolinos · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+<p class="formats">DEKA FIT · Teams</p>
+<time class="sr" datetime="2027-02-27">del 27 al 28 de febrero de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-torremolinos" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Torremolinos">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-03">
+<h3 class="month-h"><a href="./calendario/marzo-2027/index.html">Marzo 2027</a> <small>5 pruebas</small></h3>
+<ul class="races"><li class="race" data-id="deka-toledo-2027" data-cat="deka" data-region="Castilla-La Mancha" data-month="2027-03" data-end="2027-03-07" data-q="deka toledo toledo castilla la mancha deka deka fit mile teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">6–7</b><span>mar</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-03-06" data-until="2027-03-07"></span></div>
+<h3><a href="./carreras/deka-toledo-2027/index.html">DEKA Toledo</a></h3>
+<p class="where">Toledo · <a href="./comunidad/castilla-la-mancha/index.html">Castilla-La Mancha</a></p>
+<p class="formats">DEKA FIT · MILE · Teams</p>
+<time class="sr" datetime="2027-03-06">del 6 al 7 de marzo de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-toledo-2027" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Toledo">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="bestial-tenerife-2027" data-cat="ocr" data-region="Canarias" data-month="2027-03" data-end="2027-03-07" data-q="bestial race tenerife tenerife canarias ocr nacional elite starter hell 3k fun" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">7</b><span>mar</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2027-03-07" data-until="2027-03-07"></span></div>
+<h3><a href="./carreras/bestial-tenerife-2027/index.html">Bestial Race Tenerife</a></h3>
+<p class="where">Tenerife · <a href="./comunidad/canarias/index.html">Canarias</a></p>
+<p class="formats">Elite · Starter · Hell · 3K Fun</p>
+<time class="sr" datetime="2027-03-07">domingo, 7 de marzo de 2027</time>
+</div>
+<a class="race-cta" href="https://ocrbestial.com/bestial-race-tenerife/" target="_blank" rel="noopener" aria-label="Web oficial de Bestial Race Tenerife">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-fungo-race" data-cat="ocr" data-region="Andalucía" data-month="2027-03" data-end="2027-03-14" data-q="fungo race cadiz andalucia ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="">14</b><span>mar</span><i>dom</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2027-03-14" data-until="2027-03-14"></span></div>
+<h3><a href="./carreras/ocr-fungo-race/index.html">Fungo Race</a></h3>
+<p class="where">Cádiz · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+
+<time class="sr" datetime="2027-03-14">domingo, 14 de marzo de 2027</time>
+</div>
+<a class="race-cta" href="https://www.runnink.com/evento/fungo-race/130" target="_blank" rel="noopener" aria-label="Inscripción oficial de Fungo Race">Inscripción<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyrox-madrid-2027" data-cat="hyrox" data-region="Comunidad de Madrid" data-month="2027-03" data-end="2027-03-21" data-q="hyrox madrid madrid comunidad de madrid hyrox individual doubles relay" style="--c:#ffd23f">
+<div class="race-date" aria-hidden="true"><b class="multi">17–21</b><span>mar</span><i>mié</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ffd23f">HYROX</span><span class="when" data-countdown="2027-03-17" data-until="2027-03-21"></span></div>
+<h3><a href="./carreras/hyrox-madrid-2027/index.html">HYROX Madrid</a></h3>
+<p class="where">Madrid · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
+<p class="formats">Individual · Doubles · Relay</p>
+<time class="sr" datetime="2027-03-17">del 17 al 21 de marzo de 2027</time>
+</div>
+<a class="race-cta" href="https://hyrox.es/eventos/hyrox-madrid-26-27/" target="_blank" rel="noopener" aria-label="Web oficial de HYROX Madrid">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="deka-barcelona-primavera-2027" data-cat="deka" data-region="Cataluña" data-month="2027-03" data-end="2027-03-21" data-q="deka barcelona primavera barcelona cataluna deka deka fit mile strong teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">20–21</b><span>mar</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-03-20" data-until="2027-03-21"></span></div>
+<h3><a href="./carreras/deka-barcelona-primavera-2027/index.html">DEKA Barcelona Primavera</a></h3>
+<p class="where">Barcelona · <a href="./comunidad/cataluna/index.html">Cataluña</a></p>
+<p class="formats">DEKA FIT · MILE · STRONG · Teams</p>
+<time class="sr" datetime="2027-03-20">del 20 al 21 de marzo de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-barcelona-primavera" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Barcelona Primavera">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-04">
+<h3 class="month-h"><a href="./calendario/abril-2027/index.html">Abril 2027</a> <small>4 pruebas</small></h3>
+<ul class="races"><li class="race" data-id="deka-valencia-2027" data-cat="deka" data-region="Comunidad Valenciana" data-month="2027-04" data-end="2027-04-04" data-q="deka valencia valencia comunidad valenciana deka deka fit mile teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">3–4</b><span>abr</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-04-03" data-until="2027-04-04"></span></div>
+<h3><a href="./carreras/deka-valencia-2027/index.html">DEKA Valencia</a></h3>
+<p class="where">Valencia · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+<p class="formats">DEKA FIT · MILE · Teams</p>
+<time class="sr" datetime="2027-04-03">del 3 al 4 de abril de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-valencia-2027" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Valencia">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="ocr-survivor-alicante" data-cat="ocr" data-region="Comunidad Valenciana" data-month="2027-04" data-end="2027-04-11" data-q="survivor alicante villafranqueza comunidad valenciana ocr nacional" style="--c:#d39a52">
+<div class="race-date" aria-hidden="true"><b class="multi">10–11</b><span>abr</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#d39a52">OCR</span><span class="when" data-countdown="2027-04-10" data-until="2027-04-11"></span></div>
+<h3><a href="./carreras/ocr-survivor-alicante/index.html">Survivor Alicante</a></h3>
+<p class="where">Villafranqueza · <a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></p>
+
+<time class="sr" datetime="2027-04-10">del 10 al 11 de abril de 2027</time>
+</div>
+<a class="race-cta" href="https://survivor-race.com/carreras/survivor-alicante/" target="_blank" rel="noopener" aria-label="Web oficial de Survivor Alicante">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="hyrox-malaga-2027" data-cat="hyrox" data-region="Andalucía" data-month="2027-04" data-end="2027-04-18" data-q="hyrox malaga malaga andalucia hyrox individual doubles relay" style="--c:#ffd23f">
+<div class="race-date" aria-hidden="true"><b class="multi">14–18</b><span>abr</span><i>mié</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ffd23f">HYROX</span><span class="when" data-countdown="2027-04-14" data-until="2027-04-18"></span></div>
+<h3><a href="./carreras/hyrox-malaga-2027/index.html">HYROX Málaga</a></h3>
+<p class="where">Málaga · <a href="./comunidad/andalucia/index.html">Andalucía</a></p>
+<p class="formats">Individual · Doubles · Relay</p>
+<time class="sr" datetime="2027-04-14">del 14 al 18 de abril de 2027</time>
+</div>
+<a class="race-cta" href="https://hyrox.es/eventos/hyrox-malaga-26-27/" target="_blank" rel="noopener" aria-label="Web oficial de HYROX Málaga">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="deka-ibiza-2027" data-cat="deka" data-region="Islas Baleares" data-month="2027-04" data-end="2027-04-18" data-q="deka ibiza ibiza islas baleares deka deka fit mile teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">17–18</b><span>abr</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-04-17" data-until="2027-04-18"></span></div>
+<h3><a href="./carreras/deka-ibiza-2027/index.html">DEKA Ibiza</a></h3>
+<p class="where">Ibiza · <a href="./comunidad/islas-baleares/index.html">Islas Baleares</a></p>
+<p class="formats">DEKA FIT · MILE · Teams</p>
+<time class="sr" datetime="2027-04-17">del 17 al 18 de abril de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-ibiza-2027" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Ibiza">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-05">
+<h3 class="month-h"><a href="./calendario/mayo-2027/index.html">Mayo 2027</a> <small>2 pruebas</small></h3>
+<ul class="races"><li class="race" data-id="athx-madrid-2027" data-cat="athx" data-region="Comunidad de Madrid" data-month="2027-05" data-end="2027-05-09" data-q="athx madrid madrid comunidad de madrid athx strength engine metcon" style="--c:#b07cff">
+<div class="race-date" aria-hidden="true"><b class="multi">8–9</b><span>may</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#b07cff">ATHX</span><span class="when" data-countdown="2027-05-08" data-until="2027-05-09"></span></div>
+<h3><a href="./carreras/athx-madrid-2027/index.html">ATHX Madrid</a></h3>
+<p class="where">Madrid · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
+<p class="formats">Strength · Engine · Metcon</p>
+<time class="sr" datetime="2027-05-08">del 8 al 9 de mayo de 2027</time>
+</div>
+<a class="race-cta" href="https://athxgames.com/events/01krwy7hrp6bp8ndj7p1487n0n" target="_blank" rel="noopener" aria-label="Web oficial de ATHX Madrid">Web<span aria-hidden="true"> ↗</span></a>
+</li>
+<li class="race" data-id="spartan-madrid-2027" data-cat="spartan" data-region="Comunidad de Madrid" data-month="2027-05" data-end="2027-05-09" data-q="spartan madrid weekend san agustin del guadalix comunidad de madrid spartan race sprint super beast kids" style="--c:#ff3b4f">
+<div class="race-date" aria-hidden="true"><b class="multi">8–9</b><span>may</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#ff3b4f">Spartan</span><span class="when" data-countdown="2027-05-08" data-until="2027-05-09"></span></div>
+<h3><a href="./carreras/spartan-madrid-2027/index.html">Spartan Madrid Weekend</a></h3>
+<p class="where">San Agustín del Guadalix · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
+<p class="formats">Sprint · Super · Beast · Kids</p>
+<time class="sr" datetime="2027-05-08">del 8 al 9 de mayo de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/madrid" target="_blank" rel="noopener" aria-label="Web oficial de Spartan Madrid Weekend">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-06">
+<h3 class="month-h"><a href="./calendario/junio-2027/index.html">Junio 2027</a> <small>1 prueba</small></h3>
+<ul class="races"><li class="race" data-id="deka-vigo-2027" data-cat="deka" data-region="Galicia" data-month="2027-06" data-end="2027-06-27" data-q="deka vigo vigo galicia deka deka fit mile teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">26–27</b><span>jun</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-06-26" data-until="2027-06-27"></span></div>
+<h3><a href="./carreras/deka-vigo-2027/index.html">DEKA Vigo</a></h3>
+<p class="where">Vigo · <a href="./comunidad/galicia/index.html">Galicia</a></p>
+<p class="formats">DEKA FIT · MILE · Teams</p>
+<time class="sr" datetime="2027-06-26">del 26 al 27 de junio de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-vigo-2027" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Vigo">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-07">
+<h3 class="month-h"><a href="./calendario/julio-2027/index.html">Julio 2027</a> <small>1 prueba</small></h3>
+<ul class="races"><li class="race" data-id="deka-madrid-2027" data-cat="deka" data-region="Comunidad de Madrid" data-month="2027-07" data-end="2027-07-11" data-q="deka madrid madrid comunidad de madrid deka deka fit mile strong teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">10–11</b><span>jul</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-07-10" data-until="2027-07-11"></span></div>
+<h3><a href="./carreras/deka-madrid-2027/index.html">DEKA Madrid</a></h3>
+<p class="where">Madrid · <a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></p>
+<p class="formats">DEKA FIT · MILE · STRONG · Teams</p>
+<time class="sr" datetime="2027-07-10">del 10 al 11 de julio de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-madrid-2027" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Madrid">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-09">
+<h3 class="month-h"><a href="./calendario/septiembre-2027/index.html">Septiembre 2027</a> <small>1 prueba</small></h3>
+<ul class="races"><li class="race" data-id="deka-barcelona-otono-2027" data-cat="deka" data-region="Cataluña" data-month="2027-09" data-end="2027-09-26" data-q="deka barcelona otono barcelona cataluna deka deka fit mile teams" style="--c:#4d8dff">
+<div class="race-date" aria-hidden="true"><b class="multi">25–26</b><span>sep</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#4d8dff">DEKA</span><span class="when" data-countdown="2027-09-25" data-until="2027-09-26"></span></div>
+<h3><a href="./carreras/deka-barcelona-otono-2027/index.html">DEKA Barcelona Otoño</a></h3>
+<p class="where">Barcelona · <a href="./comunidad/cataluna/index.html">Cataluña</a></p>
+<p class="formats">DEKA FIT · MILE · Teams</p>
+<time class="sr" datetime="2027-09-25">del 25 al 26 de septiembre de 2027</time>
+</div>
+<a class="race-cta" href="https://es.spartan.com/es/races/deka-barcelona-otono-2027" target="_blank" rel="noopener" aria-label="Web oficial de DEKA Barcelona Otoño">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section>
+<section class="month" data-month="2027-11">
+<h3 class="month-h"><a href="./calendario/noviembre-2027/index.html">Noviembre 2027</a> <small>1 prueba</small></h3>
+<ul class="races"><li class="race" data-id="athx-bilbao-2027" data-cat="athx" data-region="País Vasco" data-month="2027-11" data-end="2027-11-06" data-q="athx bilbao bilbao pais vasco athx strength engine metcon" style="--c:#b07cff">
+<div class="race-date" aria-hidden="true"><b class="">6</b><span>nov</span><i>sáb</i></div>
+<div class="race-body">
+<div class="race-meta"><span class="badge" style="--c:#b07cff">ATHX</span><span class="when" data-countdown="2027-11-06" data-until="2027-11-06"></span></div>
+<h3><a href="./carreras/athx-bilbao-2027/index.html">ATHX Bilbao</a></h3>
+<p class="where">Bilbao · <a href="./comunidad/pais-vasco/index.html">País Vasco</a></p>
+<p class="formats">Strength · Engine · Metcon</p>
+<time class="sr" datetime="2027-11-06">sábado, 6 de noviembre de 2027</time>
+</div>
+<a class="race-cta" href="https://athxgames.com/events/01krwygz93demx24426v8p3xr5" target="_blank" rel="noopener" aria-label="Web oficial de ATHX Bilbao">Web<span aria-hidden="true"> ↗</span></a>
+</li></ul></section><p class="empty" data-empty hidden>Ninguna prueba coincide con estos filtros.</p></div>
+<div class="view view-month" data-pane="month" hidden><div class="cal-head"><button type="button" class="btn ghost sm" data-cal="-1" aria-label="Mes anterior">←</button><h3 data-cal-title></h3><button type="button" class="btn ghost sm" data-cal="1" aria-label="Mes siguiente">→</button></div><div class="cal" data-cal-grid></div></div>
+<div class="view view-map" data-pane="map" hidden><div class="map" data-map role="region" aria-label="Mapa de pruebas"></div><p class="small muted">Mapa © OpenStreetMap · CARTO. La ubicación es aproximada (municipio).</p></div>
+</div>
 </section>
-
-<section class="featured wrap" aria-labelledby="f-h">
-  <div class="sechead">
-    <div><div class="eyebrow">Las marcas grandes</div><h2 class="sec" id="f-h">Grandes citas</h2></div>
-  </div>
-  <div class="rail" id="rail"></div>
-</section>
-
-<section class="calsec" id="calendario" aria-labelledby="c-h">
-  <div class="wrap sechead">
-    <div><div class="eyebrow">Mes a mes</div><h2 class="sec" id="c-h">Calendario</h2></div>
-  </div>
-  <div class="controls">
-    <div class="wrap">
-      <div class="seg" role="group" aria-label="Vista">
-        <button id="v-list" aria-pressed="true">Lista</button>
-        <button id="v-month" aria-pressed="false">Mes</button>
-      </div>
-      <label class="toggle"><input type="checkbox" id="past"> Ver pasadas</label>
-      <div class="mini" id="active"></div>
-      <span class="count" id="count"></span>
-    </div>
-  </div>
-  <div class="wrap" id="main"></div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div>
-      <div class="logo"><b>H</b>HybridRaces</div>
-      <div>El calendario de carreras híbridas y de obstáculos de España. Revisamos cada día las webs oficiales de las marcas, los organizadores y las plataformas de inscripción.</div>
-    </div>
-    <div class="legal">
-      <div id="upd2"></div>
-      <p>Confirma siempre fecha y condiciones en la web oficial antes de inscribirte. HYROX, Spartan, DEKA, ATHX y Hyatlón son marcas de sus respectivos propietarios; esta web no está afiliada a ellas.</p>
-      <p>Fotografías: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</p>
-    </div>
-  </div>
-</footer>
-
-<script src="data/races.js"></script>
-<script>
-(function(){
-const DATA = window.RACES || {updated:'',races:[]};
-const IMG = (id,w) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
-const CATS = {
-  hyrox:  {label:'HYROX',     group:'hybrid', img:['1743993414654-0be2b73a9620','1741562238447-d7c44397f7e0','1739283180407-21e27d5c0735']},
-  deka:   {label:'DEKA',      group:'hybrid', img:['1632077804406-188472f1a810','1706029831387-fd8bc3d27d01','1686791789070-90949cfec4b6']},
-  athx:   {label:'ATHX',      group:'hybrid', img:['1536922246289-88c42f957773','1517931524326-bdd55a541177']},
-  hyatlon:{label:'Hyatlón',   group:'hybrid', img:['1741562238447-d7c44397f7e0','1607962837359-5e7e89f86776']},
-  hybrid: {label:'Híbridas',  group:'hybrid', img:['1644085159448-1659fd88a217','1570440828762-ab7a993dbde8','1536922246289-88c42f957773']},
-  spartan:{label:'Spartan',   group:'ocr',    img:['1506534067239-9e2fabb3a863','1522866348293-55be2c6caa1f','1776938023428-60ddf175a2d1']},
-  ocr:    {label:'Obstáculos',group:'ocr',    img:['1518865946071-1dbcc3ab617c','1779831910085-d476ba0834b4','1787838442648-ec4274718a8a','1776936973344-f71588817705','1779831910091-267bab53aafe','1520352408661-83957c1379d2']}
-};
-const MAJOR = ['hyrox','spartan','deka','athx','hyatlon'];
-const MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-const MES3 = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
-const REG = /rockthesport|deporticket|sportmaniacs|global-tempo|crono4sports|chronotrack|gesconchip|runnink|sinctime|lineadesalida|conxip|youevent|chipserena|ccnorte|tickets-esdk/;
-const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
-
-const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-const pd = s => { const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); };
-const hash = s => [...s].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
-const photo = (r,w) => { const L = CATS[r.cat].img; return IMG(L[hash(r.id)%L.length], w); };
-const linkLabel = u => /instagram\.com/.test(u) ? 'Instagram' : REG.test(u) ? 'Inscripción' : 'Web oficial';
-const DAY = 864e5;
-const today = new Date(); today.setHours(0,0,0,0);
-const races = DATA.races.filter(r=>CATS[r.cat]).map(r=>({...r,s:pd(r.start),e:pd(r.end||r.start)}));
-const upcoming = races.filter(r=>r.e>=today);
-const daysTo = r => Math.round((r.s-today)/DAY);
-
-function fmtRange(r){
-  if(+r.s===+r.e) return `${DOW[r.s.getDay()]} ${r.s.getDate()} ${MES3[r.s.getMonth()]}`;
-  if(r.s.getMonth()===r.e.getMonth()) return `${r.s.getDate()}–${r.e.getDate()} ${MES3[r.s.getMonth()]}`;
-  return `${r.s.getDate()} ${MES3[r.s.getMonth()]} – ${r.e.getDate()} ${MES3[r.e.getMonth()]}`;
-}
-
-// hero photos
-// hero: fotos al azar en cada visita y relevo suave cada pocos segundos
-(function(){
-  const POOL=[...new Set(Object.values(CATS).flatMap(c=>c.img))];
-  for(let i=POOL.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[POOL[i],POOL[j]]=[POOL[j],POOL[i]];}
-  const strips=[...document.querySelectorAll('.strips div')];
-  const wide=()=>window.matchMedia('(min-width:701px)').matches;
-  let k=0; const next=()=>POOL[(k++)%POOL.length];
-  const show=(d,id)=>{const sp=d.querySelectorAll('span');const cur=d.querySelector('span.on');const nx=cur===sp[0]?sp[1]:sp[0];
-    const im=new Image();im.onload=()=>{nx.style.backgroundImage=`url("${im.src}")`;nx.classList.add('on');if(cur)cur.classList.remove('on');};im.src=IMG(id,wide()?900:800);};
-  strips.forEach(d=>show(d,next()));
-  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  let t=0; setInterval(()=>{ if(document.hidden) return; const vis=wide()?strips:strips.slice(0,1); show(vis[t%vis.length],next()); t++; },6000);
-})();
-if(DATA.updated){ const u=pd(DATA.updated);
-  const t=`Actualizado ${u.getDate()} ${MES3[u.getMonth()]}`;
-  document.getElementById('upd').innerHTML='<i></i>'+t;
-  document.getElementById('upd2').textContent=`Última actualización: ${u.getDate()} de ${MES[u.getMonth()]} de ${u.getFullYear()} · ${races.length} pruebas`;
-}
-const nextBig = upcoming.find(r=>MAJOR.includes(r.cat));
-document.getElementById('stats').innerHTML =
-  `<div><b>${upcoming.length}</b>pruebas</div><div><b>${new Set(upcoming.map(r=>r.city)).size}</b>ciudades</div><div><b>${new Set(upcoming.map(r=>r.region)).size}</b>comunidades</div>`+
-  (nextBig?`<a class="countdown" href="${esc(nextBig.url)}" target="_blank" rel="noopener"><span class="n">${Math.max(0,daysTo(nextBig))}</span><span class="t">${daysTo(nextBig)<=0?'¡Es hoy!':'días para'}<b>${esc(nextBig.name)}</b>${fmtRange(nextBig)} · ${esc(nextBig.city)}</span></a>`:'');
-
-// state
-let st={view:'list',cats:new Set(Object.keys(CATS)),q:'',region:'',past:false,cursor:null};
-try{const v=localStorage.getItem('hr-view'); if(v==='list'||v==='month') st.view=v;}catch(e){}
-
-// tiles
-const tiles=document.getElementById('tiles');
-Object.entries(CATS).forEach(([k,c])=>{
-  const n=upcoming.filter(r=>r.cat===k).length;
-  const b=document.createElement('button');
-  b.className='tile'; b.style.setProperty('--c',`var(--c-${k})`); b.setAttribute('aria-pressed','true'); b.dataset.cat=k;
-  b.innerHTML=`<img class="bgimg" alt="" loading="lazy" onerror="this.remove()" src="${IMG(c.img[0],500)}"><span class="bar"></span><span class="chk">✓</span><span class="lab"><b>${esc(c.label)}</b><span>${n} ${n===1?'prueba':'pruebas'}</span></span>`;
-  b.onclick=()=>{ st.cats.has(k)?st.cats.delete(k):st.cats.add(k); syncTiles(); render(); };
-  tiles.appendChild(b);
-});
-function syncTiles(){ tiles.querySelectorAll('.tile').forEach(t=>t.setAttribute('aria-pressed',st.cats.has(t.dataset.cat))); }
-const setCats = f => { st.cats=new Set(Object.keys(CATS).filter(f)); syncTiles(); render(); };
-document.getElementById('all').onclick=()=>setCats(()=>true);
-document.getElementById('onlyHybrid').onclick=()=>setCats(k=>CATS[k].group==='hybrid');
-document.getElementById('onlyOcr').onclick=()=>setCats(k=>CATS[k].group==='ocr');
-
-// featured rail
-document.getElementById('rail').innerHTML = upcoming.filter(r=>MAJOR.includes(r.cat)).slice(0,12).map(r=>{
-  const d=daysTo(r);
-  return `<a class="fcard" style="--c:var(--c-${r.cat})" href="${esc(r.url)}" target="_blank" rel="noopener">
-    <img alt="" loading="lazy" onerror="this.remove()" src="${photo(r,700)}">
-    <span class="tagc">${esc(CATS[r.cat].label)}</span>
-    <span class="days">${d<=0?'Hoy':'en '+d+' días'}</span>
-    <div class="fd">${r.s.getDate()}${+r.s!==+r.e?'–'+r.e.getDate():''}<small>${MES3[r.s.getMonth()].toUpperCase()}</small></div>
-    <h3>${esc(r.name)}</h3>
-    <p>${esc(r.city)} · ${esc(r.region)}</p>
-  </a>`;}).join('');
-
-// controls
-const sel=document.getElementById('region');
-[...new Set(races.map(r=>r.region))].sort((a,b)=>a.localeCompare(b,'es')).forEach(r=>{const o=document.createElement('option');o.value=o.textContent=r;sel.appendChild(o);});
-sel.onchange=()=>{st.region=sel.value;render();};
-const q=document.getElementById('q');
-q.oninput=()=>{st.q=norm(q.value.trim());render();};
-document.getElementById('sf').onsubmit=e=>{e.preventDefault();document.getElementById('calendario').scrollIntoView({behavior:'smooth'});};
-document.getElementById('past').onchange=e=>{st.past=e.target.checked;render();};
-const vl=document.getElementById('v-list'),vm=document.getElementById('v-month');
-function setView(v){st.view=v;vl.setAttribute('aria-pressed',v==='list');vm.setAttribute('aria-pressed',v==='month');try{localStorage.setItem('hr-view',v)}catch(e){}render();}
-vl.onclick=()=>setView('list'); vm.onclick=()=>setView('month');
-
-function filtered(){
-  return races.filter(r=>st.cats.has(r.cat)&&(!st.region||r.region===st.region)&&(!st.q||norm(r.name+' '+r.city+' '+r.region+' '+CATS[r.cat].label).includes(st.q)));
-}
-
-function card(r){
-  const past=r.e<today, d=daysTo(r), multi=+r.s!==+r.e;
-  return `<article class="card${past?' past':''}" id="r-${esc(r.id)}" style="--c:var(--c-${r.cat})">
-    <div class="ph">
-      <img alt="" loading="lazy" src="${photo(r,640)}" onerror="this.remove()">
-      <span class="chip">${esc(CATS[r.cat].label)}</span>
-      ${!past&&d>=0&&d<=14?`<span class="soon">${d===0?'Hoy':d===1?'Mañana':'En '+d+' días'}</span>`:''}
-      <div class="bib"><div class="m">${MES3[r.s.getMonth()]}</div><div class="d">${r.s.getDate()}${multi?`<small>–${r.e.getDate()}</small>`:''}</div></div>
-    </div>
-    <div class="cb">
-      <h4>${esc(r.name)}</h4>
-      <div class="where">${PIN}${esc(r.city)} · ${esc(r.region)}</div>
-      ${r.formats?`<div class="fmt">${esc(r.formats)}</div>`:''}
-      ${r.note?`<div class="note">${esc(r.note)}</div>`:''}
-      <div class="act"><span class="when">${fmtRange(r)}</span><a class="btn sm" href="${esc(r.url)}" target="_blank" rel="noopener">${linkLabel(r.url)} ↗</a></div>
-    </div>
-  </article>`;
-}
-
-function renderList(list){
-  if(!st.past) list=list.filter(r=>r.e>=today);
-  if(!list.length) return empty();
-  const by=new Map();
-  list.forEach(r=>{const k=r.s.getFullYear()+'-'+r.s.getMonth(); if(!by.has(k)) by.set(k,[]); by.get(k).push(r);});
-  let h='';
-  by.forEach((a,k)=>{const [y,m]=k.split('-').map(Number);
-    h+=`<section class="month"><div class="mhead"><h3><span>${MES[m]}</span> ${y}</h3><small>${a.length} ${a.length===1?'prueba':'pruebas'}</small></div><div class="cards">${a.map(card).join('')}</div></section>`;});
-  return h;
-}
-
-function renderMonth(list){
-  if(!st.cursor) st.cursor=new Date(today.getFullYear(),today.getMonth(),1);
-  const y=st.cursor.getFullYear(), m=st.cursor.getMonth();
-  const off=(new Date(y,m,1).getDay()+6)%7, start=new Date(y,m,1-off);
-  let h=`<div class="calnav"><button id="prev" aria-label="Mes anterior">‹</button><h3>${MES[m]} ${y}</h3><button id="nextm" aria-label="Mes siguiente">›</button></div><div class="calwrap"><div class="grid">`;
-  ['lun','mar','mié','jue','vie','sáb','dom'].forEach(x=>h+=`<div class="dow">${x}</div>`);
-  for(let i=0;i<42;i++){
-    const day=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);
-    if(i>=35&&day.getMonth()!==m) break;
-    const evs=list.filter(r=>r.s<=day&&r.e>=day);
-    const c=['cell']; if(day.getMonth()!==m)c.push('out'); if(+day===+today)c.push('today'); if(day.getDay()%6===0)c.push('we');
-    h+=`<div class="${c.join(' ')}"><span class="n">${day.getDate()}</span>`;
-    evs.slice(0,4).forEach(r=>h+=`<button class="ev" style="--c:var(--c-${r.cat})" data-id="${esc(r.id)}" title="${esc(r.name)} · ${esc(r.city)}">${esc(r.name)}</button>`);
-    if(evs.length>4) h+=`<span class="more">+${evs.length-4} más</span>`;
-    h+='</div>';
-  }
-  h+='</div></div>';
-  const inM=list.filter(r=>r.s<=new Date(y,m+1,0)&&r.e>=new Date(y,m,1));
-  h+= inM.length?`<section class="month" style="margin-top:34px"><div class="mhead"><h3><span>Pruebas</span> de ${MES[m]}</h3><small>${inM.length}</small></div><div class="cards">${inM.map(card).join('')}</div></section>`:`<div class="empty"><b>Sin pruebas este mes</b>Pasa al mes siguiente o activa más formatos.</div>`;
-  return h;
-}
-const empty=()=>`<div class="empty"><b>Nada con estos filtros</b>Activa más formatos o borra la búsqueda.</div>`;
-
-const main=document.getElementById('main');
-function render(){
-  const list=filtered();
-  const vis=st.past?list:list.filter(r=>r.e>=today);
-  document.getElementById('count').textContent=`${vis.length} ${vis.length===1?'prueba':'pruebas'}`;
-  document.getElementById('active').innerHTML = st.cats.size===Object.keys(CATS).length ? '' :
-    [...st.cats].map(k=>`<span style="--c:var(--c-${k})"><i></i>${esc(CATS[k].label)}</span>`).join('');
-  main.innerHTML= st.view==='list'?renderList(list):renderMonth(list);
-  if(st.view==='month'){
-    main.querySelector('#prev').onclick=()=>{st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()-1,1);render();};
-    main.querySelector('#nextm').onclick=()=>{st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()+1,1);render();};
-    main.querySelectorAll('.ev').forEach(b=>b.onclick=()=>{const el=document.getElementById('r-'+b.dataset.id); if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}});
-  }
-}
-setView(st.view);
-})();
-</script>
+<section class="seo"><div class="wrap cols">
+<div><h2>¿Qué es una carrera híbrida?</h2><p>Las competiciones híbridas (fitness racing) alternan carrera a pie con estaciones de trabajo funcional: trineos, remo, SkiErg, wall balls, zancadas con saco… <a href="./hyrox-espana/index.html">HYROX</a>, <a href="./deka-espana/index.html">DEKA</a>, <a href="./athx-espana/index.html">ATHX</a> y <a href="./hyatlon/index.html">Hyatlón</a> son los formatos más conocidos, y cada vez hay más <a href="./carreras-hibridas/index.html">pruebas híbridas nacionales</a>.</p></div>
+<div><h2>¿Y una carrera de obstáculos?</h2><p>Las carreras de obstáculos (OCR) combinan trail o cross con muros, cuerdas, barro, arrastres y monkey bars. Aquí tienes <a href="./spartan-race-espana/index.html">Spartan Race</a> y todo el circuito de <a href="./carreras-obstaculos-nacionales/index.html">carreras de obstáculos nacionales</a>.</p></div>
+<div><h2>Fuentes oficiales</h2><p>Cada prueba enlaza a su web oficial o, si no tiene, a su inscripción oficial o su Instagram. El calendario se revisa a diario. ¿Falta tu prueba o ha cambiado una fecha? Avísanos y la añadimos.</p></div>
+</div></section>
+</main>
+<footer class="foot"><div class="wrap">
+<div class="foot-brand"><a class="logo" href="./index.html"><svg class="logo-mark" viewBox="0 0 64 80" aria-hidden="true"><path d="M32 5C17.6 5 7 16 7 30.2 7 47.5 32 74 32 74s25-26.5 25-43.8C57 16 46.4 5 32 5z" fill="none" stroke="#f2f3f5" stroke-width="6.5" stroke-linejoin="round"/><g transform="translate(32 30.5) skewX(-16)"><rect x="-12.5" y="-12.5" width="7" height="25" rx="1" fill="#f2f3f5"/><rect x="-12.5" y="-3.4" width="25" height="6.8" fill="#f2f3f5"/><rect x="5.5" y="-12.5" width="7" height="25" rx="1" fill="#ff5a1f"/></g></svg><span class="wm">HYBRID<span class="r">RACE</span><b>MAP</b></span></a><p class="foot-sub">Carreras híbridas y OCR</p><p>Descubre. Compite. Supera. Tu próximo reto empieza aquí.</p>
+<p class="small">Calendario independiente. Los datos salen de las webs oficiales de cada prueba y de sus plataformas de inscripción; confirma siempre fecha y sede en el enlace oficial antes de inscribirte. Actualizado el 4 de octubre de 2026.</p></div>
+<div><h3>Formatos</h3><ul><li><a href="./hyrox-espana/index.html">HYROX en España</a></li><li><a href="./deka-espana/index.html">DEKA en España</a></li><li><a href="./spartan-race-espana/index.html">Spartan Race en España</a></li><li><a href="./athx-espana/index.html">ATHX en España</a></li><li><a href="./hyatlon/index.html">Hyatlón</a></li><li><a href="./carreras-hibridas/index.html">Carreras híbridas nacionales</a></li><li><a href="./competiciones-hibridas/index.html">Competiciones híbridas en España</a></li><li><a href="./carreras-obstaculos-nacionales/index.html">Carreras de obstáculos nacionales</a></li><li><a href="./carreras-de-obstaculos/index.html">Carreras de obstáculos en España</a></li></ul></div>
+<div><h3>Comunidades</h3><ul><li><a href="./comunidad/andalucia/index.html">Andalucía</a></li><li><a href="./comunidad/aragon/index.html">Aragón</a></li><li><a href="./comunidad/canarias/index.html">Canarias</a></li><li><a href="./comunidad/cantabria/index.html">Cantabria</a></li><li><a href="./comunidad/castilla-la-mancha/index.html">Castilla-La Mancha</a></li><li><a href="./comunidad/cataluna/index.html">Cataluña</a></li><li><a href="./comunidad/comunidad-de-madrid/index.html">Comunidad de Madrid</a></li><li><a href="./comunidad/comunidad-valenciana/index.html">Comunidad Valenciana</a></li><li><a href="./comunidad/extremadura/index.html">Extremadura</a></li><li><a href="./comunidad/galicia/index.html">Galicia</a></li><li><a href="./comunidad/islas-baleares/index.html">Islas Baleares</a></li><li><a href="./comunidad/la-rioja/index.html">La Rioja</a></li><li><a href="./comunidad/navarra/index.html">Navarra</a></li><li><a href="./comunidad/pais-vasco/index.html">País Vasco</a></li><li><a href="./comunidad/region-de-murcia/index.html">Región de Murcia</a></li></ul></div>
+<div><h3>Por meses</h3><ul><li><a href="./calendario/octubre-2026/index.html">Octubre 2026</a></li><li><a href="./calendario/noviembre-2026/index.html">Noviembre 2026</a></li><li><a href="./calendario/diciembre-2026/index.html">Diciembre 2026</a></li><li><a href="./calendario/febrero-2027/index.html">Febrero 2027</a></li><li><a href="./calendario/marzo-2027/index.html">Marzo 2027</a></li><li><a href="./calendario/abril-2027/index.html">Abril 2027</a></li><li><a href="./calendario/mayo-2027/index.html">Mayo 2027</a></li><li><a href="./calendario/junio-2027/index.html">Junio 2027</a></li><li><a href="./calendario/julio-2027/index.html">Julio 2027</a></li><li><a href="./calendario/septiembre-2027/index.html">Septiembre 2027</a></li><li><a href="./calendario/noviembre-2027/index.html">Noviembre 2027</a></li></ul></div>
+</div></footer>
+<script id="races-data" type="application/json">[{"id":"ocr-benemeritan-race","name":"Benemeritan Race","cat":"ocr","start":"2026-10-04","end":"2026-10-04","city":"Colmenar Viejo","region":"Comunidad de Madrid","url":"https://youevent.es/sport/Tabla_FichaEventoDeportivo.asp?id_competicion=8894","lat":40.659,"lng":-3.767},{"id":"ocr-desafio-boot-camp-vigo","name":"Desafío Boot Camp Vigo","cat":"ocr","start":"2026-10-04","end":"2026-10-04","city":"Vigo","region":"Galicia","url":"https://ccnorte.com/evento/detalle/page/1/id/3226/desafio-boot-camp-vigo-2026","lat":42.24,"lng":-8.72},{"id":"ocr-ocr-crossfast-race","name":"OCR Crossfast Race","cat":"ocr","start":"2026-10-04","end":"2026-10-04","city":"Santa Cruz de Tenerife","region":"Canarias","url":"https://inscripciones.chronotrackcanarias.com/inscripcion/ocr-crossfast-race-santa-cruz-de-tenerife-2026/","lat":28.468,"lng":-16.254},{"id":"hyb-hrx-arganda","name":"HRX Arganda","cat":"hybrid","start":"2026-10-10","end":"2026-10-10","city":"Arganda del Rey","region":"Comunidad de Madrid","url":"https://time2run.es/hrx-arganda/","lat":40.3,"lng":-3.438},{"id":"hyb-hunter-hybrid-race","name":"Hunter Endurance Hybrid Race","cat":"hybrid","start":"2026-10-10","end":"2026-10-10","city":"Mataró","region":"Cataluña","url":"https://www.hunter-race.com/mataro-barcelona","lat":41.54,"lng":2.444},{"id":"hyatlon-madrid-2026","name":"Hyatlón Madrid","cat":"hyatlon","start":"2026-10-10","end":"2026-10-11","city":"Madrid","region":"Comunidad de Madrid","url":"https://hyatlon.org/event/madrid","lat":40.417,"lng":-3.704},{"id":"hyb-hybrid-day-malaga","name":"Hybrid Day Málaga","cat":"hybrid","start":"2026-10-10","end":"2026-10-10","city":"Torremolinos","region":"Andalucía","url":"https://www.sinctime.com/evento/424","lat":36.622,"lng":-4.5},{"id":"ocr-ocr-mencey-nocturna-la-laguna","name":"OCR Mencey Nocturna","cat":"ocr","start":"2026-10-10","end":"2026-10-10","city":"La Laguna","region":"Canarias","url":"https://inscripciones.chronotrackcanarias.com/inscripcion/ocr-mencey-nocturna-la-laguna-2026/","lat":28.487,"lng":-16.315},{"id":"ocr-desafio-pinar-extremo","name":"Desafío Pinar Extremo","cat":"ocr","start":"2026-10-11","end":"2026-10-11","city":"San Roque","region":"Andalucía","url":"https://gesconchip.es/prueba/informacion/iii-desafio-pinar-extremo","lat":36.21,"lng":-5.384},{"id":"ocr-invictus-santona","name":"Invictus Santoña","cat":"ocr","start":"2026-10-11","end":"2026-10-11","city":"Santoña","region":"Cantabria","url":"https://web.rockthesport.com/es/event/invictus-santona-2026","lat":43.443,"lng":-3.457},{"id":"ocr-la-ultima-fortaleza-lanjaron","name":"La Última Fortaleza","cat":"ocr","start":"2026-10-11","end":"2026-10-11","city":"Lanjarón","region":"Andalucía","url":"https://www.global-tempo.com/carreras.php?id=3291","lat":36.92,"lng":-3.48},{"id":"hyrox-valencia-2026","name":"HYROX Valencia","cat":"hyrox","start":"2026-10-15","end":"2026-10-18","city":"Valencia","region":"Comunidad Valenciana","url":"https://hyrox.es/eventos/hyrox-valencia-26-27/","lat":39.47,"lng":-0.376},{"id":"ocr-desafio-sierra-de-cadiz","name":"Desafío Sierra de Cádiz","cat":"ocr","start":"2026-10-17","end":"2026-10-17","city":"Arcos de la Frontera","region":"Andalucía","url":"https://www.runnink.com/evento/desafio-sierra-de-cadiz/123","lat":36.75,"lng":-5.806},{"id":"ocr-santacara-gladius-race","name":"Santacara Gladius Race","cat":"ocr","start":"2026-10-17","end":"2026-10-17","city":"Santacara","region":"Navarra","url":"https://web.rockthesport.com/es/event/santacara-gladius-race-2026","lat":42.367,"lng":-1.548},{"id":"spartan-santa-susanna-2026","name":"Spartan Santa Susanna-Barcelona","cat":"spartan","start":"2026-10-17","end":"2026-10-18","city":"Santa Susanna","region":"Cataluña","url":"https://es.spartan.com/es/races/santa-susanna-barcelona","lat":41.636,"lng":2.711},{"id":"ocr-villafranca-wolf-race","name":"Villafranca Wolf Race","cat":"ocr","start":"2026-10-17","end":"2026-10-17","city":"Villafranca","region":"Navarra","url":"https://www.deporticket.com/web-evento/13352-wolf-race-villafranca","lat":42.279,"lng":-1.746},{"id":"bestial-el-hierro-2026","name":"Bestial Race El Hierro","cat":"ocr","start":"2026-10-24","end":"2026-10-24","city":"El Pinar","region":"Canarias","url":"https://ocrbestial.com/bestial-race-el-hierro/","lat":27.709,"lng":-17.979},{"id":"deka-guadalajara-2026","name":"DEKA Guadalajara","cat":"deka","start":"2026-10-24","end":"2026-10-25","city":"Guadalajara","region":"Castilla-La Mancha","url":"https://es.spartan.com/es/races/deka-guadalajara","lat":40.633,"lng":-3.167},{"id":"hyatlon-la-nucia-2026","name":"Hyatlón La Nucía","cat":"hyatlon","start":"2026-10-24","end":"2026-10-25","city":"La Nucía","region":"Comunidad Valenciana","url":"https://hyatlon.org/","lat":38.614,"lng":-0.123},{"id":"ocr-pilar-xtreme","name":"Pilar Xtreme","cat":"ocr","start":"2026-10-24","end":"2026-10-24","city":"Villafranca de los Barros","region":"Extremadura","url":"https://www.chipserena.es/web-evento/13878-viii-pilar-xtreme","lat":38.561,"lng":-6.338},{"id":"ocr-survivor-madrid-quijorna","name":"Survivor Madrid","cat":"ocr","start":"2026-10-24","end":"2026-10-24","city":"Quijorna","region":"Comunidad de Madrid","url":"https://survivor-race.com/carreras/survivor-madrid-quijorna/","lat":40.428,"lng":-4.057},{"id":"hyb-badajoz-race-calamonte","name":"Badajoz Race Hybrid","cat":"hybrid","start":"2026-10-25","end":"2026-10-25","city":"Calamonte","region":"Extremadura","url":"https://www.dip-badajoz.es/badajozrace/eventos/12872","lat":38.888,"lng":-6.385},{"id":"ocr-desafio-malaga","name":"Desafío Rincón de la Victoria","cat":"ocr","start":"2026-10-25","end":"2026-10-25","city":"Rincón de la Victoria","region":"Andalucía","url":"https://www.desafiodeguerreros.com.es/carreras/p/desafio-malaga","lat":36.717,"lng":-4.276},{"id":"deka-alicante-2026","name":"DEKA Alicante","cat":"deka","start":"2026-10-31","end":"2026-11-01","city":"Alicante","region":"Comunidad Valenciana","url":"https://es.spartan.com/es/races/deka-alicante","lat":38.345,"lng":-0.481},{"id":"ocr-wolf-race-perdiguera","name":"Wolf Race Perdiguera","cat":"ocr","start":"2026-10-31","end":"2026-10-31","city":"Perdiguera","region":"Aragón","url":"https://www.deporticket.com/web-evento/13688-wolf-race-perdiguera","lat":41.757,"lng":-0.63},{"id":"ocr-eolos-race-agoncillo","name":"Eolos Race","cat":"ocr","start":"2026-11-07","end":"2026-11-07","city":"Agoncillo","region":"La Rioja","url":"https://www.deporticket.com/web-evento/13277-eolos-race-agoncillo","lat":42.446,"lng":-2.291},{"id":"ocr-extreme-ocr-telde","name":"Extreme OCR Telde","cat":"ocr","start":"2026-11-07","end":"2026-11-07","city":"Telde","region":"Canarias","url":"https://tripasioneventos.com/event/extreme/","lat":27.995,"lng":-15.417},{"id":"hyb-la-hibrida-andujar-2026","name":"La Híbrida Andújar","cat":"hybrid","start":"2026-11-07","end":"2026-11-07","city":"Andújar","region":"Andalucía","url":"https://time2run.es/competicion-hibrida-andujar-2026/","lat":38.039,"lng":-4.051},{"id":"ocr-millennial-race","name":"Millennial Race","cat":"ocr","start":"2026-11-07","end":"2026-11-07","city":"Cabacés","region":"Cataluña","url":"https://millennialrace.laketab.com","lat":41.248,"lng":0.734},{"id":"ocr-sant-carles-xtrem","name":"Sant Carles Xtrem","cat":"ocr","start":"2026-11-07","end":"2026-11-07","city":"Santa Eulària des Riu","region":"Islas Baleares","url":"https://sportmaniacs.com/es/races/xii-cursa-sant-carles-xtrem","lat":38.985,"lng":1.534},{"id":"hyb-desafio-hybrid-san-pedro-2026","name":"Desafío Hybrid Race San Pedro del Pinatar","cat":"hybrid","start":"2026-11-08","end":"2026-11-08","city":"San Pedro del Pinatar","region":"Región de Murcia","url":"https://www.lineadesalida.net/carreras/desafio-hybrid-race-san-pedro-del-pinatar","lat":37.835,"lng":-0.791},{"id":"ocr-superat","name":"Supera't","cat":"ocr","start":"2026-11-08","end":"2026-11-08","city":"Alcoy","region":"Comunidad Valenciana","url":"https://web.rockthesport.com/es/event/superat-2026","lat":38.698,"lng":-0.474},{"id":"hyrox-barcelona-2026","name":"HYROX Barcelona","cat":"hyrox","start":"2026-11-11","end":"2026-11-15","city":"Barcelona","region":"Cataluña","url":"https://hyrox.es/eventos/hyrox-barcelona-26-27/","lat":41.387,"lng":2.17},{"id":"farinato-umbrete-2026","name":"Farinato Race Umbrete","cat":"ocr","start":"2026-11-14","end":"2026-11-15","city":"Umbrete","region":"Andalucía","url":"https://farinatorace.es/inscripciones-farinato-umbrete-2026/","lat":37.369,"lng":-6.157},{"id":"ocr-hunting-teguise-003","name":"Hunting Teguise","cat":"ocr","start":"2026-11-14","end":"2026-11-14","city":"Teguise","region":"Canarias","url":"https://tripasioneventos.com/event/hunting-teguise-003/","lat":29.061,"lng":-13.56},{"id":"hyatlon-gran-canaria-2026","name":"Hyatlón Gran Canaria","cat":"hyatlon","start":"2026-11-14","end":"2026-11-14","city":"Las Palmas de Gran Canaria","region":"Canarias","url":"https://hyatlon.org/","lat":28.124,"lng":-15.43},{"id":"ocr-som-urban-race","name":"SOM Urban Race","cat":"ocr","start":"2026-11-15","end":"2026-11-15","city":"Palma","region":"Islas Baleares","url":"https://sportmaniacs.com/es/races/som-urban-race-2026","lat":39.57,"lng":2.65},{"id":"deka-tenerife-2026","name":"DEKA Tenerife","cat":"deka","start":"2026-11-21","end":"2026-11-22","city":"Santa Cruz de Tenerife","region":"Canarias","url":"https://es.spartan.com/es/races/deka-tenerife","lat":28.468,"lng":-16.254},{"id":"ocr-desafio-vega-baja-redovan-by-medieval","name":"Desafío Vega Baja","cat":"ocr","start":"2026-11-22","end":"2026-11-22","city":"Redován","region":"Comunidad Valenciana","url":"https://crono4sports.com/evento/desafio-vega-baja-redovan-by-medieval","lat":38.115,"lng":-0.904},{"id":"ocr-isla-race-estadi-mallorca-son-moix","name":"Isla Race Son Moix","cat":"ocr","start":"2026-11-22","end":"2026-11-22","city":"Palma","region":"Islas Baleares","url":"https://web.rockthesport.com/es/event/1785915050","lat":39.57,"lng":2.65},{"id":"ocr-playa-cambriles-race","name":"Playa Cambriles Race","cat":"ocr","start":"2026-11-22","end":"2026-11-22","city":"Castell de Ferro","region":"Andalucía","url":"https://www.global-tempo.com/carreras.php?id=3202","lat":36.725,"lng":-3.358},{"id":"hyatlon-zaragoza-2026","name":"Hyatlón Zaragoza · Gran Final","cat":"hyatlon","start":"2026-11-28","end":"2026-11-28","city":"Zaragoza","region":"Aragón","url":"https://hyatlon.org/","lat":41.649,"lng":-0.889},{"id":"spartan-tenerife-2026","name":"Spartan Tenerife Weekend","cat":"spartan","start":"2026-11-28","end":"2026-11-29","city":"Puerto de la Cruz","region":"Canarias","url":"https://es.spartan.com/es/races/tenerife","lat":28.414,"lng":-16.548},{"id":"bestial-gran-canaria-2026","name":"Bestial Race Gran Canaria","cat":"ocr","start":"2026-12-05","end":"2026-12-05","city":"Arucas","region":"Canarias","url":"https://ocrbestial.com/bestial-race-gran-canaria/","lat":28.12,"lng":-15.523},{"id":"ocr-poseidon-sea","name":"Poseidon Sea","cat":"ocr","start":"2026-12-05","end":"2026-12-05","city":"Torrenueva","region":"Andalucía","url":"https://www.global-tempo.com/carreras.php?id=3100","lat":36.697,"lng":-3.497},{"id":"ocr-medieval-xtrem-race-peniscola","name":"Medieval Xtrem Race","cat":"ocr","start":"2026-12-13","end":"2026-12-13","city":"Peñíscola","region":"Comunidad Valenciana","url":"https://www.crono4sports.es/info_fusion.php?Evento=2415","lat":40.359,"lng":0.407},{"id":"hyrox-bilbao-2027","name":"HYROX Bilbao","cat":"hyrox","start":"2027-02-06","end":"2027-02-07","city":"Bilbao","region":"País Vasco","url":"https://hyrox.es/eventos/hyrox-bilbao-26-27/","lat":43.263,"lng":-2.935},{"id":"athx-valencia-2027","name":"ATHX Valencia","cat":"athx","start":"2027-02-20","end":"2027-02-20","city":"Valencia","region":"Comunidad Valenciana","url":"https://athxgames.com/events/01krwy548m3x7bt4j8bvvmr8j8","lat":39.47,"lng":-0.376},{"id":"deka-torremolinos-2027","name":"DEKA Torremolinos","cat":"deka","start":"2027-02-27","end":"2027-02-28","city":"Torremolinos","region":"Andalucía","url":"https://es.spartan.com/es/races/deka-torremolinos","lat":36.622,"lng":-4.5},{"id":"deka-toledo-2027","name":"DEKA Toledo","cat":"deka","start":"2027-03-06","end":"2027-03-07","city":"Toledo","region":"Castilla-La Mancha","url":"https://es.spartan.com/es/races/deka-toledo-2027","lat":39.863,"lng":-4.027},{"id":"bestial-tenerife-2027","name":"Bestial Race Tenerife","cat":"ocr","start":"2027-03-07","end":"2027-03-07","city":"Tenerife","region":"Canarias","url":"https://ocrbestial.com/bestial-race-tenerife/","lat":28.29,"lng":-16.63},{"id":"ocr-fungo-race","name":"Fungo Race","cat":"ocr","start":"2027-03-14","end":"2027-03-14","city":"Cádiz","region":"Andalucía","url":"https://www.runnink.com/evento/fungo-race/130","lat":36.527,"lng":-6.288},{"id":"hyrox-madrid-2027","name":"HYROX Madrid","cat":"hyrox","start":"2027-03-17","end":"2027-03-21","city":"Madrid","region":"Comunidad de Madrid","url":"https://hyrox.es/eventos/hyrox-madrid-26-27/","lat":40.417,"lng":-3.704},{"id":"deka-barcelona-primavera-2027","name":"DEKA Barcelona Primavera","cat":"deka","start":"2027-03-20","end":"2027-03-21","city":"Barcelona","region":"Cataluña","url":"https://es.spartan.com/es/races/deka-barcelona-primavera","lat":41.387,"lng":2.17},{"id":"deka-valencia-2027","name":"DEKA Valencia","cat":"deka","start":"2027-04-03","end":"2027-04-04","city":"Valencia","region":"Comunidad Valenciana","url":"https://es.spartan.com/es/races/deka-valencia-2027","lat":39.47,"lng":-0.376},{"id":"ocr-survivor-alicante","name":"Survivor Alicante","cat":"ocr","start":"2027-04-10","end":"2027-04-11","city":"Villafranqueza","region":"Comunidad Valenciana","url":"https://survivor-race.com/carreras/survivor-alicante/","lat":38.371,"lng":-0.493},{"id":"hyrox-malaga-2027","name":"HYROX Málaga","cat":"hyrox","start":"2027-04-14","end":"2027-04-18","city":"Málaga","region":"Andalucía","url":"https://hyrox.es/eventos/hyrox-malaga-26-27/","lat":36.721,"lng":-4.421},{"id":"deka-ibiza-2027","name":"DEKA Ibiza","cat":"deka","start":"2027-04-17","end":"2027-04-18","city":"Ibiza","region":"Islas Baleares","url":"https://es.spartan.com/es/races/deka-ibiza-2027","lat":38.907,"lng":1.432},{"id":"athx-madrid-2027","name":"ATHX Madrid","cat":"athx","start":"2027-05-08","end":"2027-05-09","city":"Madrid","region":"Comunidad de Madrid","url":"https://athxgames.com/events/01krwy7hrp6bp8ndj7p1487n0n","lat":40.417,"lng":-3.704},{"id":"spartan-madrid-2027","name":"Spartan Madrid Weekend","cat":"spartan","start":"2027-05-08","end":"2027-05-09","city":"San Agustín del Guadalix","region":"Comunidad de Madrid","url":"https://es.spartan.com/es/races/madrid","lat":40.678,"lng":-3.616},{"id":"deka-vigo-2027","name":"DEKA Vigo","cat":"deka","start":"2027-06-26","end":"2027-06-27","city":"Vigo","region":"Galicia","url":"https://es.spartan.com/es/races/deka-vigo-2027","lat":42.24,"lng":-8.72},{"id":"deka-madrid-2027","name":"DEKA Madrid","cat":"deka","start":"2027-07-10","end":"2027-07-11","city":"Madrid","region":"Comunidad de Madrid","url":"https://es.spartan.com/es/races/deka-madrid-2027","lat":40.417,"lng":-3.704},{"id":"deka-barcelona-otono-2027","name":"DEKA Barcelona Otoño","cat":"deka","start":"2027-09-25","end":"2027-09-26","city":"Barcelona","region":"Cataluña","url":"https://es.spartan.com/es/races/deka-barcelona-otono-2027","lat":41.387,"lng":2.17},{"id":"athx-bilbao-2027","name":"ATHX Bilbao","cat":"athx","start":"2027-11-06","end":"2027-11-06","city":"Bilbao","region":"País Vasco","url":"https://athxgames.com/events/01krwygz93demx24426v8p3xr5","lat":43.263,"lng":-2.935}]</script>
+<script id="cats-data" type="application/json">{"hyrox":{"name":"HYROX","color":"#ffd23f"},"deka":{"name":"DEKA","color":"#4d8dff"},"spartan":{"name":"Spartan Race","color":"#ff3b4f"},"athx":{"name":"ATHX","color":"#b07cff"},"hyatlon":{"name":"Hyatlón","color":"#22d3c5"},"hybrid":{"name":"Híbrida nacional","color":"#ff6fb5"},"ocr":{"name":"OCR nacional","color":"#d39a52"}}</script>
+<script src="./app.js?v=20261004-9c6de5" defer></script>
 </body>
 </html>
