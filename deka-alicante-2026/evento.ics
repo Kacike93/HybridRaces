@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HybridRaceMap//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:deka-alicante-2026@hybridracemap.com
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261102
+SUMMARY:DEKA Alicante
+LOCATION:Alicante\, Comunidad Valenciana\, España
+DESCRIPTION:DEKA · DEKA FIT · MILE · Teams\nhttps://es.spartan.com/es/races/deka-alicante
+URL:https://es.spartan.com/es/races/deka-alicante
+END:VEVENT
+END:VCALENDAR

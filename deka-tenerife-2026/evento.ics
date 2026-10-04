@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HybridRaceMap//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:deka-tenerife-2026@hybridracemap.com
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261121
+DTEND;VALUE=DATE:20261123
+SUMMARY:DEKA Tenerife
+LOCATION:Santa Cruz de Tenerife\, Canarias\, España
+DESCRIPTION:DEKA · DEKA FIT · MILE · STRONG · Teams\nhttps://es.spartan.com/es/races/deka-tenerife
+URL:https://es.spartan.com/es/races/deka-tenerife
+END:VEVENT
+END:VCALENDAR

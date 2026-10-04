@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HybridRaceMap//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:deka-barcelona-otono-2027@hybridracemap.com
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20270925
+DTEND;VALUE=DATE:20270927
+SUMMARY:DEKA Barcelona Otoño
+LOCATION:Barcelona\, Cataluña\, España
+DESCRIPTION:DEKA · DEKA FIT · MILE · Teams\nhttps://es.spartan.com/es/races/deka-barcelona-otono-2027
+URL:https://es.spartan.com/es/races/deka-barcelona-otono-2027
+END:VEVENT
+END:VCALENDAR

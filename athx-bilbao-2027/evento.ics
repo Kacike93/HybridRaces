@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HybridRaceMap//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:athx-bilbao-2027@hybridracemap.com
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20271106
+DTEND;VALUE=DATE:20271107
+SUMMARY:ATHX Bilbao
+LOCATION:Bilbao\, País Vasco\, España
+DESCRIPTION:ATHX · Strength · Engine · Metcon\nhttps://athxgames.com/events/01krwygz93demx24426v8p3xr5
+URL:https://athxgames.com/events/01krwygz93demx24426v8p3xr5
+END:VEVENT
+END:VCALENDAR

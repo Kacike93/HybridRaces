@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HybridRaceMap//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:athx-madrid-2027@hybridracemap.com
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20270508
+DTEND;VALUE=DATE:20270510
+SUMMARY:ATHX Madrid
+LOCATION:Madrid\, Comunidad de Madrid\, España
+DESCRIPTION:ATHX · Strength · Engine · Metcon\nhttps://athxgames.com/events/01krwy7hrp6bp8ndj7p1487n0n
+URL:https://athxgames.com/events/01krwy7hrp6bp8ndj7p1487n0n
+END:VEVENT
+END:VCALENDAR

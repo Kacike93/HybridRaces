@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HybridRaceMap//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:deka-guadalajara-2026@hybridracemap.com
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20261024
+DTEND;VALUE=DATE:20261026
+SUMMARY:DEKA Guadalajara
+LOCATION:Guadalajara\, Castilla-La Mancha\, España
+DESCRIPTION:DEKA · DEKA FIT · MILE · Teams\nhttps://es.spartan.com/es/races/deka-guadalajara
+URL:https://es.spartan.com/es/races/deka-guadalajara
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//HybridRaceMap//ES
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:athx-valencia-2027@hybridracemap.com
+DTSTAMP:20261004T000000Z
+DTSTART;VALUE=DATE:20270220
+DTEND;VALUE=DATE:20270221
+SUMMARY:ATHX Valencia
+LOCATION:Valencia\, Comunidad Valenciana\, España
+DESCRIPTION:ATHX · Strength · Engine · Metcon\nhttps://athxgames.com/events/01krwy548m3x7bt4j8bvvmr8j8
+URL:https://athxgames.com/events/01krwy548m3x7bt4j8bvvmr8j8
+END:VEVENT
+END:VCALENDAR
