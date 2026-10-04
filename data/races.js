@@ -1,4 +1,4 @@
-{
+window.RACES = {
  "updated": "2026-10-04",
  "races": [
   {
@@ -770,4 +770,4 @@
    "note": "Bilbao Exhibition Centre"
   }
  ]
-}
+};

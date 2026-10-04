@@ -3,243 +3,313 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Calendario Hybrid &amp; OCR España · HYROX, Spartan, DEKA</title>
-<meta name="description" content="Calendario de carreras híbridas y de obstáculos en España: HYROX, Spartan, DEKA, ATHX, Hyatlón y OCR nacionales, con enlaces oficiales. Actualizado a diario.">
-<meta property="og:title" content="Calendario Hybrid & OCR España">
-<meta property="og:description" content="HYROX, Spartan, DEKA, ATHX, Hyatlón y carreras de obstáculos en España, actualizado a diario.">
+<title>HybridRaces · Calendario Hybrid &amp; OCR España</title>
+<meta name="description" content="Todas las carreras híbridas y de obstáculos de España en un calendario: HYROX, Spartan, DEKA, ATHX, Hyatlón y pruebas nacionales, con enlace oficial. Actualizado a diario.">
+<meta property="og:title" content="HybridRaces · Calendario Hybrid & OCR España">
+<meta property="og:description" content="HYROX, Spartan, DEKA, ATHX, Hyatlón y carreras de obstáculos en España, con enlace oficial. Actualizado a diario.">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#1b1f26">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff4d1c'/%3E%3Cpath d='M8 24V10h11v14M8 15h11M8 20h11M23 6c-2 6 2 10 0 18' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta property="og:image" content="https://images.unsplash.com/photo-1743993414654-0be2b73a9620?auto=format&fit=crop&w=1200&h=630&q=70">
+<meta name="theme-color" content="#0d0f12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ff5a1f'/%3E%3Cpath d='M9 24V8M23 24V8M9 16h14' stroke='%230d0f12' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: race-bib cards on a chalk-and-asphalt ground; filters as start-line chips; month grid or list. */
+/* Layout: noche de competición — fotografía a sangre, tipografía condensada de dorsal,
+   filtros como tarjetas-foto, carrusel de grandes citas y calendario por meses. Tema oscuro deliberado. */
 :root{
-  --bg:#eef0f2; --surface:#ffffff; --ink:#15181d; --muted:#5d6570; --line:#d5d9de;
-  --accent:#ff4d1c; --accent-ink:#ffffff; --hero:#1b1f26; --hero-ink:#f3f4f6;
-  --c-hyrox:#e0a400; --c-spartan:#c8102e; --c-deka:#1f5fd6; --c-athx:#7a3fd1;
-  --c-hyatlon:#0f9488; --c-ocr:#7a5a2b; --c-hybrid:#d1468f;
-  --f-display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  color-scheme:dark;
+  --bg:#0d0f12; --bg-2:#14171c; --card:#191d23; --line:#2a2f37;
+  --fg:#f2f3f5; --muted:#9aa2ad; --accent:#ff5a1f; --accent-2:#ffd23f; --on-accent:#0d0f12;
+  --c-hyrox:#ffd23f; --c-spartan:#ff3b4f; --c-deka:#4d8dff; --c-athx:#b07cff;
+  --c-hyatlon:#22d3c5; --c-ocr:#d39a52; --c-hybrid:#ff6fb5;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
   --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:10px;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#101318; --surface:#181c22; --ink:#eceef1; --muted:#9aa3ae; --line:#2b313a;
-  --accent:#ff6a3d; --accent-ink:#14161a; --hero:#0a0c10; --hero-ink:#f3f4f6;
-  --c-hyrox:#f2c230; --c-spartan:#ef4a5f; --c-deka:#5b8ff0; --c-athx:#a77cf0;
-  --c-hyatlon:#2fc2b3; --c-ocr:#c49a5a; --c-hybrid:#ea74b3; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#101318; --surface:#181c22; --ink:#eceef1; --muted:#9aa3ae; --line:#2b313a;
-  --accent:#ff6a3d; --accent-ink:#14161a; --hero:#0a0c10; --hero-ink:#f3f4f6;
-  --c-hyrox:#f2c230; --c-spartan:#ef4a5f; --c-deka:#5b8ff0; --c-athx:#a77cf0;
-  --c-hyatlon:#2fc2b3; --c-ocr:#c49a5a; --c-hybrid:#ea74b3; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;margin:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:20px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h2.sec{font-family:var(--f-display);font-weight:900;font-size:clamp(34px,5vw,56px);line-height:.95;text-transform:uppercase;margin:6px 0 0;letter-spacing:.01em}
+.sechead{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:20px}
 
-/* HERO */
-.hero{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
-.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
-.hero .wrap{position:relative;padding-block:36px 30px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:end}
-.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#ffb199}
-h1{font-family:var(--f-display);font-weight:800;font-style:italic;text-transform:uppercase;font-size:clamp(44px,8vw,92px);line-height:.88;margin:10px 0 14px;letter-spacing:-.01em;text-wrap:balance}
-h1 span{color:var(--accent)}
-.lede{max-width:52ch;color:#c9ced6;margin:0}
-.next{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:18px;backdrop-filter:blur(3px)}
-.next .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#aab1bb}
-.next .count{font-family:var(--f-display);font-weight:800;font-size:64px;line-height:1;margin:6px 0 2px;font-variant-numeric:tabular-nums}
-.next .count small{font-size:22px;font-weight:600;margin-left:6px;color:#aab1bb}
-.next .nm{font-family:var(--f-display);font-weight:700;font-size:24px;text-transform:uppercase;line-height:1.1}
-.next .meta{color:#c9ced6;font-size:14px}
-.stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-family:var(--f-mono);font-size:12px;color:#aab1bb;text-transform:uppercase;letter-spacing:.08em}
-.stats b{display:block;font-family:var(--f-display);font-size:30px;color:var(--hero-ink);letter-spacing:0;line-height:1}
+/* ---------- NAV ---------- */
+.nav{position:absolute;top:0;left:0;right:0;z-index:3;padding-top:env(safe-area-inset-top,0px)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-block:18px}
+.logo{font-family:var(--f-display);font-weight:900;font-size:26px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo b{background:var(--accent);color:var(--on-accent);padding:0 7px;border-radius:5px}
+.nav .upd{font-family:var(--f-mono);font-size:12px;color:#d6d9de;background:rgba(0,0,0,.35);padding:6px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.nav .upd i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#3ddc84;margin-right:6px;box-shadow:0 0 0 3px rgba(61,220,132,.25)}
 
-/* CONTROLS */
-.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.controls .wrap{padding-block:12px;display:flex;flex-direction:column;gap:10px}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.chip{font:600 13px/1 var(--f-body);border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px 8px 10px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
-.chip i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
-.chip[aria-pressed="false"]{opacity:.45}
-.chip[aria-pressed="false"] i{background:transparent;box-shadow:inset 0 0 0 2px var(--c)}
-.chip small{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
-.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
-.seg button{font:700 13px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink);border:0;padding:9px 14px;cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-input[type=search],select{font:500 14px var(--f-body);background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;padding:8px 10px;min-width:0}
-input[type=search]{flex:1 1 200px}
-.toggle{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
-.grp{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:clamp(560px,86vh,780px);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.strips{position:absolute;inset:0;display:grid;grid-template-columns:1.25fr 1fr 1fr;z-index:-2}
+.strips div{background:var(--bg-2) center/cover no-repeat;filter:grayscale(1) contrast(1.15) brightness(.85);transform:scale(1.04);transition:filter .6s}
+.strips div:nth-child(2){clip-path:polygon(9% 0,100% 0,91% 100%,0 100%);margin-inline:-6%}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(13,15,18,.55) 0%,rgba(13,15,18,.15) 35%,rgba(13,15,18,.85) 78%,var(--bg) 100%),
+  linear-gradient(90deg,rgba(255,90,31,.55),rgba(255,90,31,0) 55%);mix-blend-mode:normal}
+.hero .wrap{width:100%;padding-block:120px 44px}
+.hero h1{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(56px,11vw,150px);line-height:.82;margin:12px 0 18px;letter-spacing:-.005em;text-wrap:balance;max-width:11ch}
+.hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--fg)}
+.hero p.lede{max-width:54ch;color:#d9dce1;font-size:18px;margin:0 0 24px}
+.searchbar{display:flex;gap:8px;flex-wrap:wrap;background:rgba(20,23,28,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:8px;max-width:760px}
+.searchbar input,.searchbar select{font:500 16px var(--f-body);background:transparent;color:var(--fg);border:0;padding:12px 12px;min-width:0}
+.searchbar input{flex:1 1 220px}
+.searchbar select{flex:0 1 200px;border-left:1px solid var(--line)}
+.searchbar select option{background:var(--bg-2)}
+.searchbar input:focus,.searchbar select:focus{outline:none}
+.btn{font:800 15px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;text-decoration:none;background:var(--accent);color:var(--on-accent);border:0;border-radius:9px;padding:14px 20px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.btn.ghost{background:rgba(255,255,255,.08);color:var(--fg);border:1px solid rgba(255,255,255,.18)}
+.btn.sm{font-size:13px;padding:10px 13px;border-radius:7px}
+.herostats{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px;align-items:center}
+.herostats div{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#b9bec6}
+.herostats > div > b{display:block;font-family:var(--f-display);font-size:40px;line-height:1;color:var(--fg);letter-spacing:0;font-variant-numeric:tabular-nums}
+.countdown{width:min(100%,440px);display:flex;align-items:center;gap:14px;background:var(--fg);color:var(--bg);border-radius:12px;padding:10px 16px 10px 12px;text-decoration:none;max-width:100%}
+.countdown .n{font-family:var(--f-display);font-weight:900;font-size:44px;line-height:1;background:var(--accent);color:var(--on-accent);border-radius:8px;padding:4px 10px;font-variant-numeric:tabular-nums}
+.countdown .t{flex:1;font-size:13px;line-height:1.25;min-width:0}
+.countdown .t b{display:block;font-family:var(--f-display);font-weight:800;font-size:22px;color:var(--bg);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* LIST */
-main{padding-block:22px 40px}
-.month{margin-bottom:30px}
-.mhead{display:flex;align-items:baseline;gap:12px;border-bottom:3px solid var(--ink);padding-bottom:4px;margin-bottom:14px}
-.mhead h2{font-family:var(--f-display);font-weight:800;font-size:34px;text-transform:uppercase;margin:0;line-height:1}
-.mhead span{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
-.card{display:grid;grid-template-columns:86px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .15s,box-shadow .15s}
-.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
-.card.past{opacity:.5}
-.card.flash{animation:flash 1.4s}
-@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:none}}
-.bib{background:var(--c);color:#fff;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 4px;text-align:center}
-.bib::before,.bib::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--surface);top:7px;left:7px;box-shadow:58px 0 0 var(--surface)}
-.bib::after{top:auto;bottom:7px}
-.bib .d{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:.9;font-variant-numeric:tabular-nums}
-.bib .d small{font-size:20px}
-.bib .m{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-.bib .w{font-size:11px;opacity:.85;margin-top:2px}
-.bib svg{width:30px;height:30px;margin-top:6px;opacity:.9}
-.body{padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
-.tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:500}
-.body h3{font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
-.where{font-size:14px;color:var(--muted)}
-.fmt{font-size:13px}
+/* ---------- CATEGORY TILES ---------- */
+.cats{padding-block:40px 10px}
+.tiles{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.tile{position:relative;aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;border:0;padding:0;cursor:pointer;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 35%,#000),var(--card));color:#fff;text-align:left;isolation:isolate;transition:transform .2s, opacity .2s, filter .2s}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85)),linear-gradient(0deg,color-mix(in srgb,var(--c) 45%,transparent),transparent 60%)}
+.tile .bgimg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.tile:hover .bgimg{transform:scale(1.06)}
+.tile .lab{position:absolute;left:12px;right:12px;bottom:12px}
+.tile .lab b{display:block;font-family:var(--f-display);font-weight:900;font-size:clamp(17px,1.6vw,24px);line-height:.95;text-transform:uppercase}
+.tile .lab span{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:#e5e7ea}
+.tile .bar{position:absolute;top:0;left:0;right:0;height:5px;background:var(--c)}
+.tile .chk{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:var(--c);display:grid;place-items:center;color:#0d0f12;font-weight:800;font-size:14px}
+.tile[aria-pressed="false"]{filter:grayscale(1);opacity:.42}
+.tile[aria-pressed="false"] .chk{background:transparent;border:2px solid #fff;color:transparent}
+.catbar{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.link{background:none;border:0;color:var(--muted);font:600 14px var(--f-body);cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:4px}
+
+/* ---------- FEATURED ---------- */
+.featured{padding-block:46px 10px}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(270px,320px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;scrollbar-width:thin}
+.fcard{scroll-snap-align:start;position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,color-mix(in srgb,var(--c) 40%,#000),var(--card) 70%);isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;padding:18px;text-decoration:none;color:#fff}
+.fcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .6s}
+.fcard:hover img{transform:scale(1.05)}
+.fcard::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,.05) 25%,rgba(0,0,0,.9) 88%)}
+.fcard .tagc{position:absolute;top:16px;left:16px;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--c);color:#0d0f12;padding:5px 8px;border-radius:5px;font-weight:500}
+.fcard .days{position:absolute;top:14px;right:14px;font-family:var(--f-display);font-weight:800;font-size:15px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);padding:5px 9px;border-radius:6px;text-transform:uppercase}
+.fcard .fd{font-family:var(--f-display);font-weight:900;font-size:58px;line-height:.85;font-variant-numeric:tabular-nums}
+.fcard .fd small{font-size:22px;letter-spacing:.06em;margin-left:6px;color:var(--c)}
+.fcard h3{font-family:var(--f-display);font-weight:800;font-size:30px;line-height:.95;text-transform:uppercase;margin:8px 0 4px;text-wrap:balance}
+.fcard p{margin:0;color:#d4d7dc;font-size:14px}
+
+/* ---------- CONTROLS ---------- */
+.calsec{padding-block:46px 30px}
+.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(13,15,18,.9);backdrop-filter:blur(10px);border-block:1px solid var(--line);margin-bottom:26px}
+.controls .wrap{display:flex;gap:10px 14px;align-items:center;flex-wrap:wrap;padding-block:12px}
+.seg{display:inline-flex;background:var(--bg-2);border:1px solid var(--line);border-radius:9px;padding:3px}
+.seg button{font:800 14px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--muted);border:0;padding:9px 16px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.toggle{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);cursor:pointer}
+.toggle input{accent-color:var(--accent);width:16px;height:16px}
+.count{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-left:auto}
+.mini{display:flex;gap:6px;flex-wrap:wrap}
+.mini span{font-family:var(--f-mono);font-size:11px;padding:4px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.mini span i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:5px}
+
+/* ---------- LIST ---------- */
+.month{margin-bottom:44px}
+.mhead{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.mhead h3{font-family:var(--f-display);font-weight:900;font-size:clamp(40px,6vw,72px);line-height:.85;text-transform:uppercase;margin:0;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+.mhead h3 span{color:var(--fg);-webkit-text-stroke:0}
+.mhead small{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line);transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--c) 60%,var(--line))}
+.card.past{opacity:.45}
+.card.flash{animation:flash 1.6s}
+@keyframes flash{0%,45%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:none}}
+.ph{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 55%,#000),#111) ;overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .ph img{transform:scale(1.05)}
+.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.65))}
+.bib{position:absolute;left:12px;bottom:-1px;z-index:1;background:#f6f6f3;color:#111;border-radius:6px 6px 0 0;padding:8px 12px 6px;text-align:center;min-width:76px;box-shadow:0 -2px 12px rgba(0,0,0,.25)}
+.bib::before,.bib::after{content:"";position:absolute;top:6px;width:5px;height:5px;border-radius:50%;background:#bbb}
+.bib::before{left:6px}.bib::after{right:6px}
+.bib .m{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#555}
+.bib .d{font-family:var(--f-display);font-weight:900;font-size:36px;line-height:.9;font-variant-numeric:tabular-nums}
+.bib .d small{font-size:18px}
+.chip{position:absolute;top:10px;left:10px;z-index:1;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:var(--c);color:#0d0f12;padding:4px 7px;border-radius:4px;font-weight:500}
+.soon{position:absolute;top:10px;right:10px;z-index:1;font-family:var(--f-display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;background:var(--accent);color:var(--on-accent);padding:4px 8px;border-radius:4px}
+.cb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:5px;flex:1;min-width:0}
+.cb h4{font-family:var(--f-display);font-weight:800;font-size:25px;line-height:.98;text-transform:uppercase;margin:0;text-wrap:balance}
+.where{font-size:14px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.where svg{width:14px;height:14px;flex:none}
+.fmt{font-size:13.5px;color:#d0d4da}
 .note{font-size:12.5px;color:var(--muted)}
-.act{margin-top:6px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.btn{font:700 13px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:var(--accent);color:var(--accent-ink);padding:9px 12px;border-radius:4px;display:inline-flex;gap:6px;align-items:center}
-.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-.sr{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
-.soon{font-family:var(--f-mono);font-size:11px;background:var(--ink);color:var(--bg);padding:3px 6px;border-radius:3px}
+.act{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.when{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
 
-/* CALENDAR */
-.calnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-.calnav h2{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,44px);text-transform:uppercase;margin:0;line-height:1}
-.calnav button{font:700 20px var(--f-display);background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;width:42px;height:42px;cursor:pointer}
-.calwrap{overflow-x:auto}
-.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);min-width:320px}
-.dow{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:6px 8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
-.cell{min-height:112px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:4px;background:var(--surface);display:flex;flex-direction:column;gap:3px;min-width:0}
-.cell.out{background:transparent}
-.cell.out .n{opacity:.35}
-.cell.we{background:color-mix(in srgb,var(--surface) 85%,var(--accent) 4%)}
-.cell .n{font-family:var(--f-display);font-weight:700;font-size:16px;padding:0 3px;font-variant-numeric:tabular-nums}
-.cell.today .n{background:var(--accent);color:var(--accent-ink);border-radius:3px;align-self:flex-start;padding:0 6px}
-.ev{font:600 11.5px/1.2 var(--f-body);background:var(--c);color:#fff;border:0;border-radius:3px;padding:3px 5px;text-align:left;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
-.more{font-size:11px;color:var(--muted);padding-left:3px}
-.empty{padding:40px 0;color:var(--muted);text-align:center}
-.empty b{display:block;font-family:var(--f-display);font-size:26px;color:var(--ink);text-transform:uppercase}
+/* ---------- CALENDAR ---------- */
+.calnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.calnav h3{font-family:var(--f-display);font-weight:900;font-size:clamp(36px,6vw,60px);text-transform:uppercase;margin:0;line-height:.9}
+.calnav button{font:800 22px var(--f-display);background:var(--bg-2);color:var(--fg);border:1px solid var(--line);border-radius:9px;width:46px;height:46px;cursor:pointer}
+.calwrap{overflow-x:auto;border-radius:var(--r);border:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));min-width:320px}
+.dow{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:8px;background:var(--bg-2);border-bottom:1px solid var(--line)}
+.cell{min-height:118px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:5px;background:var(--card);display:flex;flex-direction:column;gap:3px;min-width:0}
+.cell:nth-child(7n){border-right:0}
+.cell.out{background:var(--bg)}
+.cell.out .n{opacity:.3}
+.cell.we{background:color-mix(in srgb,var(--card) 92%,var(--accent))}
+.cell .n{font-family:var(--f-display);font-weight:800;font-size:18px;padding:0 4px;font-variant-numeric:tabular-nums}
+.cell.today .n{background:var(--accent);color:var(--on-accent);border-radius:5px;align-self:flex-start;padding:0 7px}
+.ev{font:600 11.5px/1.2 var(--f-body);background:var(--c);color:#0d0f12;border:0;border-radius:4px;padding:4px 6px;text-align:left;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
+.more{font-size:11px;color:var(--muted);padding-left:4px}
+.empty{padding:50px 0;color:var(--muted);text-align:center}
+.empty b{display:block;font-family:var(--f-display);font-size:32px;color:var(--fg);text-transform:uppercase}
 
-.cat-hyrox .bib,.ev.cat-hyrox{color:#1d1700}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cat-ocr .bib,:root:not([data-theme="light"]) .ev.cat-ocr{color:#1d1406}}
-:root[data-theme="dark"] .cat-ocr .bib,:root[data-theme="dark"] .ev.cat-ocr{color:#1d1406}
-footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-footer .wrap{padding-block:22px 34px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
-footer a{color:var(--ink)}
-.upd{font-family:var(--f-mono);font-size:12px}
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:14px;margin-top:20px}
+footer .wrap{padding-block:30px 44px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px}
+footer .logo{font-size:30px;margin-bottom:8px}
+footer a{color:var(--fg)}
+.legal{font-size:12px}
 
-@media (max-width:760px){
-  .hero .wrap{grid-template-columns:1fr;padding-block:26px 22px}
+@media (max-width:980px){ .tiles{grid-template-columns:repeat(4,minmax(0,1fr))} }
+@media (max-width:700px){
+  .wrap{padding-inline:16px}
+  .strips{grid-template-columns:1fr}
+  .strips div:not(:first-child){display:none}
+  .hero .wrap{padding-block:100px 30px}
+  .hero p.lede{font-size:16px}
+  .searchbar select{border-left:0;border-top:1px solid var(--line);flex:1 1 100%}
+  .searchbar .btn{flex:1 1 100%;justify-content:center}
+  .tiles{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}
+  .tile{scroll-snap-align:start}
   .cards{grid-template-columns:1fr}
-  .cell{min-height:64px;padding:2px}
+  .cell{min-height:62px;padding:3px}
   .ev{font-size:0;height:7px;padding:0}
   .cell .n{font-size:14px}
+  .count{margin-left:0}
+  footer .wrap{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <canvas id="fx" aria-hidden="true"></canvas>
+<nav class="nav" aria-label="Principal">
   <div class="wrap">
-    <div>
-      <div class="eyebrow">Temporada 2026–2027 · España</div>
-      <h1>Calendario <span>Hybrid</span> &amp; OCR</h1>
-      <p class="lede">HYROX, Spartan, DEKA, ATHX, Hyatlón y las carreras de obstáculos y competiciones híbridas de todo el país, con enlace a la web de cada prueba. Se revisa y actualiza cada día.</p>
-      <div class="stats" id="stats"></div>
-    </div>
-    <div class="next" id="next"></div>
+    <a class="logo" href="#top"><b>H</b>HybridRaces</a>
+    <span class="upd" id="upd"><i></i>Actualizado a diario</span>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="strips" aria-hidden="true">
+    <div data-img="1743993414654-0be2b73a9620"></div>
+    <div data-img="1506534067239-9e2fabb3a863"></div>
+    <div data-img="1522866348293-55be2c6caa1f"></div>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow">Hybrid &amp; OCR · España · Temporada 26/27</div>
+    <h1>Tu próxima <em>línea</em> de salida</h1>
+    <p class="lede">HYROX, Spartan, DEKA, ATHX, Hyatlón y las carreras de obstáculos e híbridas de todo el país, con el enlace oficial de cada prueba.</p>
+    <form class="searchbar" id="sf" role="search">
+      <input type="search" id="q" placeholder="Carrera, ciudad o marca…" aria-label="Buscar carrera, ciudad o marca" autocomplete="off">
+      <select id="region" aria-label="Comunidad autónoma"><option value="">Toda España</option></select>
+      <button class="btn" type="submit">Buscar</button>
+    </form>
+    <div class="herostats" id="stats"></div>
   </div>
 </header>
 
-<div class="controls">
-  <div class="wrap">
-    <div class="row" id="chips" role="group" aria-label="Filtrar por tipo de carrera"></div>
-    <div class="row">
+<section class="cats wrap" aria-labelledby="cats-h">
+  <div class="sechead">
+    <div><div class="eyebrow">Elige tu disciplina</div><h2 class="sec" id="cats-h">Formatos</h2></div>
+  </div>
+  <div class="tiles" id="tiles" role="group" aria-label="Filtrar por formato"></div>
+  <div class="catbar"><button class="link" id="all">Ver todas</button><button class="link" id="onlyHybrid">Solo híbridas</button><button class="link" id="onlyOcr">Solo obstáculos</button></div>
+</section>
+
+<section class="featured wrap" aria-labelledby="f-h">
+  <div class="sechead">
+    <div><div class="eyebrow">Las marcas grandes</div><h2 class="sec" id="f-h">Grandes citas</h2></div>
+  </div>
+  <div class="rail" id="rail"></div>
+</section>
+
+<section class="calsec" id="calendario" aria-labelledby="c-h">
+  <div class="wrap sechead">
+    <div><div class="eyebrow">Mes a mes</div><h2 class="sec" id="c-h">Calendario</h2></div>
+  </div>
+  <div class="controls">
+    <div class="wrap">
       <div class="seg" role="group" aria-label="Vista">
         <button id="v-list" aria-pressed="true">Lista</button>
         <button id="v-month" aria-pressed="false">Mes</button>
       </div>
-      <input type="search" id="q" placeholder="Buscar carrera o ciudad…" aria-label="Buscar carrera o ciudad">
-      <select id="region" aria-label="Comunidad autónoma"><option value="">Toda España</option></select>
       <label class="toggle"><input type="checkbox" id="past"> Ver pasadas</label>
+      <div class="mini" id="active"></div>
+      <span class="count" id="count"></span>
     </div>
   </div>
-</div>
-
-<main class="wrap" id="main"></main>
+  <div class="wrap" id="main"></div>
+</section>
 
 <footer>
   <div class="wrap">
-    <div class="upd" id="upd"></div>
-    <div>Fechas tomadas de las webs oficiales y de los calendarios de <a href="https://running.life/obstacle-run-calender/spain" target="_blank" rel="noopener">running.life</a> e <a href="https://hybridheroes.es/carreras-hibridas-espana/" target="_blank" rel="noopener">Hybrid Heroes</a>. Confirma siempre en la web de la prueba antes de inscribirte.</div>
+    <div>
+      <div class="logo"><b>H</b>HybridRaces</div>
+      <div>El calendario de carreras híbridas y de obstáculos de España. Revisamos cada día las webs oficiales de las marcas, los organizadores y las plataformas de inscripción.</div>
+    </div>
+    <div class="legal">
+      <div id="upd2"></div>
+      <p>Confirma siempre fecha y condiciones en la web oficial antes de inscribirte. HYROX, Spartan, DEKA, ATHX y Hyatlón son marcas de sus respectivos propietarios; esta web no está afiliada a ellas.</p>
+      <p>Fotografías: <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</p>
+    </div>
   </div>
 </footer>
 
+<script src="data/races.js"></script>
 <script>
 (function(){
-fetch('data/races.json',{cache:'no-cache'}).then(r=>r.json()).then(init).catch(()=>{document.getElementById('main').innerHTML='<div class="empty"><b>No se pudo cargar el calendario</b>Recarga la página en unos segundos.</div>';});
-function init(DATA){
+const DATA = window.RACES || {updated:'',races:[]};
+const IMG = (id,w) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=70`;
 const CATS = {
-  hyrox:{label:'HYROX',group:'Hybrid'},
-  deka:{label:'DEKA',group:'Hybrid'},
-  athx:{label:'ATHX',group:'Hybrid'},
-  hyatlon:{label:'Hyatlón',group:'Hybrid'},
-  hybrid:{label:'Hybrid nacional',group:'Hybrid'},
-  spartan:{label:'Spartan',group:'OCR'},
-  ocr:{label:'OCR nacional',group:'OCR'}
+  hyrox:  {label:'HYROX',     group:'hybrid', img:['1743993414654-0be2b73a9620','1741562238447-d7c44397f7e0','1739283180407-21e27d5c0735']},
+  deka:   {label:'DEKA',      group:'hybrid', img:['1632077804406-188472f1a810','1706029831387-fd8bc3d27d01','1686791789070-90949cfec4b6']},
+  athx:   {label:'ATHX',      group:'hybrid', img:['1536922246289-88c42f957773','1517931524326-bdd55a541177']},
+  hyatlon:{label:'Hyatlón',   group:'hybrid', img:['1741562238447-d7c44397f7e0','1607962837359-5e7e89f86776']},
+  hybrid: {label:'Híbridas',  group:'hybrid', img:['1644085159448-1659fd88a217','1570440828762-ab7a993dbde8','1536922246289-88c42f957773']},
+  spartan:{label:'Spartan',   group:'ocr',    img:['1506534067239-9e2fabb3a863','1522866348293-55be2c6caa1f','1776938023428-60ddf175a2d1']},
+  ocr:    {label:'Obstáculos',group:'ocr',    img:['1518865946071-1dbcc3ab617c','1779831910085-d476ba0834b4','1787838442648-ec4274718a8a','1776936973344-f71588817705','1779831910091-267bab53aafe','1520352408661-83957c1379d2']}
 };
-const ICONS = {
-  // sled push
-  hybrid:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24h22l2-3"/><path d="M8 24l2-9h10l2 9"/><path d="M12 15V8h2"/><circle cx="24" cy="10" r="2.5" fill="currentColor" stroke="none"/></svg>',
-  // kettlebell
-  kb:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M11 12a5 5 0 0 1 10 0"/><path d="M9 13h14l2 6a9 9 0 0 1-18 0z" fill="currentColor" fill-opacity=".25"/></svg>',
-  // wall + rope
-  ocr:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 27V9h14v18"/><path d="M5 15h14M5 21h14M12 9v6M9 15v6M15 15v6M12 21v6"/><path d="M25 4c-2 6 2 10 0 16s2 6 0 7"/></svg>',
-  // helmet / shield
-  spartan:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M8 26V14a8 8 0 0 1 16 0v12h-5v-8h-6v8z"/><path d="M16 6V3"/></svg>',
-  // rower
-  row:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 25h26"/><circle cx="8" cy="20" r="3"/><path d="M12 20h14l2-5"/><path d="M20 20l-3-8h-4"/></svg>'
-};
-const ICON_FOR = {hyrox:'hybrid',deka:'kb',athx:'kb',hyatlon:'row',hybrid:'hybrid',spartan:'spartan',ocr:'ocr'};
+const MAJOR = ['hyrox','spartan','deka','athx','hyatlon'];
 const MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 const MES3 = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
-
-const d = s => { const [y,m,dd] = s.split('-').map(Number); return new Date(y,m-1,dd); };
-const races = DATA.races.map(r => ({...r, s:d(r.start), e:d(r.end||r.start)}));
-const today = new Date(); today.setHours(0,0,0,0);
-const DAY = 864e5;
-
-let st = {view:'list', cats:new Set(Object.keys(CATS)), q:'', region:'', past:false, cursor:null};
-try{ const v = localStorage.getItem('dorsal-view'); if(v==='month'||v==='list') st.view=v; }catch(e){}
+const REG = /rockthesport|deporticket|sportmaniacs|global-tempo|crono4sports|chronotrack|gesconchip|runnink|sinctime|lineadesalida|conxip|youevent|chipserena|ccnorte|tickets-esdk/;
+const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
 
 const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-
-// ---- hero
-const upcoming = races.filter(r => r.e >= today);
-const nxt = upcoming.filter(r => r.cat!=='hybrid' && r.cat!=='ocr')[0] || upcoming[0];
-document.getElementById('stats').innerHTML =
-  `<div><b>${upcoming.length}</b>pruebas por venir</div>`+
-  `<div><b>${new Set(upcoming.map(r=>r.city)).size}</b>ciudades</div>`+
-  `<div><b>${new Set(upcoming.map(r=>r.region)).size}</b>comunidades</div>`;
-if(nxt){
-  const days = Math.round((nxt.s - today)/DAY);
-  document.getElementById('next').innerHTML =
-    `<div class="lbl">Próxima gran cita</div>
-     <div class="count">${days<=0?'¡Hoy!':days}${days>0?`<small>${days===1?'día':'días'}</small>`:''}</div>
-     <div class="nm">${esc(nxt.name)}</div>
-     <div class="meta">${fmtRange(nxt)} · ${esc(nxt.city)}</div>
-     <div class="act"><a class="btn" href="${esc(nxt.url)}" target="_blank" rel="noopener">Web oficial ↗</a></div>`;
-}
-const u = d(DATA.updated);
-document.getElementById('upd').textContent = `Última actualización: ${u.getDate()} ${MES[u.getMonth()]} ${u.getFullYear()} · ${races.length} pruebas`;
+const pd = s => { const [y,m,d]=s.split('-').map(Number); return new Date(y,m-1,d); };
+const hash = s => [...s].reduce((a,c)=>(a*31+c.charCodeAt(0))>>>0,7);
+const photo = (r,w) => { const L = CATS[r.cat].img; return IMG(L[hash(r.id)%L.length], w); };
+const linkLabel = u => /instagram\.com/.test(u) ? 'Instagram' : REG.test(u) ? 'Inscripción' : 'Web oficial';
+const DAY = 864e5;
+const today = new Date(); today.setHours(0,0,0,0);
+const races = DATA.races.filter(r=>CATS[r.cat]).map(r=>({...r,s:pd(r.start),e:pd(r.end||r.start)}));
+const upcoming = races.filter(r=>r.e>=today);
+const daysTo = r => Math.round((r.s-today)/DAY);
 
 function fmtRange(r){
   if(+r.s===+r.e) return `${DOW[r.s.getDay()]} ${r.s.getDate()} ${MES3[r.s.getMonth()]}`;
@@ -247,138 +317,134 @@ function fmtRange(r){
   return `${r.s.getDate()} ${MES3[r.s.getMonth()]} – ${r.e.getDate()} ${MES3[r.e.getMonth()]}`;
 }
 
-// ---- controls
-const chips = document.getElementById('chips');
-['Hybrid','OCR'].forEach(g=>{
-  const lab = document.createElement('span'); lab.className='grp'; lab.textContent=g; chips.appendChild(lab);
-  Object.entries(CATS).filter(([,c])=>c.group===g).forEach(([k,c])=>{
-    const n = upcoming.filter(r=>r.cat===k).length;
-    const b = document.createElement('button');
-    b.className='chip'; b.style.setProperty('--c',`var(--c-${k})`);
-    b.setAttribute('aria-pressed','true'); b.id='chip-'+k;
-    b.innerHTML = `<i></i>${esc(c.label)} <small>${n}</small>`;
-    b.onclick = ()=>{ st.cats.has(k)?st.cats.delete(k):st.cats.add(k); b.setAttribute('aria-pressed',st.cats.has(k)); render(); };
-    chips.appendChild(b);
-  });
+// hero photos
+document.querySelectorAll('.strips div').forEach(d=>d.style.backgroundImage=`url("${IMG(d.dataset.img,1100)}")`);
+if(DATA.updated){ const u=pd(DATA.updated);
+  const t=`Actualizado ${u.getDate()} ${MES3[u.getMonth()]}`;
+  document.getElementById('upd').innerHTML='<i></i>'+t;
+  document.getElementById('upd2').textContent=`Última actualización: ${u.getDate()} de ${MES[u.getMonth()]} de ${u.getFullYear()} · ${races.length} pruebas`;
+}
+const nextBig = upcoming.find(r=>MAJOR.includes(r.cat));
+document.getElementById('stats').innerHTML =
+  `<div><b>${upcoming.length}</b>pruebas</div><div><b>${new Set(upcoming.map(r=>r.city)).size}</b>ciudades</div><div><b>${new Set(upcoming.map(r=>r.region)).size}</b>comunidades</div>`+
+  (nextBig?`<a class="countdown" href="${esc(nextBig.url)}" target="_blank" rel="noopener"><span class="n">${Math.max(0,daysTo(nextBig))}</span><span class="t">${daysTo(nextBig)<=0?'¡Es hoy!':'días para'}<b>${esc(nextBig.name)}</b>${fmtRange(nextBig)} · ${esc(nextBig.city)}</span></a>`:'');
+
+// state
+let st={view:'list',cats:new Set(Object.keys(CATS)),q:'',region:'',past:false,cursor:null};
+try{const v=localStorage.getItem('hr-view'); if(v==='list'||v==='month') st.view=v;}catch(e){}
+
+// tiles
+const tiles=document.getElementById('tiles');
+Object.entries(CATS).forEach(([k,c])=>{
+  const n=upcoming.filter(r=>r.cat===k).length;
+  const b=document.createElement('button');
+  b.className='tile'; b.style.setProperty('--c',`var(--c-${k})`); b.setAttribute('aria-pressed','true'); b.dataset.cat=k;
+  b.innerHTML=`<img class="bgimg" alt="" loading="lazy" onerror="this.remove()" src="${IMG(c.img[0],500)}"><span class="bar"></span><span class="chk">✓</span><span class="lab"><b>${esc(c.label)}</b><span>${n} ${n===1?'prueba':'pruebas'}</span></span>`;
+  b.onclick=()=>{ st.cats.has(k)?st.cats.delete(k):st.cats.add(k); syncTiles(); render(); };
+  tiles.appendChild(b);
 });
-const sel = document.getElementById('region');
-[...new Set(races.map(r=>r.region))].sort((a,b)=>a.localeCompare(b,'es')).forEach(r=>{ const o=document.createElement('option'); o.value=o.textContent=r; sel.appendChild(o); });
-sel.onchange = ()=>{ st.region=sel.value; render(); };
-document.getElementById('q').oninput = e=>{ st.q=norm(e.target.value.trim()); render(); };
-document.getElementById('past').onchange = e=>{ st.past=e.target.checked; render(); };
-const vl=document.getElementById('v-list'), vm=document.getElementById('v-month');
-function setView(v){ st.view=v; vl.setAttribute('aria-pressed',v==='list'); vm.setAttribute('aria-pressed',v==='month'); try{localStorage.setItem('dorsal-view',v)}catch(e){} render(); }
+function syncTiles(){ tiles.querySelectorAll('.tile').forEach(t=>t.setAttribute('aria-pressed',st.cats.has(t.dataset.cat))); }
+const setCats = f => { st.cats=new Set(Object.keys(CATS).filter(f)); syncTiles(); render(); };
+document.getElementById('all').onclick=()=>setCats(()=>true);
+document.getElementById('onlyHybrid').onclick=()=>setCats(k=>CATS[k].group==='hybrid');
+document.getElementById('onlyOcr').onclick=()=>setCats(k=>CATS[k].group==='ocr');
+
+// featured rail
+document.getElementById('rail').innerHTML = upcoming.filter(r=>MAJOR.includes(r.cat)).slice(0,12).map(r=>{
+  const d=daysTo(r);
+  return `<a class="fcard" style="--c:var(--c-${r.cat})" href="${esc(r.url)}" target="_blank" rel="noopener">
+    <img alt="" loading="lazy" onerror="this.remove()" src="${photo(r,700)}">
+    <span class="tagc">${esc(CATS[r.cat].label)}</span>
+    <span class="days">${d<=0?'Hoy':'en '+d+' días'}</span>
+    <div class="fd">${r.s.getDate()}${+r.s!==+r.e?'–'+r.e.getDate():''}<small>${MES3[r.s.getMonth()].toUpperCase()}</small></div>
+    <h3>${esc(r.name)}</h3>
+    <p>${esc(r.city)} · ${esc(r.region)}</p>
+  </a>`;}).join('');
+
+// controls
+const sel=document.getElementById('region');
+[...new Set(races.map(r=>r.region))].sort((a,b)=>a.localeCompare(b,'es')).forEach(r=>{const o=document.createElement('option');o.value=o.textContent=r;sel.appendChild(o);});
+sel.onchange=()=>{st.region=sel.value;render();};
+const q=document.getElementById('q');
+q.oninput=()=>{st.q=norm(q.value.trim());render();};
+document.getElementById('sf').onsubmit=e=>{e.preventDefault();document.getElementById('calendario').scrollIntoView({behavior:'smooth'});};
+document.getElementById('past').onchange=e=>{st.past=e.target.checked;render();};
+const vl=document.getElementById('v-list'),vm=document.getElementById('v-month');
+function setView(v){st.view=v;vl.setAttribute('aria-pressed',v==='list');vm.setAttribute('aria-pressed',v==='month');try{localStorage.setItem('hr-view',v)}catch(e){}render();}
 vl.onclick=()=>setView('list'); vm.onclick=()=>setView('month');
 
 function filtered(){
-  return races.filter(r => st.cats.has(r.cat)
-    && (!st.region || r.region===st.region)
-    && (!st.q || norm(r.name+' '+r.city+' '+r.region+' '+CATS[r.cat].label).includes(st.q)));
+  return races.filter(r=>st.cats.has(r.cat)&&(!st.region||r.region===st.region)&&(!st.q||norm(r.name+' '+r.city+' '+r.region+' '+CATS[r.cat].label).includes(st.q)));
 }
 
 function card(r){
-  const past = r.e < today;
-  const days = Math.round((r.s-today)/DAY);
-  const multi = +r.s!==+r.e;
-  const official = !/running\.life|hybridheroes|gymraces/.test(r.url);
-  return `<article class="card cat-${r.cat}${past?' past':''}" id="r-${esc(r.id)}" style="--c:var(--c-${r.cat})">
-    <div class="bib" aria-hidden="true">
-      <div class="m">${MES3[r.s.getMonth()]}</div>
-      <div class="d">${r.s.getDate()}${multi?`<small>–${r.e.getDate()}</small>`:''}</div>
-      <div class="w">${DOW[r.s.getDay()]}</div>
-      ${ICONS[ICON_FOR[r.cat]]}
+  const past=r.e<today, d=daysTo(r), multi=+r.s!==+r.e;
+  return `<article class="card${past?' past':''}" id="r-${esc(r.id)}" style="--c:var(--c-${r.cat})">
+    <div class="ph">
+      <img alt="" loading="lazy" src="${photo(r,640)}" onerror="this.remove()">
+      <span class="chip">${esc(CATS[r.cat].label)}</span>
+      ${!past&&d>=0&&d<=14?`<span class="soon">${d===0?'Hoy':d===1?'Mañana':'En '+d+' días'}</span>`:''}
+      <div class="bib"><div class="m">${MES3[r.s.getMonth()]}</div><div class="d">${r.s.getDate()}${multi?`<small>–${r.e.getDate()}</small>`:''}</div></div>
     </div>
-    <div class="body">
-      <div class="tag">${esc(CATS[r.cat].label)} · ${esc(CATS[r.cat].group)}</div>
-      <h3>${esc(r.name)}</h3>
-      <div class="where">${esc(r.city)} · ${esc(r.region)}</div>
+    <div class="cb">
+      <h4>${esc(r.name)}</h4>
+      <div class="where">${PIN}${esc(r.city)} · ${esc(r.region)}</div>
       ${r.formats?`<div class="fmt">${esc(r.formats)}</div>`:''}
       ${r.note?`<div class="note">${esc(r.note)}</div>`:''}
-      <div class="act">
-        <a class="btn${official?'':' ghost'}" href="${esc(r.url)}" target="_blank" rel="noopener">${official?'Web oficial':'Más info'} ↗</a>
-        <span class="sr">${fmtRange(r)}</span>
-        ${!past && days>=0 && days<=14?`<span class="soon">${days===0?'HOY':'en '+days+' d'}</span>`:''}
-      </div>
+      <div class="act"><span class="when">${fmtRange(r)}</span><a class="btn sm" href="${esc(r.url)}" target="_blank" rel="noopener">${linkLabel(r.url)} ↗</a></div>
     </div>
   </article>`;
 }
 
 function renderList(list){
-  if(!st.past) list = list.filter(r=>r.e>=today);
+  if(!st.past) list=list.filter(r=>r.e>=today);
   if(!list.length) return empty();
-  const by = new Map();
-  list.forEach(r=>{ const k=r.s.getFullYear()+'-'+r.s.getMonth(); if(!by.has(k)) by.set(k,[]); by.get(k).push(r); });
+  const by=new Map();
+  list.forEach(r=>{const k=r.s.getFullYear()+'-'+r.s.getMonth(); if(!by.has(k)) by.set(k,[]); by.get(k).push(r);});
   let h='';
-  by.forEach((arr,k)=>{ const [y,m]=k.split('-').map(Number);
-    h+=`<section class="month"><div class="mhead"><h2>${MES[m]} ${y}</h2><span>${arr.length} ${arr.length===1?'prueba':'pruebas'}</span></div><div class="cards">${arr.map(card).join('')}</div></section>`;
-  });
+  by.forEach((a,k)=>{const [y,m]=k.split('-').map(Number);
+    h+=`<section class="month"><div class="mhead"><h3><span>${MES[m]}</span> ${y}</h3><small>${a.length} ${a.length===1?'prueba':'pruebas'}</small></div><div class="cards">${a.map(card).join('')}</div></section>`;});
   return h;
 }
 
 function renderMonth(list){
-  if(!st.cursor){ st.cursor = new Date(today.getFullYear(), today.getMonth(), 1); }
-  const c = st.cursor, y=c.getFullYear(), m=c.getMonth();
-  const first = new Date(y,m,1), offset=(first.getDay()+6)%7;
-  const start = new Date(y,m,1-offset);
-  let h = `<div class="calnav"><button id="prev" aria-label="Mes anterior">‹</button><h2>${MES[m]} ${y}</h2><button id="nextm" aria-label="Mes siguiente">›</button></div><div class="calwrap"><div class="grid">`;
+  if(!st.cursor) st.cursor=new Date(today.getFullYear(),today.getMonth(),1);
+  const y=st.cursor.getFullYear(), m=st.cursor.getMonth();
+  const off=(new Date(y,m,1).getDay()+6)%7, start=new Date(y,m,1-off);
+  let h=`<div class="calnav"><button id="prev" aria-label="Mes anterior">‹</button><h3>${MES[m]} ${y}</h3><button id="nextm" aria-label="Mes siguiente">›</button></div><div class="calwrap"><div class="grid">`;
   ['lun','mar','mié','jue','vie','sáb','dom'].forEach(x=>h+=`<div class="dow">${x}</div>`);
   for(let i=0;i<42;i++){
-    const day = new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);
-    if(i>=35 && day.getMonth()!==m) break;
-    const evs = list.filter(r=>r.s<=day && r.e>=day);
-    const cls = ['cell']; if(day.getMonth()!==m) cls.push('out'); if(+day===+today) cls.push('today'); if(day.getDay()%6===0) cls.push('we');
-    h+=`<div class="${cls.join(' ')}"><span class="n">${day.getDate()}</span>`;
-    evs.slice(0,4).forEach(r=>h+=`<button class="ev cat-${r.cat}" style="--c:var(--c-${r.cat})" data-id="${esc(r.id)}" title="${esc(r.name)} · ${esc(r.city)}">${esc(r.name)}</button>`);
+    const day=new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);
+    if(i>=35&&day.getMonth()!==m) break;
+    const evs=list.filter(r=>r.s<=day&&r.e>=day);
+    const c=['cell']; if(day.getMonth()!==m)c.push('out'); if(+day===+today)c.push('today'); if(day.getDay()%6===0)c.push('we');
+    h+=`<div class="${c.join(' ')}"><span class="n">${day.getDate()}</span>`;
+    evs.slice(0,4).forEach(r=>h+=`<button class="ev" style="--c:var(--c-${r.cat})" data-id="${esc(r.id)}" title="${esc(r.name)} · ${esc(r.city)}">${esc(r.name)}</button>`);
     if(evs.length>4) h+=`<span class="more">+${evs.length-4} más</span>`;
-    h+=`</div>`;
+    h+='</div>';
   }
-  h+=`</div></div>`;
-  const inMonth = list.filter(r=> r.s<=new Date(y,m+1,0) && r.e>=new Date(y,m,1));
-  h+= inMonth.length ? `<section class="month" style="margin-top:26px"><div class="mhead"><h2>Pruebas de ${MES[m]}</h2><span>${inMonth.length}</span></div><div class="cards">${inMonth.map(card).join('')}</div></section>` : `<div class="empty"><b>Sin pruebas este mes</b>Prueba con el mes siguiente o activa más filtros.</div>`;
+  h+='</div></div>';
+  const inM=list.filter(r=>r.s<=new Date(y,m+1,0)&&r.e>=new Date(y,m,1));
+  h+= inM.length?`<section class="month" style="margin-top:34px"><div class="mhead"><h3><span>Pruebas</span> de ${MES[m]}</h3><small>${inM.length}</small></div><div class="cards">${inM.map(card).join('')}</div></section>`:`<div class="empty"><b>Sin pruebas este mes</b>Pasa al mes siguiente o activa más formatos.</div>`;
   return h;
 }
+const empty=()=>`<div class="empty"><b>Nada con estos filtros</b>Activa más formatos o borra la búsqueda.</div>`;
 
-function empty(){ return `<div class="empty"><b>Ninguna prueba con estos filtros</b>Quita algún filtro o borra la búsqueda.</div>`; }
-
-const main = document.getElementById('main');
+const main=document.getElementById('main');
 function render(){
-  const list = filtered();
-  main.innerHTML = st.view==='list' ? renderList(list) : renderMonth(list);
+  const list=filtered();
+  const vis=st.past?list:list.filter(r=>r.e>=today);
+  document.getElementById('count').textContent=`${vis.length} ${vis.length===1?'prueba':'pruebas'}`;
+  document.getElementById('active').innerHTML = st.cats.size===Object.keys(CATS).length ? '' :
+    [...st.cats].map(k=>`<span style="--c:var(--c-${k})"><i></i>${esc(CATS[k].label)}</span>`).join('');
+  main.innerHTML= st.view==='list'?renderList(list):renderMonth(list);
   if(st.view==='month'){
-    main.querySelector('#prev').onclick=()=>{ st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()-1,1); render(); };
-    main.querySelector('#nextm').onclick=()=>{ st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()+1,1); render(); };
-    main.querySelectorAll('.ev').forEach(b=>b.onclick=()=>{ const el=document.getElementById('r-'+b.dataset.id); if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); } });
+    main.querySelector('#prev').onclick=()=>{st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()-1,1);render();};
+    main.querySelector('#nextm').onclick=()=>{st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()+1,1);render();};
+    main.querySelectorAll('.ev').forEach(b=>b.onclick=()=>{const el=document.getElementById('r-'+b.dataset.id); if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');}});
   }
 }
 setView(st.view);
-
-// ---- hero illustration: a running track with lanes and obstacle silhouettes, drawn on canvas
-const cv=document.getElementById('fx'), ctx=cv.getContext('2d');
-function draw(){
-  const w=cv.clientWidth, h=cv.clientHeight, dpr=Math.min(2,window.devicePixelRatio||1);
-  cv.width=w*dpr; cv.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,h);
-  // lanes
-  ctx.save(); ctx.translate(w*0.55,h*1.05); ctx.rotate(-0.18);
-  for(let i=0;i<8;i++){ ctx.beginPath(); ctx.ellipse(0,0,w*0.55+i*34,h*0.9+i*30,0,Math.PI*1.05,Math.PI*1.95); ctx.strokeStyle=i===0?'rgba(255,77,28,.55)':'rgba(255,255,255,.07)'; ctx.lineWidth=i===0?3:1.5; ctx.stroke(); }
-  ctx.restore();
-  // obstacle silhouettes along the right edge
-  ctx.fillStyle='rgba(255,255,255,.05)';
-  const base=h-18, x0=w*0.62;
-  // wall
-  ctx.fillRect(x0,base-90,48,90);
-  // rope rig
-  ctx.fillRect(x0+90,base-130,6,130); ctx.fillRect(x0+90,base-130,90,6); ctx.fillRect(x0+174,base-130,6,130);
-  ctx.fillRect(x0+120,base-124,2,80); ctx.fillRect(x0+150,base-124,2,96);
-  // sled
-  ctx.beginPath(); ctx.moveTo(x0+220,base); ctx.lineTo(x0+300,base); ctx.lineTo(x0+290,base-30); ctx.lineTo(x0+232,base-30); ctx.closePath(); ctx.fill();
-  ctx.fillRect(x0+250,base-70,5,40);
-  // kettlebells
-  for(let k=0;k<3;k++){ const cx=x0+340+k*36; ctx.beginPath(); ctx.arc(cx,base-12,13,0,Math.PI*2); ctx.fill(); ctx.fillRect(cx-8,base-36,16,4); ctx.fillRect(cx-8,base-36,4,14); ctx.fillRect(cx+4,base-36,4,14); }
-  // ground line
-  ctx.fillStyle='rgba(255,255,255,.12)'; ctx.fillRect(0,base,w,2);
-}
-draw(); window.addEventListener('resize',()=>{clearTimeout(draw.t);draw.t=setTimeout(draw,120)});
-}
 })();
 </script>
 </body>

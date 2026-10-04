@@ -4,6 +4,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 
 const FILE = new URL('../data/races.json', import.meta.url);
+const FILE_JS = new URL('../data/races.js', import.meta.url);
+const BANNED = /hybridheroes|running\.life|gymraces|haid\.app|gotrail|finishers\.com|correrjuntos|trainerday|planomato/i;
 const KEY = process.env.ANTHROPIC_API_KEY;
 const API = 'https://api.anthropic.com/v1';
 const CATS = ['hyrox', 'deka', 'athx', 'hyatlon', 'hybrid', 'spartan', 'ocr'];
@@ -42,7 +44,7 @@ function validate(races) {
         CATS.includes(r.cat) && isDate(r.start) &&
         (!r.end || isDate(r.end)) &&
         typeof r.city === 'string' && typeof r.region === 'string' &&
-        typeof r.url === 'string' && /^https:\/\//.test(r.url);
+        typeof r.url === 'string' && /^https:\/\//.test(r.url) && !BANNED.test(r.url);
       if (ok) ids.add(r.id);
       else console.warn('Descartada (formato):', JSON.stringify(r).slice(0, 160));
       return ok;
@@ -71,17 +73,14 @@ ${JSON.stringify(current)}
 \`\`\`
 
 Tarea:
-1. Consulta las fuentes (usa web_fetch y web_search; si una falla, sigue):
-   - https://hyrox.es/eventos/  (HYROX España, cat "hyrox")
-   - https://es.spartan.com/es/race/find-race  (Spartan → "spartan", DEKA → "deka"; ignora eventos fuera de España, p. ej. Lisboa)
-   - https://athxgames.com/events  (solo España, cat "athx")
-   - https://hyatlon.org/  y búsqueda "Hyatlón calendario" (cat "hyatlon")
-   - https://running.life/obstacle-run-calender/spain  y ?page=2  (OCR nacionales, cat "ocr")
-   - https://hybridheroes.es/carreras-hibridas-espana/  y https://gymraces.com/  (híbridas nacionales, cat "hybrid")
-   - Webs oficiales de Farinato (farinatorace.es), Bestial Race (ocrbestial.com), Survivor y Tough Mudder España si existe.
-   Haz 1-2 búsquedas de novedades (nuevas sedes, cambios de fecha, cancelaciones).
+1. Consulta las fuentes PRIMARIAS (usa web_fetch y web_search; si una falla, sigue). No uses calendarios de terceros ni buscadores de carreras (hybridheroes.es, running.life, gymraces.com, haid.app, gotrail.run, finishers.com, correrjuntos.com…), ni como fuente ni como enlace.
+   a) Marcas: https://hyrox.es/eventos/ (cat "hyrox") · https://es.spartan.com/es/race/find-race (Spartan → "spartan", DEKA → "deka"; ignora eventos fuera de España) · https://athxgames.com/events (solo España, "athx") · https://hyatlon.org/ y triatlon.org (Hyatlón, "hyatlon").
+   b) Circuitos y organizadores OCR / híbridos: survivor-race.com, farinatorace.es, ocrbestial.com, desafiodeguerreros.com.es, hunter-race.com, dip-badajoz.es/badajozrace, wolf race (deporticket), medieval (crono4sports), tripasioneventos.com, time2run.es.
+   c) Plataformas de inscripción y cronometraje (aquí publican casi todas las pruebas pequeñas): web.rockthesport.com, deporticket.com, sportmaniacs.com, global-tempo.com, crono4sports.com, chronotrackcanarias.com, gesconchip.es, runnink.com, sinctime.com, lineadesalida.net, conxip.com, youevent.es, chipserena.es. Busca en ellas términos como "obstáculos", "OCR", "hybrid", "híbrida", "hyrox".
+   d) Instagram de organizadores (búsquedas tipo "site:instagram.com carrera obstáculos <provincia> 2026" o "hybrid race <ciudad> 2026").
+   Haz búsquedas de novedades (nuevas sedes, cambios de fecha, cancelaciones).
 2. Añade pruebas nuevas en España, corrige fechas/sedes/enlaces cambiados y elimina las canceladas. Conserva las que no puedas verificar hoy (no borres por un fallo de una fuente).
-3. Prefiere siempre la URL oficial de la prueba; usa un agregador solo si no hay web oficial. NO inventes datos: si una fecha no está confirmada, no la añadas.
+3. El enlace (url) debe ser la web oficial de la prueba; si no tiene, su página de inscripción oficial; si tampoco, su Instagram. NUNCA un calendario o buscador de terceros. NO inventes datos: si una fecha no está confirmada, no la añadas.
 4. Campos: id (kebab-case único, estable: no cambies ids existentes), name, cat (${CATS.join(', ')}), start y end (YYYY-MM-DD; end = start si es un día), city, region (comunidad autónoma en español, p. ej. "Comunidad de Madrid", "Cataluña", "Canarias"), url (https), formats (texto corto, p. ej. "Sprint · Super · Beast"), note (sede u otra nota corta, o "").
 
 Responde al final con UN bloque \`\`\`json que contenga {"races":[...]} con la lista COMPLETA actualizada, y después una línea "CAMBIOS: ..." resumiendo añadidas/modificadas/eliminadas.`;
@@ -138,7 +137,9 @@ async function main() {
   }
 
   races = prune(races, today);
-  await writeFile(FILE, JSON.stringify({ updated, races }, null, 1) + '\n');
+  const out = { updated, races };
+  await writeFile(FILE, JSON.stringify(out, null, 1) + '\n');
+  await writeFile(FILE_JS, 'window.RACES = ' + JSON.stringify(out, null, 1) + ';\n');
   console.log(`Pruebas: ${before} → ${races.length}`);
 }
 
