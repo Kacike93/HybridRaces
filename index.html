@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Calendario Hybrid &amp; OCR España · HYROX, Spartan, DEKA</title>
+<meta name="description" content="Calendario de carreras híbridas y de obstáculos en España: HYROX, Spartan, DEKA, ATHX, Hyatlón y OCR nacionales, con enlaces oficiales. Actualizado a diario.">
+<meta property="og:title" content="Calendario Hybrid & OCR España">
+<meta property="og:description" content="HYROX, Spartan, DEKA, ATHX, Hyatlón y carreras de obstáculos en España, actualizado a diario.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1b1f26">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff4d1c'/%3E%3Cpath d='M8 24V10h11v14M8 15h11M8 20h11M23 6c-2 6 2 10 0 18' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: race-bib cards on a chalk-and-asphalt ground; filters as start-line chips; month grid or list. */
+:root{
+  --bg:#eef0f2; --surface:#ffffff; --ink:#15181d; --muted:#5d6570; --line:#d5d9de;
+  --accent:#ff4d1c; --accent-ink:#ffffff; --hero:#1b1f26; --hero-ink:#f3f4f6;
+  --c-hyrox:#e0a400; --c-spartan:#c8102e; --c-deka:#1f5fd6; --c-athx:#7a3fd1;
+  --c-hyatlon:#0f9488; --c-ocr:#7a5a2b; --c-hybrid:#d1468f;
+  --f-display:"Barlow Condensed","Arial Narrow",Impact,sans-serif;
+  --f-body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101318; --surface:#181c22; --ink:#eceef1; --muted:#9aa3ae; --line:#2b313a;
+  --accent:#ff6a3d; --accent-ink:#14161a; --hero:#0a0c10; --hero-ink:#f3f4f6;
+  --c-hyrox:#f2c230; --c-spartan:#ef4a5f; --c-deka:#5b8ff0; --c-athx:#a77cf0;
+  --c-hyatlon:#2fc2b3; --c-ocr:#c49a5a; --c-hybrid:#ea74b3; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101318; --surface:#181c22; --ink:#eceef1; --muted:#9aa3ae; --line:#2b313a;
+  --accent:#ff6a3d; --accent-ink:#14161a; --hero:#0a0c10; --hero-ink:#f3f4f6;
+  --c-hyrox:#f2c230; --c-spartan:#ef4a5f; --c-deka:#5b8ff0; --c-athx:#a77cf0;
+  --c-hyatlon:#2fc2b3; --c-ocr:#c49a5a; --c-hybrid:#ea74b3; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+
+/* HERO */
+.hero{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+.hero .wrap{position:relative;padding-block:36px 30px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:end}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#ffb199}
+h1{font-family:var(--f-display);font-weight:800;font-style:italic;text-transform:uppercase;font-size:clamp(44px,8vw,92px);line-height:.88;margin:10px 0 14px;letter-spacing:-.01em;text-wrap:balance}
+h1 span{color:var(--accent)}
+.lede{max-width:52ch;color:#c9ced6;margin:0}
+.next{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:18px;backdrop-filter:blur(3px)}
+.next .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#aab1bb}
+.next .count{font-family:var(--f-display);font-weight:800;font-size:64px;line-height:1;margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.next .count small{font-size:22px;font-weight:600;margin-left:6px;color:#aab1bb}
+.next .nm{font-family:var(--f-display);font-weight:700;font-size:24px;text-transform:uppercase;line-height:1.1}
+.next .meta{color:#c9ced6;font-size:14px}
+.stats{display:flex;gap:22px;flex-wrap:wrap;margin-top:18px;font-family:var(--f-mono);font-size:12px;color:#aab1bb;text-transform:uppercase;letter-spacing:.08em}
+.stats b{display:block;font-family:var(--f-display);font-size:30px;color:var(--hero-ink);letter-spacing:0;line-height:1}
+
+/* CONTROLS */
+.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.controls .wrap{padding-block:12px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font:600 13px/1 var(--f-body);border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 12px 8px 10px;border-radius:999px;cursor:pointer;display:inline-flex;gap:7px;align-items:center}
+.chip i{width:10px;height:10px;border-radius:50%;background:var(--c);display:inline-block}
+.chip[aria-pressed="false"]{opacity:.45}
+.chip[aria-pressed="false"] i{background:transparent;box-shadow:inset 0 0 0 2px var(--c)}
+.chip small{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{font:700 13px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--ink);border:0;padding:9px 14px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+input[type=search],select{font:500 14px var(--f-body);background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;padding:8px 10px;min-width:0}
+input[type=search]{flex:1 1 200px}
+.toggle{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
+.grp{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+
+/* LIST */
+main{padding-block:22px 40px}
+.month{margin-bottom:30px}
+.mhead{display:flex;align-items:baseline;gap:12px;border-bottom:3px solid var(--ink);padding-bottom:4px;margin-bottom:14px}
+.mhead h2{font-family:var(--f-display);font-weight:800;font-size:34px;text-transform:uppercase;margin:0;line-height:1}
+.mhead span{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.card{display:grid;grid-template-columns:86px minmax(0,1fr);background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.card.past{opacity:.5}
+.card.flash{animation:flash 1.4s}
+@keyframes flash{0%,40%{box-shadow:0 0 0 3px var(--accent)}100%{box-shadow:none}}
+.bib{background:var(--c);color:#fff;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 4px;text-align:center}
+.bib::before,.bib::after{content:"";position:absolute;width:7px;height:7px;border-radius:50%;background:var(--surface);top:7px;left:7px;box-shadow:58px 0 0 var(--surface)}
+.bib::after{top:auto;bottom:7px}
+.bib .d{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:.9;font-variant-numeric:tabular-nums}
+.bib .d small{font-size:20px}
+.bib .m{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.bib .w{font-size:11px;opacity:.85;margin-top:2px}
+.bib svg{width:30px;height:30px;margin-top:6px;opacity:.9}
+.body{padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:500}
+.body h3{font-family:var(--f-display);font-weight:700;font-size:22px;line-height:1.05;margin:0;text-transform:uppercase;text-wrap:balance}
+.where{font-size:14px;color:var(--muted)}
+.fmt{font-size:13px}
+.note{font-size:12.5px;color:var(--muted)}
+.act{margin-top:6px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{font:700 13px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:var(--accent);color:var(--accent-ink);padding:9px 12px;border-radius:4px;display:inline-flex;gap:6px;align-items:center}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.sr{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.soon{font-family:var(--f-mono);font-size:11px;background:var(--ink);color:var(--bg);padding:3px 6px;border-radius:3px}
+
+/* CALENDAR */
+.calnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.calnav h2{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,5vw,44px);text-transform:uppercase;margin:0;line-height:1}
+.calnav button{font:700 20px var(--f-display);background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:6px;width:42px;height:42px;cursor:pointer}
+.calwrap{overflow-x:auto}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);min-width:320px}
+.dow{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);padding:6px 8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+.cell{min-height:112px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:4px;background:var(--surface);display:flex;flex-direction:column;gap:3px;min-width:0}
+.cell.out{background:transparent}
+.cell.out .n{opacity:.35}
+.cell.we{background:color-mix(in srgb,var(--surface) 85%,var(--accent) 4%)}
+.cell .n{font-family:var(--f-display);font-weight:700;font-size:16px;padding:0 3px;font-variant-numeric:tabular-nums}
+.cell.today .n{background:var(--accent);color:var(--accent-ink);border-radius:3px;align-self:flex-start;padding:0 6px}
+.ev{font:600 11.5px/1.2 var(--f-body);background:var(--c);color:#fff;border:0;border-radius:3px;padding:3px 5px;text-align:left;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
+.more{font-size:11px;color:var(--muted);padding-left:3px}
+.empty{padding:40px 0;color:var(--muted);text-align:center}
+.empty b{display:block;font-family:var(--f-display);font-size:26px;color:var(--ink);text-transform:uppercase}
+
+.cat-hyrox .bib,.ev.cat-hyrox{color:#1d1700}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cat-ocr .bib,:root:not([data-theme="light"]) .ev.cat-ocr{color:#1d1406}}
+:root[data-theme="dark"] .cat-ocr .bib,:root[data-theme="dark"] .ev.cat-ocr{color:#1d1406}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+footer .wrap{padding-block:22px 34px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{color:var(--ink)}
+.upd{font-family:var(--f-mono);font-size:12px}
+
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:26px 22px}
+  .cards{grid-template-columns:1fr}
+  .cell{min-height:64px;padding:2px}
+  .ev{font-size:0;height:7px;padding:0}
+  .cell .n{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas id="fx" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Temporada 2026–2027 · España</div>
+      <h1>Calendario <span>Hybrid</span> &amp; OCR</h1>
+      <p class="lede">HYROX, Spartan, DEKA, ATHX, Hyatlón y las carreras de obstáculos y competiciones híbridas de todo el país, con enlace a la web de cada prueba. Se revisa y actualiza cada día.</p>
+      <div class="stats" id="stats"></div>
+    </div>
+    <div class="next" id="next"></div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="row" id="chips" role="group" aria-label="Filtrar por tipo de carrera"></div>
+    <div class="row">
+      <div class="seg" role="group" aria-label="Vista">
+        <button id="v-list" aria-pressed="true">Lista</button>
+        <button id="v-month" aria-pressed="false">Mes</button>
+      </div>
+      <input type="search" id="q" placeholder="Buscar carrera o ciudad…" aria-label="Buscar carrera o ciudad">
+      <select id="region" aria-label="Comunidad autónoma"><option value="">Toda España</option></select>
+      <label class="toggle"><input type="checkbox" id="past"> Ver pasadas</label>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="upd" id="upd"></div>
+    <div>Fechas tomadas de las webs oficiales y de los calendarios de <a href="https://running.life/obstacle-run-calender/spain" target="_blank" rel="noopener">running.life</a> e <a href="https://hybridheroes.es/carreras-hibridas-espana/" target="_blank" rel="noopener">Hybrid Heroes</a>. Confirma siempre en la web de la prueba antes de inscribirte.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+fetch('data/races.json',{cache:'no-cache'}).then(r=>r.json()).then(init).catch(()=>{document.getElementById('main').innerHTML='<div class="empty"><b>No se pudo cargar el calendario</b>Recarga la página en unos segundos.</div>';});
+function init(DATA){
+const CATS = {
+  hyrox:{label:'HYROX',group:'Hybrid'},
+  deka:{label:'DEKA',group:'Hybrid'},
+  athx:{label:'ATHX',group:'Hybrid'},
+  hyatlon:{label:'Hyatlón',group:'Hybrid'},
+  hybrid:{label:'Hybrid nacional',group:'Hybrid'},
+  spartan:{label:'Spartan',group:'OCR'},
+  ocr:{label:'OCR nacional',group:'OCR'}
+};
+const ICONS = {
+  // sled push
+  hybrid:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 24h22l2-3"/><path d="M8 24l2-9h10l2 9"/><path d="M12 15V8h2"/><circle cx="24" cy="10" r="2.5" fill="currentColor" stroke="none"/></svg>',
+  // kettlebell
+  kb:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M11 12a5 5 0 0 1 10 0"/><path d="M9 13h14l2 6a9 9 0 0 1-18 0z" fill="currentColor" fill-opacity=".25"/></svg>',
+  // wall + rope
+  ocr:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 27V9h14v18"/><path d="M5 15h14M5 21h14M12 9v6M9 15v6M15 15v6M12 21v6"/><path d="M25 4c-2 6 2 10 0 16s2 6 0 7"/></svg>',
+  // helmet / shield
+  spartan:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M8 26V14a8 8 0 0 1 16 0v12h-5v-8h-6v8z"/><path d="M16 6V3"/></svg>',
+  // rower
+  row:'<svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 25h26"/><circle cx="8" cy="20" r="3"/><path d="M12 20h14l2-5"/><path d="M20 20l-3-8h-4"/></svg>'
+};
+const ICON_FOR = {hyrox:'hybrid',deka:'kb',athx:'kb',hyatlon:'row',hybrid:'hybrid',spartan:'spartan',ocr:'ocr'};
+const MES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+const MES3 = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const DOW = ['dom','lun','mar','mié','jue','vie','sáb'];
+
+const d = s => { const [y,m,dd] = s.split('-').map(Number); return new Date(y,m-1,dd); };
+const races = DATA.races.map(r => ({...r, s:d(r.start), e:d(r.end||r.start)}));
+const today = new Date(); today.setHours(0,0,0,0);
+const DAY = 864e5;
+
+let st = {view:'list', cats:new Set(Object.keys(CATS)), q:'', region:'', past:false, cursor:null};
+try{ const v = localStorage.getItem('dorsal-view'); if(v==='month'||v==='list') st.view=v; }catch(e){}
+
+const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+// ---- hero
+const upcoming = races.filter(r => r.e >= today);
+const nxt = upcoming.filter(r => r.cat!=='hybrid' && r.cat!=='ocr')[0] || upcoming[0];
+document.getElementById('stats').innerHTML =
+  `<div><b>${upcoming.length}</b>pruebas por venir</div>`+
+  `<div><b>${new Set(upcoming.map(r=>r.city)).size}</b>ciudades</div>`+
+  `<div><b>${new Set(upcoming.map(r=>r.region)).size}</b>comunidades</div>`;
+if(nxt){
+  const days = Math.round((nxt.s - today)/DAY);
+  document.getElementById('next').innerHTML =
+    `<div class="lbl">Próxima gran cita</div>
+     <div class="count">${days<=0?'¡Hoy!':days}${days>0?`<small>${days===1?'día':'días'}</small>`:''}</div>
+     <div class="nm">${esc(nxt.name)}</div>
+     <div class="meta">${fmtRange(nxt)} · ${esc(nxt.city)}</div>
+     <div class="act"><a class="btn" href="${esc(nxt.url)}" target="_blank" rel="noopener">Web oficial ↗</a></div>`;
+}
+const u = d(DATA.updated);
+document.getElementById('upd').textContent = `Última actualización: ${u.getDate()} ${MES[u.getMonth()]} ${u.getFullYear()} · ${races.length} pruebas`;
+
+function fmtRange(r){
+  if(+r.s===+r.e) return `${DOW[r.s.getDay()]} ${r.s.getDate()} ${MES3[r.s.getMonth()]}`;
+  if(r.s.getMonth()===r.e.getMonth()) return `${r.s.getDate()}–${r.e.getDate()} ${MES3[r.s.getMonth()]}`;
+  return `${r.s.getDate()} ${MES3[r.s.getMonth()]} – ${r.e.getDate()} ${MES3[r.e.getMonth()]}`;
+}
+
+// ---- controls
+const chips = document.getElementById('chips');
+['Hybrid','OCR'].forEach(g=>{
+  const lab = document.createElement('span'); lab.className='grp'; lab.textContent=g; chips.appendChild(lab);
+  Object.entries(CATS).filter(([,c])=>c.group===g).forEach(([k,c])=>{
+    const n = upcoming.filter(r=>r.cat===k).length;
+    const b = document.createElement('button');
+    b.className='chip'; b.style.setProperty('--c',`var(--c-${k})`);
+    b.setAttribute('aria-pressed','true'); b.id='chip-'+k;
+    b.innerHTML = `<i></i>${esc(c.label)} <small>${n}</small>`;
+    b.onclick = ()=>{ st.cats.has(k)?st.cats.delete(k):st.cats.add(k); b.setAttribute('aria-pressed',st.cats.has(k)); render(); };
+    chips.appendChild(b);
+  });
+});
+const sel = document.getElementById('region');
+[...new Set(races.map(r=>r.region))].sort((a,b)=>a.localeCompare(b,'es')).forEach(r=>{ const o=document.createElement('option'); o.value=o.textContent=r; sel.appendChild(o); });
+sel.onchange = ()=>{ st.region=sel.value; render(); };
+document.getElementById('q').oninput = e=>{ st.q=norm(e.target.value.trim()); render(); };
+document.getElementById('past').onchange = e=>{ st.past=e.target.checked; render(); };
+const vl=document.getElementById('v-list'), vm=document.getElementById('v-month');
+function setView(v){ st.view=v; vl.setAttribute('aria-pressed',v==='list'); vm.setAttribute('aria-pressed',v==='month'); try{localStorage.setItem('dorsal-view',v)}catch(e){} render(); }
+vl.onclick=()=>setView('list'); vm.onclick=()=>setView('month');
+
+function filtered(){
+  return races.filter(r => st.cats.has(r.cat)
+    && (!st.region || r.region===st.region)
+    && (!st.q || norm(r.name+' '+r.city+' '+r.region+' '+CATS[r.cat].label).includes(st.q)));
+}
+
+function card(r){
+  const past = r.e < today;
+  const days = Math.round((r.s-today)/DAY);
+  const multi = +r.s!==+r.e;
+  const official = !/running\.life|hybridheroes|gymraces/.test(r.url);
+  return `<article class="card cat-${r.cat}${past?' past':''}" id="r-${esc(r.id)}" style="--c:var(--c-${r.cat})">
+    <div class="bib" aria-hidden="true">
+      <div class="m">${MES3[r.s.getMonth()]}</div>
+      <div class="d">${r.s.getDate()}${multi?`<small>–${r.e.getDate()}</small>`:''}</div>
+      <div class="w">${DOW[r.s.getDay()]}</div>
+      ${ICONS[ICON_FOR[r.cat]]}
+    </div>
+    <div class="body">
+      <div class="tag">${esc(CATS[r.cat].label)} · ${esc(CATS[r.cat].group)}</div>
+      <h3>${esc(r.name)}</h3>
+      <div class="where">${esc(r.city)} · ${esc(r.region)}</div>
+      ${r.formats?`<div class="fmt">${esc(r.formats)}</div>`:''}
+      ${r.note?`<div class="note">${esc(r.note)}</div>`:''}
+      <div class="act">
+        <a class="btn${official?'':' ghost'}" href="${esc(r.url)}" target="_blank" rel="noopener">${official?'Web oficial':'Más info'} ↗</a>
+        <span class="sr">${fmtRange(r)}</span>
+        ${!past && days>=0 && days<=14?`<span class="soon">${days===0?'HOY':'en '+days+' d'}</span>`:''}
+      </div>
+    </div>
+  </article>`;
+}
+
+function renderList(list){
+  if(!st.past) list = list.filter(r=>r.e>=today);
+  if(!list.length) return empty();
+  const by = new Map();
+  list.forEach(r=>{ const k=r.s.getFullYear()+'-'+r.s.getMonth(); if(!by.has(k)) by.set(k,[]); by.get(k).push(r); });
+  let h='';
+  by.forEach((arr,k)=>{ const [y,m]=k.split('-').map(Number);
+    h+=`<section class="month"><div class="mhead"><h2>${MES[m]} ${y}</h2><span>${arr.length} ${arr.length===1?'prueba':'pruebas'}</span></div><div class="cards">${arr.map(card).join('')}</div></section>`;
+  });
+  return h;
+}
+
+function renderMonth(list){
+  if(!st.cursor){ st.cursor = new Date(today.getFullYear(), today.getMonth(), 1); }
+  const c = st.cursor, y=c.getFullYear(), m=c.getMonth();
+  const first = new Date(y,m,1), offset=(first.getDay()+6)%7;
+  const start = new Date(y,m,1-offset);
+  let h = `<div class="calnav"><button id="prev" aria-label="Mes anterior">‹</button><h2>${MES[m]} ${y}</h2><button id="nextm" aria-label="Mes siguiente">›</button></div><div class="calwrap"><div class="grid">`;
+  ['lun','mar','mié','jue','vie','sáb','dom'].forEach(x=>h+=`<div class="dow">${x}</div>`);
+  for(let i=0;i<42;i++){
+    const day = new Date(start.getFullYear(),start.getMonth(),start.getDate()+i);
+    if(i>=35 && day.getMonth()!==m) break;
+    const evs = list.filter(r=>r.s<=day && r.e>=day);
+    const cls = ['cell']; if(day.getMonth()!==m) cls.push('out'); if(+day===+today) cls.push('today'); if(day.getDay()%6===0) cls.push('we');
+    h+=`<div class="${cls.join(' ')}"><span class="n">${day.getDate()}</span>`;
+    evs.slice(0,4).forEach(r=>h+=`<button class="ev cat-${r.cat}" style="--c:var(--c-${r.cat})" data-id="${esc(r.id)}" title="${esc(r.name)} · ${esc(r.city)}">${esc(r.name)}</button>`);
+    if(evs.length>4) h+=`<span class="more">+${evs.length-4} más</span>`;
+    h+=`</div>`;
+  }
+  h+=`</div></div>`;
+  const inMonth = list.filter(r=> r.s<=new Date(y,m+1,0) && r.e>=new Date(y,m,1));
+  h+= inMonth.length ? `<section class="month" style="margin-top:26px"><div class="mhead"><h2>Pruebas de ${MES[m]}</h2><span>${inMonth.length}</span></div><div class="cards">${inMonth.map(card).join('')}</div></section>` : `<div class="empty"><b>Sin pruebas este mes</b>Prueba con el mes siguiente o activa más filtros.</div>`;
+  return h;
+}
+
+function empty(){ return `<div class="empty"><b>Ninguna prueba con estos filtros</b>Quita algún filtro o borra la búsqueda.</div>`; }
+
+const main = document.getElementById('main');
+function render(){
+  const list = filtered();
+  main.innerHTML = st.view==='list' ? renderList(list) : renderMonth(list);
+  if(st.view==='month'){
+    main.querySelector('#prev').onclick=()=>{ st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()-1,1); render(); };
+    main.querySelector('#nextm').onclick=()=>{ st.cursor=new Date(st.cursor.getFullYear(),st.cursor.getMonth()+1,1); render(); };
+    main.querySelectorAll('.ev').forEach(b=>b.onclick=()=>{ const el=document.getElementById('r-'+b.dataset.id); if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash'); } });
+  }
+}
+setView(st.view);
+
+// ---- hero illustration: a running track with lanes and obstacle silhouettes, drawn on canvas
+const cv=document.getElementById('fx'), ctx=cv.getContext('2d');
+function draw(){
+  const w=cv.clientWidth, h=cv.clientHeight, dpr=Math.min(2,window.devicePixelRatio||1);
+  cv.width=w*dpr; cv.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,w,h);
+  // lanes
+  ctx.save(); ctx.translate(w*0.55,h*1.05); ctx.rotate(-0.18);
+  for(let i=0;i<8;i++){ ctx.beginPath(); ctx.ellipse(0,0,w*0.55+i*34,h*0.9+i*30,0,Math.PI*1.05,Math.PI*1.95); ctx.strokeStyle=i===0?'rgba(255,77,28,.55)':'rgba(255,255,255,.07)'; ctx.lineWidth=i===0?3:1.5; ctx.stroke(); }
+  ctx.restore();
+  // obstacle silhouettes along the right edge
+  ctx.fillStyle='rgba(255,255,255,.05)';
+  const base=h-18, x0=w*0.62;
+  // wall
+  ctx.fillRect(x0,base-90,48,90);
+  // rope rig
+  ctx.fillRect(x0+90,base-130,6,130); ctx.fillRect(x0+90,base-130,90,6); ctx.fillRect(x0+174,base-130,6,130);
+  ctx.fillRect(x0+120,base-124,2,80); ctx.fillRect(x0+150,base-124,2,96);
+  // sled
+  ctx.beginPath(); ctx.moveTo(x0+220,base); ctx.lineTo(x0+300,base); ctx.lineTo(x0+290,base-30); ctx.lineTo(x0+232,base-30); ctx.closePath(); ctx.fill();
+  ctx.fillRect(x0+250,base-70,5,40);
+  // kettlebells
+  for(let k=0;k<3;k++){ const cx=x0+340+k*36; ctx.beginPath(); ctx.arc(cx,base-12,13,0,Math.PI*2); ctx.fill(); ctx.fillRect(cx-8,base-36,16,4); ctx.fillRect(cx-8,base-36,4,14); ctx.fillRect(cx+4,base-36,4,14); }
+  // ground line
+  ctx.fillStyle='rgba(255,255,255,.12)'; ctx.fillRect(0,base,w,2);
+}
+draw(); window.addEventListener('resize',()=>{clearTimeout(draw.t);draw.t=setTimeout(draw,120)});
+}
+})();
+</script>
+</body>
+</html>
